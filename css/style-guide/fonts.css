@@ -1,0 +1,44 @@
+.font-primary {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-secondary {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.body-text {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.02rem;
+}
+
+.heading-primary {  
+    font-size: 1.2rem;
+    line-height: normal;
+    letter-spacing: 0.024rem;
+}
+
+.heading-secondary {
+    font-size: 1.4rem;
+    line-height: 1.75rem;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}

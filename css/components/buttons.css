@@ -1,0 +1,45 @@
+.button {
+    border-radius: 0.0625rem;
+    border: none;
+    background-color: var(--color-theme-dark-blue);
+    color: var(--color-text-light);
+    cursor: pointer;
+    font-family: Tahoma;
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.02rem;
+    flex-shrink: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+    background-color: var(--color-hover-dark-blue);
+}
+
+.button-delete{
+    border: solid 0.5px var(--color-theme-dark-blue);
+    background-color: transparent;
+    color: var(--color-theme-dark-blue);
+    transition: border 0.1s, color 0.3s;
+}
+
+.button-delete:hover {
+    background-color: transparent;
+    border: solid 2px var(--color-hover-dark-blue);
+    
+}
+
+.button-big {
+    width: 8.2rem;
+    height: 3rem;
+    
+    
+}
+
+.button-small {
+    width: 5.25rem;
+    height: 1.7rem;
+}
+
+
