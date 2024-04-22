@@ -6,3 +6,8 @@
 
 /*component code*/
 @import url("./components/buttons.css");
+@import url("./components/header-footer.css");
+
+
+/*layout code*/
+@import url("./media.css");

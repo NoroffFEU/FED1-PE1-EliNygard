@@ -1,0 +1,40 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.h-f-container {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+.header-container {
+    background-color: #fff;
+    color: var(--color-theme-dark-blue);
+}
+
+.footer-container {
+    height: 106px;
+    background-color: var(--color-theme-dark-blue);
+    color: #fff;
+}
+
+.content-left {
+    display: flex;
+    align-items: left;
+    justify-content: start;
+    
+    font-size: 1rem;
+    letter-spacing: 0.11rem;
+}
+
+.content-right {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+    font-size: 0.7rem;
+}
+
