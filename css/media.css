@@ -1,5 +1,20 @@
 @media only screen and (min-width: 767px) {
     
+    /* font */
+
+   .heading-secondary {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    margin: 0;
+   }
+
+    .body-text {
+        font-size: 1.25rem;
+        line-height: 1.68rem;
+        letter-spacing: 0.02rem;
+        margin: 0 0 2rem 0;
+    }
+
     /* header and footer */
 
     .h-f-container {
@@ -40,10 +55,47 @@
         max-width: 80rem;
     }
 
-    .new-article {
-        max-width: 70rem;
-        flex-direction: row;
+    .carousel-wrapper h2 {
+        margin: 2.5rem 0 0 5rem;
     }
 
+    .new-article {
+        max-width: 70rem;
+        max-height: 27.4375rem;
+        flex-direction: row;
+        gap: 1.25rem;
+        padding: 2.5rem 1.5rem 3.75rem 1.5rem;
+        margin: 2.5rem 5rem 2rem 5rem;
+    }
+
+    .new-article div {
+        gap: 1rem;
+    }
+
+    li img {
+        max-width: 32rem;
+        max-height: 21rem;
+        width: 50%;
+    }
+
+    li p {
+        max-width: 32.6rem;
+        max-height: 11.25rem;
+    }
+
+    li button {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .button-carousel {
+        font-size: 1.3rem;
+    }
+
+    .carousel-buttons-container {
+        justify-content: space-around;
+        padding: 0 0 2rem 0;
+    }
 }
 
