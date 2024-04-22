@@ -1,0 +1,13 @@
+.banner-slogan {
+    height: 6.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slogan {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    /* padding: 0 1.5rem; */
+    
+}

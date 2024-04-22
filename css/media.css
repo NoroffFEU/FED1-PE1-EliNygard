@@ -1,0 +1,33 @@
+@media only screen and (min-width: 767px) {
+    
+    /* header and footer */
+
+    .content-left {
+        font-size: 1.75rem;
+        letter-spacing: 0.1925rem;
+    }
+
+    .content-right {
+        font-size: 1.2rem;
+    }
+
+    .footer-container {
+        height: 17.5rem;
+    }
+
+
+
+    /* banner slogan */
+
+    .banner-slogan {
+        height: 11.25rem;
+    }
+
+    .slogan {
+        font-size: 2.5rem;
+        line-height: calc(2.5rem * 1.5);
+        /* padding: 0 5rem; */
+    }
+
+}
+
