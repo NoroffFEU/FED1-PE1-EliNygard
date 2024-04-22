@@ -3,11 +3,13 @@
 @import url("./style-guide/colors.css");
 @import url("./style-guide/fonts.css");
 @import url("./style-guide/variables.css");
+@import url("./style-guide/flex.css");
 
 /*component code*/
 @import url("./components/buttons.css");
 @import url("./components/header-footer.css");
 @import url("./components/slogan.css");
+@import url("./components/carousel.css");
 
 
 /*layout code*/

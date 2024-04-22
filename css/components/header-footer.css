@@ -4,7 +4,7 @@ a {
 }
 
 .h-f-container {
-    height: 48px;
+    height: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;    
@@ -33,7 +33,7 @@ footer {
     display: flex;
     align-items: left;
     justify-content: start;
-    
+    padding-left: 1.5rem;
     font-size: 1rem;
     letter-spacing: 0.11rem;
 }
@@ -42,6 +42,7 @@ footer {
     display: flex;
     justify-content: end;
     gap: 1rem;
+    padding-right: 1.5rem;
     font-size: 0.7rem;
 }
 

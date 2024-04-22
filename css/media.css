@@ -2,6 +2,10 @@
     
     /* header and footer */
 
+    .h-f-container {
+        height: 5rem;
+    }
+
     .content-left {
         font-size: 1.75rem;
         letter-spacing: 0.1925rem;
@@ -27,6 +31,18 @@
         font-size: 2.5rem;
         line-height: calc(2.5rem * 1.5);
         /* padding: 0 5rem; */
+    }
+
+
+    /* carousel */
+
+    .carousel-wrapper {
+        max-width: 80rem;
+    }
+
+    .new-article {
+        max-width: 70rem;
+        flex-direction: row;
     }
 
 }
