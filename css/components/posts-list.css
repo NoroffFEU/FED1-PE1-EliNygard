@@ -1,0 +1,17 @@
+.posts-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 70rem;
+    margin: auto;
+}
+
+article {
+    max-width: 34rem;
+}
+
+article img {
+    max-width: 100%;
+}
