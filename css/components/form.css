@@ -16,20 +16,47 @@ form {
 }
 
 form > .button {
-    margin-top: 4.25rem;
+    margin-top: 3rem;
     
 }
 
-input {
-    max-width: 25rem;
-    max-height: 3rem;
+input[type="email"], input[type="password"] {
     width: 17rem;
     height: 3rem;
+    border: none;
+    padding: .5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    color: inherit;
+    background-color: #fff;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    border: 2px solid var(--color-theme-dark-blue);
+    outline: none;
+    background-color: #fff;
+}
+
+::placeholder {
+    color: var(--color-theme-dark-blue);
+    font-family: Tahoma;
+    font-size: .9rem;
+}
+
+label {
+    display: none;
 }
 
 .register-info {
-    margin: 2rem 0;
+    margin: 0 0 2rem 0;
     display: inherit;
     flex-direction: inherit;
     align-items: inherit;
+    gap: .5rem;
+    color: var(--color-theme-dark-blue);
+    font-size: .8rem;
+}
+
+.register-info > a {
+    text-decoration: underline var(--color-theme-dark-blue);
 }
