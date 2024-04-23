@@ -7,14 +7,16 @@ a {
     height: 3rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;    
-    margin: 0 1.5rem 0 1.5rem;
+    align-items: center; 
+    margin: auto;  
+    padding: 0 1.5rem 0 1.5rem;
 }
 
 .header-container {
     background-color: #fff;
     color: var(--color-theme-dark-blue);
     max-width: 1120px;
+    
 }
 
 footer {
@@ -25,7 +27,6 @@ footer {
 .footer-container {
     height: 106px;
     max-width: 1120px;
-    margin: auto;
 }
 
 .content-left {

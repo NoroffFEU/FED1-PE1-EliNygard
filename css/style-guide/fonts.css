@@ -18,6 +18,8 @@
     padding: 0;
 }
 
+/* create font size classes in stead of heading primary osv */
+
 .heading-primary {  
     font-size: 1.2rem;
     line-height: normal;
