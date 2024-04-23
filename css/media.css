@@ -45,7 +45,7 @@
     .slogan {
         font-size: 2.5rem;
         line-height: calc(2.5rem * 1.5);
-        /* padding: 0 5rem; */
+        padding: 0rem;
     }
 
 
@@ -96,6 +96,31 @@
     .carousel-buttons-container {
         justify-content: space-around;
         padding: 0 0 2rem 0;
+    }
+
+
+    /* posts list home page*/
+
+    
+}
+
+
+@media only screen and (min-width: 1095px) {
+
+    /* posts list home page*/
+
+    .posts-wrapper {
+        /* justify-content: space-between; */
+        gap: 1rem;
+    }
+
+    .posts-wrapper {
+        margin: 0 5rem 2rem 5rem;
+    }
+
+    article h3 {
+        font-size: 2rem;
+        line-height: 2.8rem;
     }
 }
 

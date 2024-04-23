@@ -8,14 +8,13 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;    
-    /* padding: 0 1.5rem 0 1.5rem; */
+    margin: 0 1.5rem 0 1.5rem;
 }
 
 .header-container {
     background-color: #fff;
     color: var(--color-theme-dark-blue);
     max-width: 1120px;
-    margin: auto;
 }
 
 footer {
@@ -33,7 +32,7 @@ footer {
     display: flex;
     align-items: left;
     justify-content: start;
-    padding-left: 1.5rem;
+    padding: 0rem;
     font-size: 1rem;
     letter-spacing: 0.11rem;
 }
@@ -42,7 +41,15 @@ footer {
     display: flex;
     justify-content: end;
     gap: 1rem;
-    padding-right: 1.5rem;
+    padding: 0rem;
     font-size: 0.7rem;
+}
+
+.footer-container .content-right {
+    margin-right: 4rem;
+}
+
+.footer-container .content-left {
+    margin-left: 4rem;
 }
 
