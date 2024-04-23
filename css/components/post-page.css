@@ -1,0 +1,25 @@
+.post-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 52rem;
+}
+
+.post-wrapper img {
+    width: 100%;
+}
+
+.post-details, .post-content {
+    max-width: 43rem;
+    margin: auto;
+}
+
+.post-details {
+    display: inherit;
+    justify-content: space-between;
+    gap: 1rem;
+    /* margin: 0; */
+}
+
+.post-content {
+    /* margin: auto; */
+}
