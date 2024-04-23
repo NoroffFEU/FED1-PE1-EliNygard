@@ -21,3 +21,10 @@
 .color-hover-dark-blue {
     color: var(--color-hover-dark-blue);
 }
+
+
+/* Background Colors */
+
+.bg-color-theme-light-blue {
+    background-color: var(--color-theme-light-blue);
+}

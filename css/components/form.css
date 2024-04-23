@@ -1,0 +1,35 @@
+.log-in {
+    margin: auto;
+    padding: 4rem 0;
+    max-width: 25rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    display: inherit;
+    flex-direction: inherit;
+    align-items: inherit;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+form > .button {
+    margin-top: 4.25rem;
+    
+}
+
+input {
+    max-width: 25rem;
+    max-height: 3rem;
+    width: 17rem;
+    height: 3rem;
+}
+
+.register-info {
+    margin: 2rem 0;
+    display: inherit;
+    flex-direction: inherit;
+    align-items: inherit;
+}
