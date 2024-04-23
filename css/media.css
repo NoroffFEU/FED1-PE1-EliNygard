@@ -1,18 +1,17 @@
 @media only screen and (min-width: 767px) {
     
     /* font */
-
-   .heading-secondary {
-    font-size: 2rem;
-    line-height: 2.8rem;
-    margin: 0;
-   }
-
+    
     .body-text {
         font-size: 1.25rem;
         line-height: 1.68rem;
         letter-spacing: 0.02rem;
         margin: 0 0 2rem 0;
+    }
+    
+    .heading-secondary {
+         font-size: 2rem;
+         line-height: 2.8rem;
     }
 
     /* header and footer */
@@ -102,6 +101,24 @@
     /* posts list home page*/
 
     
+
+    /* post page */
+
+    .post-wrapper {
+        padding-top: 6rem;
+    }
+
+    .post-details{
+        /* flex-direction: row; */
+        gap: 4rem;
+        /* align-items: center; */
+        font-size: 1.2rem;
+        margin: .5rem 0;
+    }
+
+
+
+    
 }
 
 
@@ -120,9 +137,6 @@
     .posts-wrapper {
         /* justify-content: space-between; */
         gap: 1rem;
-    }
-
-    .posts-wrapper {
         margin: 0 5rem 2rem 5rem;
     }
 

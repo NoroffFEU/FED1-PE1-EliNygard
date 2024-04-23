@@ -14,22 +14,23 @@
     font-size: 1rem;
     line-height: 1.5rem;
     letter-spacing: 0.02rem;
-    margin: 0 0 1rem 0;
+    margin: 0;
     padding: 0;
+    color: var(--color-text-body);
 }
-
-/* create font size classes in stead of heading primary osv */
 
 .heading-primary {  
     font-size: 1.2rem;
     line-height: normal;
     letter-spacing: 0.024rem;
+    margin: 0;
+    padding: 0;
 }
 
 .heading-secondary {
     font-size: 1.4rem;
     line-height: 1.75rem;
-    margin: 1rem 0;
+    margin: 0;
     padding: 0;
 }
 
@@ -47,4 +48,9 @@
 
 .text-right {
     text-align: right;
+}
+
+p {
+    margin: 0;
+    padding: 0;
 }
