@@ -3,11 +3,41 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Create an account">
-        <title>Hot View Labs | Create account</title>
-        <link rel="stylesheet" href="./css/styles.css">
+        <meta name="description" content="Log into your account">
+        <title>Hot View Labs | Log in</title>
+        <link rel="stylesheet" href="../css/styles.css">
     </head>
-    <body>
-        
+    <body class="bg-color-theme-light-blue">
+        <header>
+            <nav class="h-f-container header-container font-primary">
+                <div class="content-left">
+                    <a href="../index.html" title="HotView Labs Blog">HotView Labs</a>
+                </div>
+                <div class="content-right">
+                    <a href="./login.html" title="Log in">Log in</a>
+                    <a href="./register.html" title="Register account">Register</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section id="form-wrapper" class="form-wrapper">
+                <h1 class="font-primary color-theme-dark-blue heading-primary">Create an account</h1>
+                <form action="../post/manage.html" method="GET">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Name" required>
+                    <label for="email">E-mail address</label>
+                    <input type="email" name="email" id="email" placeholder="E-mail address" required>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" minlength="6" placeholder="Password" required>
+                    <label for="confirm-password">Confirm password</label>
+                    <input type="password" name="confirm-password" id="confirm-password" minlength="6" placeholder="Confirm password" required>
+                    <input class="button button-big" type="submit" value="Register">
+                </form>
+                <div class="register-info">
+                    <p>Already an administrator?</p>
+                    <a href="register.html">Log in</a>
+                </div>
+            </section>
+        </main>
     </body>
 </html>
