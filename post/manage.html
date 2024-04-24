@@ -20,35 +20,52 @@
             </nav>
         </header>
         <main>
-            <header class="heading-container">
-                <h1 class="font-primary heading-primary">Blog posts</h1>
-                <button class="button button-big">New Post</button>
-            </header>
+            <div class="table-wrapper">
 
-            <!-- table start-->
-            <div style="overflow-x:auto;">
-                <table class="manage-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Author</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">(button)</th>
-                            <th scope="col">(button)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Blog title</td>
-                            <td>Autor Name</td>
-                            <td>22.4.2024</td>
-                            <td><button class="button button-small button-transparent">Edit</button></td>
-                            <td><button class="button button-small">Delete</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <header class="heading-container">
+                    <h1 class="font-primary heading-primary">Blog posts</h1>
+                    <button class="button button-small">New Post</button>
+                </header>
+                
+                <!-- table start-->
+                <div style="overflow-x:auto;">
+                    <table id="posts-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Date</th>
+                                <th class="hide" scope="col">Button action</th>
+                                <th class="hide" scope="col">Button action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Blog title</td>
+                                <td>Autor Name</td>
+                                <td>22.4.2024</td>
+                                <td><button class="button button-small button-transparent">Edit</button></td>
+                                <td><button class="button button-small">Delete</button></td>
+                            </tr>
+                            <tr>
+                                <td>Blog title</td>
+                                <td>Autor Name</td>
+                                <td>22.4.2024</td>
+                                <td><button class="button button-small button-transparent">Edit</button></td>
+                                <td><button class="button button-small">Delete</button></td>
+                            </tr>
+                            <tr>
+                                <td>Blog title</td>
+                                <td>Autor Name</td>
+                                <td>22.4.2024</td>
+                                <td><button class="button button-small button-transparent">Edit</button></td>
+                                <td><button class="button button-small">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <!-- table end-->
+                <!-- table end-->
 
         </main>
     </body>
