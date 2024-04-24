@@ -1,8 +1,16 @@
-@media only screen and (min-width: 767px) {
-    
+@media only screen and (max-width: 766px) {
     .hide-on-mobile {
         display: none;
     }
+
+}
+
+@media only screen and (min-width: 767px) {
+    
+    .hide-on-desktop {
+        display: none;
+    }
+    
 
     /* font */
     
@@ -149,6 +157,8 @@
         font-size: 1.125rem;
         letter-spacing: 0.0225rem;
     }
+
+
 
     
 }

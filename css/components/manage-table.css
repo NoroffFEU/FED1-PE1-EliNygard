@@ -23,7 +23,7 @@ tbody tr td:nth-child(2) {
     max-width: 16rem;
 }
 
-tbody tr td:nth-last-child(-n+3) {
+tbody tr td:nth-last-child(-n+4) {
     width: 7rem;
 }
 
@@ -32,11 +32,10 @@ thead tr th {
     padding-bottom: .5rem;
 }
 
-tbody tr td:nth-last-child(-n+2) {
+tbody tr td:nth-last-child(-n+3) {
     text-align: center;
     vertical-align: middle;
 }
-
 
 .hide {
     display: none;
