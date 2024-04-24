@@ -14,19 +14,6 @@ article {
     margin-top: 3rem; 
 }
 
-
-
-article a img {
-    /* max-width: 100%; */
-    /* background-color: transparent; */
-    /* transition: background-color 0.5s; */
-    /* position: relative; */
-}
-
-article a img:hover {
-    /**/
-}
-
 article h3 {
     font-size: 1.1rem;
     line-height: 1.5rem;
@@ -34,17 +21,17 @@ article h3 {
     padding-top: 0.5rem;
 }
 
-.container{
+.thumb-container{
     width: inherit;
     position: relative;
     overflow: hidden;
 }
-.container img{
+.thumb-container img{
     max-width: 100%;
     /* width: 100%; */
     /* height: auto; */
 }
-.container .t{
+.thumb-container .read-more{
     background: rgba(18, 25, 80, 0.70);
     position: absolute;
     top: 0;
@@ -63,7 +50,7 @@ article h3 {
     transition: opacity 0.6s;
 }
 
-.container:hover .t{
+.thumb-container:hover .read-more{
     opacity: 1;
 }
 

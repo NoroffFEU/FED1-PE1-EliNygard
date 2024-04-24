@@ -25,6 +25,7 @@
     letter-spacing: 0.024rem;
     margin: 0;
     padding: 0;
+    color: var(--color-theme-dark-blue);
 }
 
 .heading-secondary {

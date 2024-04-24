@@ -5,9 +5,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Manage your blog posts">
         <title>Hot View Labs | Blog post manager</title>
-        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="../css/styles.css">
     </head>
     <body>
-        
+        <header>
+            <nav class="h-f-container header-container font-primary">
+                <div class="content-left">
+                    <a href="../index.html" title="HotView Labs Blog">HotView Labs</a>
+                </div>
+                <div class="content-right">
+                    <a href="../account/login.html" title="Log in">Log in</a>
+                    <a href="../account/register.html" title="Register account">Register</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <header class="heading-container">
+                <h1 class="font-primary heading-primary">Blog posts</h1>
+                <button class="button button-big">New Post</button>
+            </header>
+
+            <!-- table start-->
+            <div style="overflow-x:auto;">
+                <table class="manage-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">(button)</th>
+                            <th scope="col">(button)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Blog title</td>
+                            <td>Autor Name</td>
+                            <td>22.4.2024</td>
+                            <td><button class="button button-small button-transparent">Edit</button></td>
+                            <td><button class="button button-small">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- table end-->
+
+        </main>
     </body>
 </html>

@@ -13,6 +13,11 @@
 @import url("./components/posts-list.css");
 @import url("./components/post-page.css");
 @import url("./components/form.css");
+@import url("./components/heading-container.css");
+@import url("./components/manage-table.css");
+
+
+/* @import url("./components/404.css"); */
 
 
 /*layout code*/

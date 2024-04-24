@@ -17,24 +17,21 @@
     background-color: var(--color-hover-dark-blue);
 }
 
-.button-delete{
+.button-transparent {
     border: solid 0.5px var(--color-theme-dark-blue);
     background-color: transparent;
     color: var(--color-theme-dark-blue);
     transition: border 0.1s, color 0.3s;
 }
 
-.button-delete:hover {
+.button-transparent:hover {
     background-color: transparent;
     border: solid 2px var(--color-hover-dark-blue);
-    
 }
 
 .button-big {
     width: 8.2rem;
     height: 3rem;
-    
-    
 }
 
 .button-small {
