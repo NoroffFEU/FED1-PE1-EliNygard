@@ -37,7 +37,7 @@
 </head>
 <body>
     <header>
-        <nav class="h-f-container header-container font-primary">
+        <nav class="h-f-container header-container font-primary header-bg-light">
             <div class="content-left">
                 <a href="index.html" title="HotView Labs Blog">HotView Labs</a>
             </div>
@@ -100,11 +100,52 @@
         <div class="posts-wrapper">
             <article>
                 <a href="./post/index.html">
-                    <img src="./assets/images/01_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="">
+                    <div class="container">
+                        <img src="./assets/images/01_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="">
+                        <div class="t">
+                            <p>Read More</p>
+                        </div>
+                    </div>
                     <h3 class="font-secondary">The Future of AI - Trends and Predictions</h3>
                     <div class="read-more">Read More</div>
                 </a>
             </article>
+
+            <style>
+                .container{
+                    width: 400px;
+                    position: relative;
+                    overflow: hidden;
+                }
+                .container img{
+                    width: 100%;
+                    height: auto;
+                }
+                .container .t{
+                    color: white;
+                    background-color: rgba(0,0,0,0.8);
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-transform: uppercase;
+                    opacity: 0;
+                    transition: opacity 0.6s;
+                }
+                .container:hover .t{
+                    opacity: 1;
+                }
+            </style>
+
+
+
+
+
             <article>
                 <a href="./post/index.html">
                     <img src="./assets/images/01_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="">

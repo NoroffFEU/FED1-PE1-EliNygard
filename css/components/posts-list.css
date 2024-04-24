@@ -14,10 +14,12 @@ article {
     margin-top: 3rem; 
 }
 
+
+
 article a img {
-    max-width: 100%;
-    background-color: transparent;
-    transition: background-color 0.5s;
+    /* max-width: 100%; */
+    /* background-color: transparent; */
+    /* transition: background-color 0.5s; */
     /* position: relative; */
 }
 
@@ -32,10 +34,8 @@ article h3 {
     padding-top: 0.5rem;
 }
 
-.read-more {
-    display: none;
-    background-color: var(--color-hover-dark-blue);
-    opacity: 0.8;
-}
+
+
+
 
 

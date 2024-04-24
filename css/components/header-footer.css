@@ -13,10 +13,16 @@ a {
 }
 
 .header-container {
-    background-color: #fff;
     color: var(--color-theme-dark-blue);
     max-width: 1120px;
-    
+}
+
+.header-bg-light {
+    background-color: #fff;
+}
+
+.header-bg-blue {
+    background-color: var(--color-theme-light-blue);
 }
 
 footer {
