@@ -118,6 +118,13 @@
 
     /* post page */
 
+
+    .image-gallery > li {
+        flex-basis: 300px;
+        
+    }
+    /**/
+
     .post-wrapper {
         padding-top: 6rem;
     }
@@ -188,6 +195,13 @@
     
 
     /* posts list home page*/
+
+    .image-gallery > li {
+        flex-basis: 500px;
+        
+    }
+
+    /**/
     
     .posts-wrapper {
         /* justify-content: space-between; */

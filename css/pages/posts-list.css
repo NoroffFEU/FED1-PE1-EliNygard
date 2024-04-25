@@ -63,6 +63,7 @@ article h3 {
 
 .image-gallery > li {
     flex-basis: 500px;
+    margin: .5rem;
     
 }
 
