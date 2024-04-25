@@ -1,4 +1,4 @@
-.posts-wrapper {
+/* .posts-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -7,18 +7,22 @@
     max-width: 70rem;
     margin: 0 1.5rem 2rem 1.5rem;
     margin-bottom: 2rem;
-}
+} */
 
-article {
+/* article {
     max-width: 34rem;
     margin-top: 3rem; 
-}
+} */
 
-article h3 {
+/* article h3 {
     font-size: 1.1rem;
     line-height: 1.5rem;
     margin: 0;
     padding-top: 0.5rem;
+} */
+
+.thumb-wrapper {
+    margin-top: 4rem;
 }
 
 .thumb-container{
@@ -58,18 +62,29 @@ article h3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 3rem;
+    max-width: 70rem;
 }
 
 .image-gallery > li {
     flex-basis: 500px;
     margin: .5rem;
+    cursor: pointer;
     
 }
 
 .image-gallery li img {
     object-fit: cover;
     max-width: 100%;
-    /* height: auto; */
-    /* vertical-align: middle; */
+    height: auto;
+    vertical-align: middle;
+    position: relative;
+
+}
+
+.image-gallery li a h3 {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    margin: 0;
+    padding-top: 0.5rem;
 }
