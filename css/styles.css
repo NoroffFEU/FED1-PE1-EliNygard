@@ -7,14 +7,18 @@
 
 /*component code*/
 @import url("./components/buttons.css");
-@import url("./components/header-footer.css");
-@import url("./components/slogan.css");
 @import url("./components/carousel.css");
-@import url("./components/posts-list.css");
-@import url("./components/post-page.css");
-@import url("./components/form.css");
+@import url("./components/header-footer.css");
 @import url("./components/heading-container.css");
-@import url("./components/manage-table.css");
+@import url("./components/slogan.css");
+
+/* pages code */
+@import url("./pages/edit-create-form.css");
+@import url("./pages/form.css");
+@import url("./pages/manage-table.css");
+@import url("./pages/post-page.css");
+@import url("./pages/posts-list.css");
+
 
 /* global code */
 @import url("./global/accessibility.css");

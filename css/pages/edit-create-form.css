@@ -1,0 +1,10 @@
+.edit-form-container {
+    margin: auto;
+    max-width: 70rem;
+    background-color: var(--color-theme-light-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
