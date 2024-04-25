@@ -5,6 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Create a new blog post">
         <title>Hot View Labs | Create new blog post</title>
+
+        <!-- TinyMCE Editor
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+              selector: '#body'
+            });
+          </script> -->
+
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+        <script type="module" src="../javascript/ckeditor.mjs"></script>
+
         <link rel="stylesheet" href="../css/styles.css">
     </head>
     <body>
@@ -31,16 +43,16 @@
 
                     <form action="edit.html" method="post">
                         <label for="title">Title</label>
-                        <input type="text" name="title">
+                        <input type="text" id="title" name="title">
                         
                         <label for="body">Content</label>
                         <textarea name="body" id="body"></textarea>
         
                         <label for="img">Add Image</label>
-                        <input type="file" name="img" id="image">
+                        <input type="file" name="img" id="img">
         
                         <label for="category">Category</label>
-                        <select name="category" id="cat">
+                        <select name="category" id="category">
                             <option value="New Post">New Post</option>
                         </select>
         
