@@ -1,6 +1,7 @@
-a {
-    text-decoration: none;
-    color: inherit;
+header {
+    position: sticky;
+    z-index: 10;
+    top: 0;
 }
 
 .h-f-container {
@@ -15,14 +16,6 @@ a {
 .header-container {
     color: var(--color-theme-dark-blue);
     max-width: 1120px;
-}
-
-.header-bg-light {
-    background-color: #fff;
-}
-
-.header-bg-blue {
-    background-color: var(--color-theme-light-blue);
 }
 
 footer {

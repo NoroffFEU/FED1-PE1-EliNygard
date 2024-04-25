@@ -28,3 +28,7 @@
 .bg-color-theme-light-blue {
     background-color: var(--color-theme-light-blue);
 }
+
+.bg-color-theme-light {
+    background-color: #fff;
+}
