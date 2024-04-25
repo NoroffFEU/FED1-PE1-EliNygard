@@ -54,6 +54,6 @@ article h3 {
     opacity: 1;
 }
 
-
-
-
+.responsive {
+    width: 100%;
+}
