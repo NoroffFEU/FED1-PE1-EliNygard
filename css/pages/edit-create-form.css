@@ -1,5 +1,5 @@
 .edit-create-form-container {
-    /* margin: auto; */
+    margin: 0;
     max-width: 70rem;
     background-color: var(--color-theme-light-blue);
 }
@@ -7,14 +7,13 @@
 .edit-create-form-container form {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: flex-end; */
+    width: 100%;
     gap: .5rem;
     margin: 0;
     padding: 2rem .5rem 4rem .5rem;
 }
 
-.edit-create-form-container form label:nth-last-child(-n+7) {
+.edit-create-form-container form label:nth-last-child(-n+8) {
     padding-top: .5rem;
 }
 

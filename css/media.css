@@ -161,15 +161,15 @@
     }
 
 
-    
+
     /* edit-create-form */
 
     .edit-create-form-container form {
         padding: 2.5rem 2rem 3.25rem 2rem;
     }
 
-    .edit-create-form-container form label:nth-last-child(-n+7) {
-        padding-top: 2rem;
+    .edit-create-form-container form label:nth-last-child(-n+8) {
+        padding-top: 1.5rem;
     }
 
     .buttons-form-wrapper {

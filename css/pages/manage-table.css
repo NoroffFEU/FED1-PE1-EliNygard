@@ -1,10 +1,5 @@
-.table-wrapper {
-    margin: 2rem 1.5rem;
-}
 
-
-
-table {
+#table-wrapper table {
     width: 100%;
 }
 
