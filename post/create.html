@@ -5,9 +5,54 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Create a new blog post">
         <title>Hot View Labs | Create new blog post</title>
-        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="../css/styles.css">
     </head>
     <body>
+        <header>
+            <nav class="h-f-container header-container font-primary">
+                <div class="content-left">
+                    <a href="../index.html" title="HotView Labs Blog">HotView Labs</a>
+                </div>
+                <div class="content-right">
+                    <a href="../account/login.html" title="Log in">Log in</a>
+                    <a href="../account/register.html" title="Register account">Register</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div id="edit-post-wrapper" class="wrapper-margin-2">
+                
+                <header class="heading-container">
+                    <h1 class="font-primary heading-primary">Create New Post</h1>
+                </header>
+
+                <!-- create post form start -->
+                <div class="edit-create-form-container">
+
+                    <form action="edit.html" method="post">
+                        <label for="title">Title</label>
+                        <input type="text" name="title">
+                        
+                        <label for="body">Content</label>
+                        <textarea name="body" id="body"></textarea>
         
+                        <label for="img">Add Image</label>
+                        <input type="file" name="img" id="image">
+        
+                        <label for="category">Category</label>
+                        <select name="category" id="cat">
+                            <option value="New Post">New Post</option>
+                        </select>
+        
+                        <div class="buttons-form-wrapper">
+                            <input type="submit" value="Add Post" class="button button-big">
+                            <button class="button button-big button-transparent">Delete</button>
+                        </div>
+        
+                    </form>
+                </div>
+            </div>
+            <!-- create post form end -->
+        </main>
     </body>
 </html>
