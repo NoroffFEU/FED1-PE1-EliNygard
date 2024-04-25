@@ -1,5 +1,8 @@
+.table-wrapper {
+    margin: 3rem 1.5rem;
+}
 
-#table-wrapper table {
+.table-wrapper table {
     width: 100%;
 }
 

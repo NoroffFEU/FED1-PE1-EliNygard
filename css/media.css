@@ -185,26 +185,38 @@
 
 
 @media only screen and (min-width: 1095px) {
-
-
-    /* header and footer */
-
-    .h-f-container {
-        padding: 0;
-    }
-
-
+    
     /* posts list home page*/
-
+    
     .posts-wrapper {
         /* justify-content: space-between; */
         gap: 1rem;
         margin: 0 5rem 2rem 5rem;
     }
-
+    
     article h3 {
         font-size: 2rem;
         line-height: 2.8rem;
     }
+    
 }
+
+@media only screen and (min-width: 1160px) {
+    
+    .wrapper-padding-2 {
+        padding: 2rem 0rem;
+    }
+
+    /* header and footer */
+    
+    .h-f-container {
+        padding: 0;
+    }
+    /* post manage table */
+    
+    .table-wrapper {
+        margin: 8rem 0;
+    }
+}
+
 
