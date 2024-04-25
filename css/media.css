@@ -88,18 +88,18 @@
         gap: 1rem;
     }
 
-    li img {
+    .new-article img {
         max-width: 32rem;
         max-height: 21rem;
         width: 50%;
     }
 
-    li p {
+    .new-article p {
         max-width: 32.6rem;
         max-height: 11.25rem;
     }
 
-    li button {
+    .new-article button {
         display: flex;
         justify-content: start;
         align-items: start;

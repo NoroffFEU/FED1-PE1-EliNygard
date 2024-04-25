@@ -54,6 +54,21 @@ article h3 {
     opacity: 1;
 }
 
-.responsive {
-    width: 100%;
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.image-gallery > li {
+    flex-basis: 500px;
+    
+}
+
+.image-gallery li img {
+    object-fit: cover;
+    max-width: 100%;
+    /* height: auto; */
+    /* vertical-align: middle; */
 }
