@@ -1,10 +1,45 @@
-.edit-form-container {
-    margin: auto;
+.edit-create-form-container {
+    /* margin: auto; */
     max-width: 70rem;
     background-color: var(--color-theme-light-blue);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
 }
 
+.edit-create-form-container form {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: flex-end; */
+    gap: .5rem;
+    margin: 0;
+    padding: 2rem .5rem 4rem .5rem;
+}
+
+.edit-create-form-container form label:nth-last-child(-n+7) {
+    padding-top: .5rem;
+}
+
+.edit-create-form-container input[type="text"], .edit-create-form-container textarea {
+    width: 100%;
+    /* max-width: 65.75rem; */
+}
+
+input[type="text"], textarea, select {
+    border: none;
+    padding: .5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    color: inherit;
+    background-color: #fff;
+}
+
+select {
+    max-width: 12rem;
+}
+
+.buttons-form-wrapper {
+    display: inherit;
+    flex-direction: inherit;
+    align-items: center;
+    gap: 1.25rem;
+    margin: 2.5rem 0 3.25rem 0;
+}

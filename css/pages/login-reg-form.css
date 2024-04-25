@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-form {
+.login-reg-form-container > form {
     display: inherit;
     flex-direction: inherit;
     align-items: inherit;
@@ -15,20 +15,18 @@ form {
     margin: 2rem 0;
 }
 
-form > .button {
-    margin-top: 2.5rem;
-    
-}
-
 input[type="email"], input[type="password"], input[type="text"] {
-    width: 17rem;
-    height: 3rem;
     border: none;
     padding: .5rem;
     font-size: 1rem;
     font-family: inherit;
     color: inherit;
     background-color: #fff;
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+    width: 17rem;
+    height: 3rem;
 }
 
 input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
@@ -43,7 +41,11 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
     font-size: .9rem;
 }
 
-label {
+.login-reg-form-container form > .button {
+    margin-top: 2.5rem;
+}
+
+.login-reg-form-container label {
     display: none;
 }
 
