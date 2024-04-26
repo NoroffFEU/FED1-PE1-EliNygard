@@ -233,8 +233,7 @@
     }
 
     .image-gallery > li {
-        flex-basis: 31rem;
-        max-width: 33rem;
+        flex-basis: 523px;
     }
         
     /* .posts-wrapper {
