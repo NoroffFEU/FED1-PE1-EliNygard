@@ -15,8 +15,8 @@
     /* font */
     
     .body-text {
-        font-size: 1.25rem;
-        line-height: 1.68rem;
+        font-size: 1.1rem;
+        line-height: 1.65rem;
         letter-spacing: 0.02rem;
         margin: 0 0 2rem 0;
     }
@@ -27,8 +27,8 @@
     }
     
     .heading-secondary {
-         font-size: 2rem;
-         line-height: 2.8rem;
+         font-size: 1.5rem;
+         line-height: 2.2rem;
     }
 
     /* header and footer */
@@ -44,6 +44,7 @@
 
     .content-right {
         font-size: 1.2rem;
+        gap: 1.25rem;
     }
 
     .footer-container {
@@ -73,6 +74,7 @@
 
     .carousel-wrapper h2 {
         margin: 2.5rem 0 0 5rem;
+        font-size: 1.2rem;
     }
 
     .new-article {
@@ -103,6 +105,7 @@
         display: flex;
         justify-content: start;
         align-items: start;
+        padding: 0;
     }
 
     .button-carousel {
@@ -193,11 +196,36 @@
 
 @media only screen and (min-width: 1095px) {
     
+    /* font */
+
+    .body-text {
+        font-size: 1.125rem;
+        line-height: 1.68rem;
+        letter-spacing: 0.02rem;
+        margin: 0 0 2rem 0;
+    }
+
+    .heading-primary {
+        font-size: 2rem;
+        letter-spacing: 0.03rem;
+    }
+    
+    .heading-secondary {
+         font-size: 2rem;
+         line-height: 2.8rem;
+    }
+
+    /* carousel */
+
+    .carousel-wrapper h2 {
+        font-size: 2rem;
+    }
+
 
     /* thumbnails home page*/
 
     .thumb-wrapper {
-        margin-top: 7rem;
+        margin: 7rem auto 4.5rem auto;
     }
 
     .image-gallery {
@@ -233,6 +261,11 @@
     .h-f-container {
         padding: 0;
     }
+
+    .content-right {
+        gap: 4.5rem;
+    }
+
     /* post manage table */
     
     .table-wrapper {

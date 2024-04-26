@@ -10,6 +10,7 @@
     color: var(--color-theme-dark-blue);
     padding: 0;
     margin: .75rem;
+    font-size: 1rem;
 }
 
 .carousel {
@@ -36,12 +37,18 @@ ul {
     margin: 0.75rem;
     padding: 0.75rem;
     background-color: var(--color-theme-light-blue);
+    color: var(--color-theme-dark-blue);
+    cursor: pointer;
 }
 
 .new-article div {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+}
+
+.new-article button {
+    padding: 0.5rem;
 }
 
 .text-overflow {

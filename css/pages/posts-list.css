@@ -22,7 +22,7 @@
 } */
 
 .thumb-wrapper {
-    margin-top: 4rem;
+    margin: 3rem auto;
 }
 
 .thumb-container{
@@ -39,7 +39,7 @@
     background: rgba(18, 25, 80, 0.70);
     position: absolute;
     top: 0;
-    height: 99%;
+    height: 100%;
     width: 100%;
     /* padding: 10px; */
     /* box-sizing: border-box; */
@@ -87,4 +87,5 @@
     line-height: 1.5rem;
     margin: 0;
     padding-top: 0.5rem;
+    color: var(--color-theme-dark-blue);
 }
