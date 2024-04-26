@@ -133,9 +133,7 @@
     /* post page */
 
     .post-details{
-        /* flex-direction: row; */
         gap: 4rem;
-        /* align-items: center; */
         font-size: 1.2rem;
         margin: .5rem 0;
     }

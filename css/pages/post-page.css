@@ -32,13 +32,15 @@
     justify-content: start;
     flex-wrap: wrap;
     gap: 1rem;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     color: var(--color-theme-dark-blue);
 }
 
 .share-icon {
     cursor: pointer;
     transition: color 0.3s;
+    margin-left: 1.5rem;
+    font-size: 1rem;
 }
 
 .share-icon:hover {
