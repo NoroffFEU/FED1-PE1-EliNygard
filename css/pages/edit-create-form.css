@@ -1,3 +1,19 @@
+.edit-post-wrapper a {
+    display: flex;
+    color: var(--color-theme-dark-blue);
+    justify-content: start;
+    align-items: center;
+    gap: .5rem;
+    font-size: .9rem;
+}
+
+.edit-post-wrapper a span:hover {
+    text-decoration: underline;
+    color: var(--color-theme-dark-blue);
+}
+
+
+
 .edit-create-form-container {
     background-color: var(--color-theme-light-blue);
 }
