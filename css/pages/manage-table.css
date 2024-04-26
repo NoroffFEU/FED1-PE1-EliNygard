@@ -15,6 +15,7 @@ table thead, table tbody {
 tbody tr td {
     background-color: var(--color-theme-light-blue);
     padding: 0.5rem;
+    height: 50px;
 }
 
 tbody tr td:nth-child(1) {
