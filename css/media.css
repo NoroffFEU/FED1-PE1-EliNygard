@@ -228,12 +228,13 @@
         margin: 7rem auto 4.5rem auto;
     }
 
-    .image-gallery {
+    /* .image-gallery {
         justify-content: space-between;
-    }
+    } */
 
     .image-gallery > li {
-        flex-basis: 523px;
+        flex-basis: 544px;
+        margin: 0;
     }
         
     /* .posts-wrapper {
