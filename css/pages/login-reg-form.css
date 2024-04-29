@@ -46,7 +46,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 }
 
 .login-reg-form-container label {
-    display: none;
+    visibility: hidden;
 }
 
 .register-info {
