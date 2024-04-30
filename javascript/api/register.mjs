@@ -19,8 +19,14 @@ async function registerUser (url, userData) {
             body: JSON.stringify(userData),
             };
         const response = await fetch(url, postData);
+        // console.log(response);
         const json = await response.json();
-        return json;
+        // console.log(json);
+        // return json;
+        if (response.ok) {
+            alert('User registered successfully');
+            window.location.href = '../post/manage.html';
+        }
     } 
         
         catch (error) {
