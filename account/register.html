@@ -36,6 +36,10 @@
         <!-- CSS -->
         <link rel="stylesheet" href="../css/styles.css">
 
+        <!-- JS -->
+        <script type="module" src="../javascript/script.mjs"></script>
+        <script type="module" src="../javascript/api/register.mjs"></script>
+
 
 
     </head>
@@ -56,7 +60,7 @@
                 
                 <h1 class="font-primary color-theme-dark-blue heading-primary">Create an account</h1>
                 
-                <form action="../post/manage.html" method="GET">
+                <form id="js-registration-form" action="../post/manage.html" method="GET">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" placeholder="Name" required>
                     
