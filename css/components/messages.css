@@ -13,3 +13,8 @@
     color: #fff;
     padding: 3rem 2rem;
 }
+
+.login-message-error {
+    color: #A20000;
+    font-size: .8rem;
+}

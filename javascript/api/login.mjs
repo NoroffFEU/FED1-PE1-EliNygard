@@ -1,11 +1,7 @@
+import { loginMessageError } from "../messages/loginMessages.mjs";
+import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
 
-// const userLogin = {
-//     email: 'eli.nygaard@stud.noroff.no',
-//     password: 'Myfirstblog25'
-// };
-
-// loginUser(API_BASE + API_AUTH + API_LOGIN, userLogin);
 
 async function loginUser(url, userData) {
     try {
@@ -25,10 +21,13 @@ async function loginUser(url, userData) {
             localStorage.setItem('accessToken', accessToken);
             
             localStorage.setItem('loginSuccess', true);
-            // alert('Login successful');
             window.location.href = '../post/manage.html';
         } else {
-            console.log('Login failed', json.error);
+            if (response.status === 401) {
+                loginMessageError();
+            } else {
+                console.log("Error", json.error || "Something went wrong. Please try again.");
+            }
         }
         // return json;
     }catch (error) {
@@ -36,14 +35,18 @@ async function loginUser(url, userData) {
     };
 };
 
+
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('js-login-form');
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
 
+    //Functions to handle form submission
     loginForm.addEventListener('submit', async function (event) {
         event.preventDefault();
 
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+        const email = emailInput.value;
+        const password = passwordInput.value;
 
         const userData = {
             email: email,
@@ -51,7 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
-        
     });
+    
+    //Event listeners for input fields
+    emailInput.addEventListener('click', removeErrorMessage);
+    passwordInput.addEventListener('click', removeErrorMessage);
 });
+
 
