@@ -38,6 +38,8 @@ import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
             .then(json => {
                 console.log(json); // Log the response from the server
                 
+                window.location.href = '../post/manage.html';
+
                 const title = document.getElementById("post-title");
                 title.innerHTML = json.data.title;
                 const body = document.getElementById("post-body");

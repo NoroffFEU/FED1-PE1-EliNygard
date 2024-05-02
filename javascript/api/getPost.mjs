@@ -15,7 +15,7 @@ export async function getPost(url) {
         const json = await response.json();
         console.log(response);
         console.log(json);
-
+        return json;
     } catch (error) {
         console.log(error);
     }
