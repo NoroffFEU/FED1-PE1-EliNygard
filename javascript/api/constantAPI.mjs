@@ -4,9 +4,12 @@ export const API_AUTH = "/auth";
 export const API_REGISTER = "/register"; 
 export const API_LOGIN = "/login";
 
-export const API_POSTS = "/blog/posts/<name>";
+export const API_POSTS = "/blog/posts";
 
-export const API_CREATE = "/blog/posts/<name>"
+export const API_NAME = `/${name}`
 
-// is <name> supposed to be here? is <name> a placeholder for a variable? My name!
+
+const userName = JSON.parse(localStorage.getItem('userName'));
+const name = userName.data.name;
+
 

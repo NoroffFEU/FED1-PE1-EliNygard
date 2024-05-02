@@ -1,20 +1,13 @@
 // Create and edit pages
 
-import { API_BASE } from "../api/constantAPI.mjs";
+import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 // import { createPost } from "./createPost.mjs";
 
 // createPost(API_BASE + API_POSTS)
 
-//retrieving the user data after login
-const userName = JSON.parse(localStorage.getItem('userName'));
-console.log(userName);
 
-//using the username to construct the endpoint
-const name = userName.data.name;
-const endpoint = `/blog/posts/${name}`;
-console.log(endpoint);
 
-document.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
 
     form.addEventListener('submit', function(event) {
@@ -39,20 +32,37 @@ document.addEventListener('DOMContentLoaded', function() {
             },
         };
 
-        
+        //retrieving the user data after login
+        const userName = JSON.parse(localStorage.getItem('userName'));
+        console.log(userName);
+
+        //using the username to construct the endpoint
+        const name = userName.data.name;
+        const endpoint = `/blog/posts/${name}`;
+        console.log(endpoint);
 
         // Send the request
         fetch(API_BASE + endpoint, requestOptions)
             .then(response => response.json())
             .then(json => {
                 console.log(json); // Log the response from the server
-                // Redirect or do something else after successful post
+                
                 // Save to local storage?
                 // Add to post/index.html
                 // Add to manage.html table
+                displayPost(json);
             })
             .catch(error => {
                 console.error('Error:', error); // Log any errors that occur
             });
     });
-});
+// });
+
+function displayPost(post) {
+    const responseData = await doFetch(API_BASE + API_POSTS)
+}
+
+function generatePostHtml(post) {
+    const postTitle = document.createElement("h2");
+    postTitle.textContent = post.title;
+}
