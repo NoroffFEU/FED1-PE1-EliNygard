@@ -5,6 +5,14 @@ import { API_BASE } from "../api/constantAPI.mjs";
 
 // createPost(API_BASE + API_POSTS)
 
+//retrieving the user data after login
+const userName = JSON.parse(localStorage.getItem('userName'));
+console.log(userName);
+
+//using the username to construct the endpoint
+const name = userName.data.name;
+const endpoint = `/blog/posts/${name}`;
+console.log(endpoint);
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
@@ -31,13 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
         };
 
-        //retrieving the user data after register user
-        const userName = JSON.parse(localStorage.getItem('userName'));
-
-        //using the username to construct the endpoint
-        const name = username;
-        const endpoint = `/blog/posts/${name}`;
-        console.log(endpoint);
+        
 
         // Send the request
         fetch(API_BASE + endpoint, requestOptions)

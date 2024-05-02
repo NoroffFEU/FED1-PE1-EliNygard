@@ -4,7 +4,7 @@ import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 
 getPost(API_BASE + API_POSTS);
 
-const userName = localStorage.getItem('userName')
+const userName = JSON.parse(localStorage.getItem('userName'));
 console.log(userName);
 
 // Login success message
