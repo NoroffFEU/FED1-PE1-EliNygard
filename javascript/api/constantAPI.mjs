@@ -4,6 +4,8 @@ const userName = JSON.parse(localStorage.getItem('userName'));
 const name = userName.data.name;
 
 
+
+
 export const API_BASE = "https://v2.api.noroff.dev";
 
 export const API_AUTH = "/auth";
