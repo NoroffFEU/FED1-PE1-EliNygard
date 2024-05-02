@@ -38,6 +38,10 @@ import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
             .then(json => {
                 console.log(json); // Log the response from the server
                 
+                const title = document.getElementById("post-title");
+                title.innerHTML = json.data.title;
+                const body = document.getElementById("post-body");
+                body.innerHTML = json.data.body;
                 // Save to local storage?
                 // Add to post/index.html
                 // Add to manage.html table
@@ -50,7 +54,7 @@ import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 // });
 
 // function displayPost(post) {
-//     const responseData = await doFetch(API_BASE + API_POSTS)
+//     const responseData = await doFetch(API_BASE + API_POSTS + API_NAME)
 // }
 
 // function generatePostHtml(post) {
