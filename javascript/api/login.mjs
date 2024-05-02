@@ -24,8 +24,8 @@ async function loginUser(url, userData) {
             const accessToken = json.data.accessToken;
             localStorage.setItem('accessToken', accessToken);
             
-            // localStorage.setItem('loginSuccess', true);
-            alert('Login successful');
+            localStorage.setItem('loginSuccess', true);
+            // alert('Login successful');
             window.location.href = '../post/manage.html';
         } else {
             console.log('Login failed', json.error);
@@ -55,15 +55,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// export function loginMessageSuccess () {
-//     const message = document.createElement("p");
-//     message.classList.add("login-message-success");
-//     message.textContent = "Login successful!";
-//     document.body.appendChild(message);
-
-//     setTimeout(() => {
-//         message.remove();
-//     }, 1500);
-// };
-
-// after adding this message I got an error in the console: for the document.addEventListener in the login.mjs file

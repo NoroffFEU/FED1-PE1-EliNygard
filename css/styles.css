@@ -11,6 +11,7 @@
 @import url("./components/header-footer.css");
 @import url("./components/heading-container.css");
 @import url("./components/slogan.css");
+@import url("./components/messages.css");
 
 /* pages code */
 @import url("./pages/edit-create-form.css");

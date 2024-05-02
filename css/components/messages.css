@@ -1,0 +1,15 @@
+.message-container {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    
+    
+}
+
+.login-message-success {
+    display: flex;
+    background-color: var(--color-theme-dark-blue);
+    color: #fff;
+    padding: 3rem 2rem;
+}
