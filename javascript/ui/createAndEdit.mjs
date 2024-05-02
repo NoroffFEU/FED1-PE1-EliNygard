@@ -31,11 +31,7 @@ import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
                 Authorization: `Bearer ${token}`,
             },
         };
-
-        //retrieving the user data after login
-        const userName = JSON.parse(localStorage.getItem('userName'));
-        console.log(userName);
-
+        
         // Send the request
         fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
             .then(response => response.json())
