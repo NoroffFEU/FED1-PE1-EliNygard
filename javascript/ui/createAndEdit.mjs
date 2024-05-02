@@ -1,6 +1,6 @@
 // Create and edit pages
 
-import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
+import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 // import { createPost } from "./createPost.mjs";
 
 // createPost(API_BASE + API_POSTS)
@@ -36,13 +36,8 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
         const userName = JSON.parse(localStorage.getItem('userName'));
         console.log(userName);
 
-        //using the username to construct the endpoint
-        const name = userName.data.name;
-        const endpoint = `/blog/posts/${name}`;
-        console.log(endpoint);
-
         // Send the request
-        fetch(API_BASE + endpoint, requestOptions)
+        fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
             .then(response => response.json())
             .then(json => {
                 console.log(json); // Log the response from the server
@@ -50,7 +45,7 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
                 // Save to local storage?
                 // Add to post/index.html
                 // Add to manage.html table
-                displayPost(json);
+                // displayPost(json);
             })
             .catch(error => {
                 console.error('Error:', error); // Log any errors that occur
@@ -58,11 +53,11 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
     });
 // });
 
-function displayPost(post) {
-    const responseData = await doFetch(API_BASE + API_POSTS)
-}
+// function displayPost(post) {
+//     const responseData = await doFetch(API_BASE + API_POSTS)
+// }
 
-function generatePostHtml(post) {
-    const postTitle = document.createElement("h2");
-    postTitle.textContent = post.title;
-}
+// function generatePostHtml(post) {
+//     const postTitle = document.createElement("h2");
+//     postTitle.textContent = post.title;
+// }

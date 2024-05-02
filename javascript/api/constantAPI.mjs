@@ -1,3 +1,8 @@
+//using the username to construct the endpoint
+const userName = JSON.parse(localStorage.getItem('userName'));
+const name = userName.data.name;
+
+
 export const API_BASE = "https://v2.api.noroff.dev";
 
 export const API_AUTH = "/auth";
@@ -9,7 +14,5 @@ export const API_POSTS = "/blog/posts";
 export const API_NAME = `/${name}`
 
 
-const userName = JSON.parse(localStorage.getItem('userName'));
-const name = userName.data.name;
 
 
