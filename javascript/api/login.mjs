@@ -19,8 +19,9 @@ async function loginUser(url, userData) {
         if (response.ok) {
             const accessToken = json.data.accessToken;
             localStorage.setItem('accessToken', accessToken);
-            
             localStorage.setItem('loginSuccess', true);
+            localStorage.setItem('userName', JSON.stringify(json));
+
             window.location.href = '../post/manage.html';
         } else {
             if (response.status === 401) {

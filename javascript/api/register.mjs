@@ -19,11 +19,14 @@ async function registerUser (url, userData) {
             body: JSON.stringify(userData),
             };
         const response = await fetch(url, postData);
-        // console.log(response);
+        console.log(response);
         const json = await response.json();
-        // console.log(json);
+        console.log(json);
         // return json;
         if (response.ok) {
+            const accessToken = json.data.accessToken;
+            localStorage.setItem('accessToken', accessToken);
+
             alert('User registered successfully');
             window.location.href = '../post/manage.html';
         }
@@ -56,7 +59,9 @@ document.addEventListener('DOMContentLoaded', function () {
             email: email,
             password: password
         };
-        
+
+        localStorage.setItem('userName', JSON.stringify(userData.name));
+
         await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
         
     });

@@ -4,17 +4,10 @@ import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 
 getPost(API_BASE + API_POSTS);
 
+const userName = localStorage.getItem('userName')
+console.log(userName);
 
-
-
-
-
-
-
-
-
-
-
+// Login success message
 document.addEventListener("DOMContentLoaded", function () {
     const loginSuccess = localStorage.getItem("loginSuccess");
     // console.log(loginMessageSuccess);

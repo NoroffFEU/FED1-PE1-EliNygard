@@ -1,7 +1,7 @@
 // Create and edit pages
 
-import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
-import { createPost } from "./createPost.mjs";
+import { API_BASE } from "../api/constantAPI.mjs";
+// import { createPost } from "./createPost.mjs";
 
 // createPost(API_BASE + API_POSTS)
 
@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const title = document.getElementById('title').value;
         const body = document.getElementById('body').value;
 
+        const token = localStorage.getItem('accessToken');
+
         // Construct the request options
         const requestOptions = {
             method: 'POST',
@@ -25,11 +27,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
+                Authorization: `Bearer ${token}`,
             },
         };
 
+        //retrieving the user data after register user
+        const userName = JSON.parse(localStorage.getItem('userName'));
+
+        //using the username to construct the endpoint
+        const name = username;
+        const endpoint = `/blog/posts/${name}`;
+        console.log(endpoint);
+
         // Send the request
-        fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
+        fetch(API_BASE + endpoint, requestOptions)
             .then(response => response.json())
             .then(json => {
                 console.log(json); // Log the response from the server
