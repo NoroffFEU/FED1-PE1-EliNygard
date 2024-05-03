@@ -1,14 +1,10 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 import { getPost } from "../api/getPost.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
-import { formatDate, formatDateMonthWord } from "./formatting.mjs";
+import { formatDate, removeUnderscore } from "./formatting.mjs";
 
-console.log(API_BASE + API_POSTS);
 
-const userName = JSON.parse(localStorage.getItem('userName'));
-console.log(userName);
-
-// Login success message
+// Activating login success message
 document.addEventListener("DOMContentLoaded", function () {
     const loginSuccess = localStorage.getItem("loginSuccess");
     // console.log(loginMessageSuccess);
@@ -18,12 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// display posts ✅ (generated into each row in table)
+// display posts ✅ (generated into each row in table) ✅
 
 // I have all the posts created in the getPost ✅
 
-// 1. generate tableHtml (move to separate mjs file)
+// 1. generate tableHtml ✅
 // (when button Add post on create.html is clicked, empty form)
+
+// move renderTable to script.mjs? One script on all pages where everything is called?
 
 async function renderTable() {
 
@@ -48,7 +46,9 @@ function generateTableHtml(post) {
     title.innerHTML = post.title;
 
     const author = document.createElement("td");
-    author.innerHTML = post.author.name;
+    const authorName = post.author.name;
+    console.log(authorName);
+    author.textContent = removeUnderscore(authorName);
 
     const date = document.createElement("td");
     const formattedDate = post.created;

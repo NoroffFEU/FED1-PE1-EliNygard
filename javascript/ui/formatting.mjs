@@ -22,3 +22,9 @@ export function formatDateMonthWord(dateString) {
     const monthName = monthNames[monthIndex];
     return `${day} ${monthName} ${year}`;
 }
+
+// remove underscore
+export function removeUnderscore(textString) {
+    return textString.replace(/_/g, ' ');
+    
+}
