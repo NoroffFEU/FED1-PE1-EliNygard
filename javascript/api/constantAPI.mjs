@@ -3,6 +3,8 @@
 const userName = JSON.parse(localStorage.getItem('userName'));
 const name = userName.data.name;
 
+// check why github pages cannot read data
+
 
 
 

@@ -39,11 +39,19 @@ function generateTableHtml(post) {
 
     const tableRow = document.createElement("tr");
 
-    const tableTitle = document.createElement("td");
-    tableTitle.classList.add("post-title");
-    tableTitle.innerHTML = post.title;
+    const title = document.createElement("td");
+    title.innerHTML = post.title;
 
-    tableRow.append(tableTitle)
+    const author = document.createElement("td");
+    author.innerHTML = post.author.name;
+
+    const date = document.createElement("td");
+    date.innerHTML = post.created;
+    console.log(post.created);
+    const formatDate = post.created;
+    formatDate
+
+    tableRow.append(title, author, date)
     tableBody.appendChild(tableRow)
 
     // const postTitle = document.createElement("h2");
