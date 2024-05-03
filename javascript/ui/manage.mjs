@@ -54,15 +54,28 @@ function generateTableHtml(post) {
     const formattedDate = post.created;
     date.textContent = formatDate(formattedDate)
     
+    const pubBtnCell = document.createElement("td");
+    const pubBtn = document.createElement("button");
+    pubBtn.textContent = "Publish"
+    pubBtn.classList.add("button", "button-small", "button-transparent");
+    pubBtn.setAttribute("id", "js-btn-publish");
 
-    tableRow.append(title, author, date)
-    tableBody.appendChild(tableRow)
+    const editBtnCell = document.createElement("td");
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.classList.add("button", "button-small", "button-transparent");
+    editBtn.setAttribute("id", "js-btn-edit");
 
-    // const postTitle = document.createElement("h2");
-    // postTitle.classList.add("post-title")
-    // postTitle.textContent = post.title;
+    const deleteBtnCell = document.createElement("td");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("button", "button-small");
+    deleteBtn.setAttribute("id", "js-btn-delete");
 
-    // const testPostContainer = document.getElementById("test-posts");
-    // testPostContainer.appendChild(postTitle);
+    deleteBtnCell.appendChild(deleteBtn);
+    editBtnCell.appendChild(editBtn);
+    pubBtnCell.appendChild(pubBtn);
+    tableRow.append(title, author, date, pubBtnCell, editBtnCell, deleteBtnCell);
+    tableBody.appendChild(tableRow);
 }
 
