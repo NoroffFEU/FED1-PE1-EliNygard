@@ -1,6 +1,6 @@
 import { loginMessageError } from "../messages/loginMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
-import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
+import { API_AUTH, API_BASE, API_LOGIN } from "constantAPI.mjs";
 
 
 async function loginUser(url, userData) {

@@ -46,8 +46,8 @@ function generateTableHtml(post) {
     author.innerHTML = post.author.name;
 
     const date = document.createElement("td");
-    const formatDate = post.created;
-    formatDate
+    // const formatDate = post.created;
+    
 
     tableRow.append(title, author, date)
     tableBody.appendChild(tableRow)
