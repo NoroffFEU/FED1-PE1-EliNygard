@@ -1,8 +1,8 @@
-import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
+import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 import { getPost } from "../api/getPost.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 
-console.log(API_BASE + API_POSTS + API_NAME);
+console.log(API_BASE + API_POSTS);
 
 const userName = JSON.parse(localStorage.getItem('userName'));
 console.log(userName);
@@ -25,6 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
 // (when button Add post on create.html is clicked, empty form)
 
 async function renderTable() {
+
+    const userName = JSON.parse(localStorage.getItem("userName"))
+    console.log(userName);
+    const name = userName.data.name;
+    console.log(name);
+    const API_NAME = `/${name}`;
+    console.log(API_NAME);
     const responseData = await getPost(API_BASE + API_POSTS + API_NAME);
     const posts = responseData.data;
     console.log(posts);

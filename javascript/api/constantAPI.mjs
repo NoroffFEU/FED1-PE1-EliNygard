@@ -3,10 +3,10 @@
 // check why github pages cannot read data
 
 
-const userName = JSON.parse(localStorage.getItem('userName'));
-console.log(JSON.parse(localStorage.getItem('userName')));
-const name = userName.data.name;
-console.log(name);
+// const userName = JSON.parse(localStorage.getItem('userName'));
+// console.log(JSON.parse(localStorage.getItem('userName')));
+// const name = userName.data.name;
+// console.log(name);
 
 
 export const API_BASE = "https://v2.api.noroff.dev";
@@ -17,7 +17,7 @@ export const API_LOGIN = "/login";
 
 export const API_POSTS = "/blog/posts";
 
-export const API_NAME = `/${name}`
+// export const API_NAME = `/${name}`
 
 
 

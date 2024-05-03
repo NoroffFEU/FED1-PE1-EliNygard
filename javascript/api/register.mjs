@@ -2,15 +2,6 @@ import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 
 async function registerUser (url, userData) {
     try {
-
-        // const existingUserResponse = await fetch(url + `?email=${userData.email}`);
-        // const existingUserJson = await existingUserResponse.json();
-
-        // if (existingUserJson.exists) {
-        //     alert('User with the same email already exists');
-        //     return;
-        // }
-
         const postData = {
             method: 'POST',
             headers: {
@@ -40,14 +31,14 @@ async function registerUser (url, userData) {
     }
 }
 
-
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
     const registerForm = document.getElementById('js-registration-form');
     
     registerForm.addEventListener('submit', async function (event) {
         event.preventDefault(); //prevents the default form submission behavior
         
         const name = document.getElementById('name').value;
+        console.log(name);
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirm-password').value;
@@ -69,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = '../post/manage.html';
         }
     });
-});
+// });
 
 
 // const userData = {

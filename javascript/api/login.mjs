@@ -32,11 +32,13 @@ async function loginUser(url, userData) {
         }
     }catch (error) {
         console.log('Error:', error);
-    };
+    } finally {
+        window.location.href = '../post/manage.html';
+    }
 };
 
 
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('js-login-form');
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
@@ -53,15 +55,13 @@ document.addEventListener('DOMContentLoaded', function () {
             password: password
         };
 
-        const loginResponse = await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
-        if (loginResponse) {
-            window.location.href = '../post/manage.html';
-        }
+        await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
+        
     });
     
     //Event listeners for input fields
     emailInput.addEventListener('click', removeErrorMessage);
     passwordInput.addEventListener('click', removeErrorMessage);
-});
+// });
 
 
