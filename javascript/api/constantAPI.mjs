@@ -5,7 +5,7 @@
 
 const userName = JSON.parse(localStorage.getItem('userName'));
 console.log(JSON.parse(localStorage.getItem('userName')));
-const name = userName.name;
+const name = userName.data.name;
 console.log(name);
 
 
