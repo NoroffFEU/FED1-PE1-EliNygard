@@ -26,6 +26,7 @@ async function registerUser (url, userData) {
         if (response.ok) {
             const accessToken = json.data.accessToken;
             localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('userName', JSON.stringify(json));
 
             alert('User registered successfully');
             window.location.href = '../post/manage.html';
@@ -49,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirm-password').value;
         
+        
         if (password !== confirmPassword) {
             alert("Passwords do not match! Try again");
             return;
@@ -60,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
             password: password
         };
 
-        localStorage.setItem('userName', JSON.stringify(userData.name));
 
         await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
         
