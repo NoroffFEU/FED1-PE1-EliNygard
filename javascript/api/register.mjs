@@ -28,7 +28,7 @@ async function registerUser (url, userData) {
             localStorage.setItem('userName', JSON.stringify(json));
             
             alert('User registered successfully');
-            window.location.href = '../post/manage.html';
+            
             return json;
         } else {
             console.log("Error", json.error);
@@ -64,9 +64,10 @@ document.addEventListener('DOMContentLoaded', function () {
             password: password
         };
 
-
-        await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
-        
+        const loginResponse = await loginUser(API_BASE + API_AUTH + API_REGISTER, userData);
+        if (loginResponse) {
+            window.location.href = '../post/manage.html';
+        }
     });
 });
 
