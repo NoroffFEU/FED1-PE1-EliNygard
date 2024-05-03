@@ -21,8 +21,9 @@ async function loginUser(url, userData) {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('loginSuccess', true);
             localStorage.setItem('userName', JSON.stringify(json));
-
+            
             window.location.href = '../post/manage.html';
+            return json;
         } else {
             if (response.status === 401) {
                 loginMessageError();
@@ -30,7 +31,6 @@ async function loginUser(url, userData) {
                 console.log("Error", json.error || "Something went wrong. Please try again.");
             }
         }
-        // return json;
     }catch (error) {
         console.log('Error:', error);
     };

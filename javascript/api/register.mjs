@@ -22,14 +22,16 @@ async function registerUser (url, userData) {
         console.log(response);
         const json = await response.json();
         console.log(json);
-        // return json;
         if (response.ok) {
             const accessToken = json.data.accessToken;
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('userName', JSON.stringify(json));
-
+            
             alert('User registered successfully');
             window.location.href = '../post/manage.html';
+            return json;
+        } else {
+            console.log("Error", json.error);
         }
     } 
         
