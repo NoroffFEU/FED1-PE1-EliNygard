@@ -1,6 +1,7 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 import { getPost } from "../api/getPost.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
+import { formatDate } from "./formatting.mjs";
 
 console.log(API_BASE + API_POSTS);
 
@@ -27,11 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 async function renderTable() {
 
     const userName = JSON.parse(localStorage.getItem("userName"))
-    console.log(userName);
     const name = userName.data.name;
-    console.log(name);
     const API_NAME = `/${name}`;
-    console.log(API_NAME);
     const responseData = await getPost(API_BASE + API_POSTS + API_NAME);
     const posts = responseData.data;
     console.log(posts);
@@ -53,7 +51,8 @@ function generateTableHtml(post) {
     author.innerHTML = post.author.name;
 
     const date = document.createElement("td");
-    // const formatDate = post.created;
+    const formattedDate = post.created;
+    date.textContent = formatDate(formattedDate)
     
 
     tableRow.append(title, author, date)
@@ -66,3 +65,4 @@ function generateTableHtml(post) {
     // const testPostContainer = document.getElementById("test-posts");
     // testPostContainer.appendChild(postTitle);
 }
+
