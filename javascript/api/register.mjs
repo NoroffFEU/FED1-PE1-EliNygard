@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
             password: password
         };
 
-        const loginResponse = await loginUser(API_BASE + API_AUTH + API_REGISTER, userData);
+        const loginResponse = await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
         if (loginResponse) {
             window.location.href = '../post/manage.html';
         }
