@@ -41,19 +41,20 @@ function generateTableHtml(post) {
     const tableBody = document.getElementById("tbody");
 
     const tableRow = document.createElement("tr");
+    const postId = post.id;
+    tableRow.setAttribute("data-post-id", postId);
 
     const title = document.createElement("td");
     title.innerHTML = post.title;
 
     const author = document.createElement("td");
     const authorName = post.author.name;
-    console.log(authorName);
     author.textContent = removeUnderscore(authorName);
 
     const date = document.createElement("td");
     const formattedDate = post.created;
     date.textContent = formatDate(formattedDate)
-    
+
     const pubBtnCell = document.createElement("td");
     const pubBtn = document.createElement("button");
     pubBtn.textContent = "Publish"
@@ -71,6 +72,11 @@ function generateTableHtml(post) {
     deleteBtn.textContent = "Delete";
     deleteBtn.classList.add("button", "button-small");
     deleteBtn.setAttribute("id", "js-btn-delete");
+    deleteBtn.addEventListener('click', () => {
+        const postId = post.id;
+        localStorage.setItem('postId', JSON.stringify(postId))
+        deletePost(postId);
+    });
 
     deleteBtnCell.appendChild(deleteBtn);
     editBtnCell.appendChild(editBtn);
@@ -78,4 +84,45 @@ function generateTableHtml(post) {
     tableRow.append(title, author, date, pubBtnCell, editBtnCell, deleteBtnCell);
     tableBody.appendChild(tableRow);
 }
+
+// delete post
+
+function deletePost() {
+    // get id of selected post ✅
+    // get the url ✅
+
+    const postId = JSON.parse(localStorage.getItem('postId'));
+    const API_ID = `/${postId}`;
+
+    const userName = JSON.parse(localStorage.getItem("userName"))
+    const name = userName.data.name;
+    const API_NAME = `/${name}`;
+
+    const token = localStorage.getItem('accessToken');
+    
+    fetch(API_BASE + API_POSTS + API_NAME + API_ID, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    }).then((response) => {
+        console.log(response);
+        if(response.ok) {
+            console.log(response);
+            const postElement = document.querySelector(`[data-post-id="$CSS.escape(postId)}"]`);
+            if (postElement) {
+                postElement.remove();
+            }
+            // add message
+        } else {
+            //add message
+        }
+    }).catch(error => {
+        console.error('Error', error);
+    })
+
+}
+
+// deletePost()
 

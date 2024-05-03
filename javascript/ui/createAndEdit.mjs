@@ -1,6 +1,6 @@
 // Create and edit pages
 
-import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
+import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 // import { createPost } from "./createPost.mjs";
 
 // createPost(API_BASE + API_POSTS)
@@ -31,6 +31,10 @@ import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
                 Authorization: `Bearer ${token}`,
             },
         };
+
+        const userName = JSON.parse(localStorage.getItem("userName"))
+        const name = userName.data.name;
+        const API_NAME = `/${name}`;
         
         // Send the request
         fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
