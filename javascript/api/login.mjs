@@ -22,7 +22,6 @@ async function loginUser(url, userData) {
             localStorage.setItem('loginSuccess', true);
             localStorage.setItem('userName', JSON.stringify(json));
             
-            window.location.href = '../post/manage.html';
             return json;
         } else {
             if (response.status === 401) {
@@ -54,7 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
             password: password
         };
 
-        await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
+        const loginResponse = await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
+        if (loginResponse) {
+            window.location.href = '../post/manage.html';
+        }
     });
     
     //Event listeners for input fields

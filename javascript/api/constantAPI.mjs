@@ -1,11 +1,12 @@
 //retrieving the user data after login, 
 //using the username to construct the endpoint
-const userName = JSON.parse(localStorage.getItem('userName'));
-const name = userName.data.name;
-
 // check why github pages cannot read data
 
 
+const userName = JSON.parse(localStorage.getItem('userName'));
+console.log(JSON.parse(localStorage.getItem('userName')));
+const name = userName.name;
+console.log(name);
 
 
 export const API_BASE = "https://v2.api.noroff.dev";
