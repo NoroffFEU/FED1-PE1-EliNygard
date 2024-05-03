@@ -1,7 +1,7 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 import { getPost } from "../api/getPost.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
-import { formatDate } from "./formatting.mjs";
+import { formatDate, formatDateMonthWord } from "./formatting.mjs";
 
 console.log(API_BASE + API_POSTS);
 
