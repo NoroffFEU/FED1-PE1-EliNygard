@@ -1,11 +1,10 @@
-import { hideLoader, showLoader } from "../ui/loader.mjs";
+import loader from "../ui/loader.mjs";
 
 export async function getPost(url) {
-    showLoader()
+    loader.show()
     try {
         console.log(url);
         const token = localStorage.getItem('accessToken');
-        console.log(token);
         const getData = {
             method: 'GET',
             headers: {
@@ -13,16 +12,19 @@ export async function getPost(url) {
                 Authorization: `Bearer ${token}`,
             }
         };
-
+        
         const response = await fetch(url, getData);
         const json = await response.json();
         console.log(response);
         console.log(json);
+        console.log(loader.show);
         return json;
     } catch (error) {
         console.log(error);
     } finally {
-        hideLoader()
-    }
-}
+        loader.hide();
+    };
+};
 
+
+// await new Promise(resolve => setTimeout(resolve, 4000));
