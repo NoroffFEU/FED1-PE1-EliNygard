@@ -114,9 +114,10 @@ function deletePost() {
             if (postElement) {
                 postElement.remove();
             }
-            // add message
+            window.location.reload();
+            // add delete success message
         } else {
-            //add message
+            //add message (if user does not have the token to delete a post)
         }
     }).catch(error => {
         console.error('Error', error);

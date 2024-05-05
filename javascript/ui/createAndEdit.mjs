@@ -52,7 +52,7 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
             .then(json => {
                 console.log(json); // Log the response from the server
                 
-                // window.location.href = '../post/manage.html';
+                window.location.href = '../post/manage.html';
 
                
                 // Save to local storage?
