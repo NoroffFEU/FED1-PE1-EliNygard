@@ -27,9 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // 1. generate tableHtml ✅
 // (when button Add post on create.html is clicked, empty form)
 
-// move renderTable to script.mjs? One script on all pages where everything is called?
 
-async function renderTable() {
+export async function renderTable() {
 
     const userName = JSON.parse(localStorage.getItem("userName"))
     const name = userName.data.name;
@@ -41,9 +40,8 @@ async function renderTable() {
         generateTableHtml(post)
     });
 }
-await renderTable();
 
-function generateTableHtml(post) {
+export function generateTableHtml(post) {
     const tableBody = document.getElementById("tbody");
 
     const tableRow = document.createElement("tr");
