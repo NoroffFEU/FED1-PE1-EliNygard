@@ -79,7 +79,10 @@ export function generateTableHtml(post) {
     deleteBtn.addEventListener('click', () => {
         const postId = post.id;
         localStorage.setItem('postId', JSON.stringify(postId))
-        deletePost(postId);
+        const confirmed = confirm("Are you sure?")
+        if (confirmed) {
+            deletePost(postId);
+        }
     });
 
     deleteBtnCell.appendChild(deleteBtn);
