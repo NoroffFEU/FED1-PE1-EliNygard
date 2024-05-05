@@ -2,7 +2,7 @@ export function loginMessageSuccess () {
     const messageContainer = document.createElement("div")
     messageContainer.classList.add("message-container")
     const message = document.createElement("p");
-    message.classList.add("login-message-success");
+    message.classList.add("message-success");
     message.textContent = "Login successful!";
     messageContainer.appendChild(message);
     document.body.appendChild(messageContainer);

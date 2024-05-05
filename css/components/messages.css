@@ -7,7 +7,7 @@
     
 }
 
-.login-message-success {
+.message-success {
     display: flex;
     background-color: var(--color-theme-dark-blue);
     color: #fff;

@@ -1,5 +1,6 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 import { getPost } from "../api/getPost.mjs";
+import { deleteSuccessMessage } from "../messages/deleteMessages.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 import { formatDate, removeUnderscore } from "./formatting.mjs";
 
@@ -11,6 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (loginSuccess) {
         loginMessageSuccess();
         localStorage.removeItem("loginSuccess");
+    }
+    const deleteSuccess = localStorage.getItem("deleteSuccess");
+    if (deleteSuccess) {
+        deleteSuccessMessage();
+        localStorage.removeItem("deleteSuccess");
     }
 });
 
@@ -110,20 +116,18 @@ function deletePost() {
         console.log(response);
         if(response.ok) {
             console.log(response);
+            localStorage.setItem('deleteSuccess', true);
             const postElement = document.querySelector(`[data-post-id="$CSS.escape(postId)}"]`);
             if (postElement) {
                 postElement.remove();
             }
             window.location.reload();
-            // add delete success message
         } else {
             //add message (if user does not have the token to delete a post)
         }
     }).catch(error => {
         console.error('Error', error);
     })
-
 }
 
-// deletePost()
 
