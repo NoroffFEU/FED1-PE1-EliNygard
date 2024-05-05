@@ -16,6 +16,9 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
         // Get values from form inputs
         const title = document.getElementById('title').value;
         const body = document.getElementById('body').value;
+        const imgUrl = document.getElementById("img-url").value;
+        const imgAlt = document.getElementById("img-alt").value;
+        const category = document.getElementById("category").value;
 
         const token = localStorage.getItem('accessToken');
 
@@ -25,6 +28,13 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
             body: JSON.stringify({
                 title: title,
                 body: body,
+                media: {
+                    url: imgUrl,
+                    alt: imgAlt,  
+                },
+                tags: [
+                    category
+                ],
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -42,12 +52,9 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
             .then(json => {
                 console.log(json); // Log the response from the server
                 
-                window.location.href = '../post/manage.html';
+                // window.location.href = '../post/manage.html';
 
-                const title = document.getElementById("post-title");
-                title.innerHTML = json.data.title;
-                const body = document.getElementById("post-body");
-                body.innerHTML = json.data.body;
+               
                 // Save to local storage?
                 // Add to post/index.html
                 // Add to manage.html table
@@ -59,11 +66,4 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
     });
 // });
 
-// function displayPost(post) {
-//     const responseData = await doFetch(API_BASE + API_POSTS + API_NAME)
-// }
 
-// function generatePostHtml(post) {
-//     const postTitle = document.createElement("h2");
-//     postTitle.textContent = post.title;
-// }

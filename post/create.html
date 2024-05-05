@@ -58,12 +58,19 @@
                         
                         <label for="body">Content</label>
                         <textarea name="body" id="body"></textarea>
+
+                        <label for="img-url">Add Image</label>
+                        <input type="text" id="img-url" name="img-url">
+
+                        <label for="img-alt">Add a descriptive image text</label>
+                        <input type="text" id="img-alt" name="img-alt">
         
-                        <label for="img">Add Image</label>
-                        <input type="file" name="img" id="img">
+                        <!-- <label for="img">Add Image</label>
+                        <input type="file" name="img" id="img">  did not figure out how to do it with input type file-->
         
                         <label for="category">Category</label>
                         <select name="category" id="category">
+                            <option value="None"></option>
                             <option value="New Post">New Post</option>
                         </select>
         
