@@ -1,6 +1,7 @@
 import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 
 async function registerUser (url, userData) {
+    // loader show
     try {
         const postData = {
             method: 'POST',
@@ -24,10 +25,10 @@ async function registerUser (url, userData) {
         } else {
             console.log("Error", json.error);
         }
-    } 
-        
-        catch (error) {
+    } catch (error) {
             console.error('Error:', error);
+    } finally {
+        // loader hide
     }
 }
 

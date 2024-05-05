@@ -4,6 +4,7 @@ import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
 
 
 async function loginUser(url, userData) {
+    // loader show
     try {
         const postData = {
             method: 'POST',
@@ -33,6 +34,7 @@ async function loginUser(url, userData) {
     }catch (error) {
         console.log('Error:', error);
     } finally {
+        // loader hide
         window.location.href = '../post/manage.html';
     }
 };

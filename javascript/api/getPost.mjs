@@ -1,4 +1,7 @@
+import { hideLoader, showLoader } from "../ui/loader.mjs";
+
 export async function getPost(url) {
+    showLoader()
     try {
         console.log(url);
         const token = localStorage.getItem('accessToken');
@@ -18,7 +21,8 @@ export async function getPost(url) {
         return json;
     } catch (error) {
         console.log(error);
+    } finally {
+        hideLoader()
     }
-
 }
 
