@@ -70,12 +70,20 @@ export function generateTableHtml(post) {
     editBtn.textContent = "Edit";
     editBtn.classList.add("button", "button-small", "button-transparent");
     editBtn.setAttribute("id", "js-btn-edit");
+    editBtn.setAttribute("aria-label", "Edit Post");
+    editBtn.addEventListener('click', () => {
+        const postId = post.id;
+        localStorage.setItem('postId', JSON.stringify(postId));
+        window.location.href = "./edit.html";
+        
+    });
 
     const deleteBtnCell = document.createElement("td");
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.classList.add("button", "button-small");
     deleteBtn.setAttribute("id", "js-btn-delete");
+    deleteBtn.setAttribute("aria-label", "Delete Post");
     deleteBtn.addEventListener('click', () => {
         const postId = post.id;
         localStorage.setItem('postId', JSON.stringify(postId))
