@@ -1,5 +1,5 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
-import { deletePost } from "../api/deletePOst.mjs";
+import { deletePost } from "../api/deletePost.mjs";
 import { getPost } from "../api/getPost.mjs";
 import { deleteSuccessMessage } from "../messages/deleteMessages.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
