@@ -46,11 +46,12 @@ function generateThumbPostsHtml(post) {
     const title = document.createElement("h3")
     title.classList.add("font-secondary")
     title.textContent = post.title;
+    console.log(title);
 
 
     textContainer.appendChild(text)
     thumbContainer.append(thumbImg, textContainer)
-    linkWrapper.appendChild(thumbContainer, title)
+    linkWrapper.append(thumbContainer, title)
     listItem.appendChild(linkWrapper)
     imageGallery.appendChild(listItem)
     thumbWrapper.appendChild(imageGallery)
