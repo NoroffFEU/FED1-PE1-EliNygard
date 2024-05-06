@@ -44,7 +44,7 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
         fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
             .then(response => response.json())
             .then(json => {
-                console.log(json); // Log the response from the server
+                console.log(json);
                 
                 window.location.href = '../post/manage.html';
 

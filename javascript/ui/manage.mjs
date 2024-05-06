@@ -74,9 +74,16 @@ export function generateTableHtml(post) {
     editBtn.addEventListener('click', () => {
         const postId = post.id;
         localStorage.setItem('postId', JSON.stringify(postId));
-        window.location.href = "./edit.html";
-        // push values from the post to the form on edit.html?
         
+        // save data from post
+        const editTitle = post.title;
+        localStorage.setItem('editTitle', JSON.stringify(editTitle));
+        const editBody = post.body;
+        localStorage.setItem('editBody', JSON.stringify(editBody));
+        
+
+
+        window.location.href = "./edit.html";
     });
 
     const deleteBtnCell = document.createElement("td");

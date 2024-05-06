@@ -2,9 +2,8 @@ import { hideLoader, showLoader } from "../ui/loader.mjs";
 
 export async function getPost(url) {
     showLoader()
-    console.log("show loader called");
     try {
-        await new Promise(resolve => setTimeout(resolve, 4000));
+        // await new Promise(resolve => setTimeout(resolve, 4000));
         console.log(url);
         const token = localStorage.getItem('accessToken');
         const getData = {
@@ -24,7 +23,6 @@ export async function getPost(url) {
         console.log(error);
     } finally {
         hideLoader()
-        console.log("hideLoader called");
     };
 };
 
