@@ -1,4 +1,5 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
+import { getPost } from "../api/getPost.mjs";
 
 const form = document.querySelector("form");
 
