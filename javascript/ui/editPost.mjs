@@ -1,6 +1,5 @@
 const form = document.querySelector("form");
 
-const 
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -16,5 +15,6 @@ form.addEventListener('submit', function(event) {
 
     const token = localStorage.getItem('accessToken');
 
-
+    // Construct the request options
+    
 })

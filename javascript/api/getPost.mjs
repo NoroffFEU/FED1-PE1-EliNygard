@@ -1,8 +1,10 @@
-import loader from "../ui/loader.mjs";
+import { hideLoader, showLoader } from "../ui/loader.mjs";
 
 export async function getPost(url) {
-    // loader.show()
+    showLoader()
+    console.log("show loader called");
     try {
+        await new Promise(resolve => setTimeout(resolve, 4000));
         console.log(url);
         const token = localStorage.getItem('accessToken');
         const getData = {
@@ -17,14 +19,12 @@ export async function getPost(url) {
         const json = await response.json();
         console.log(response);
         console.log(json);
-        console.log(loader.show);
         return json;
     } catch (error) {
         console.log(error);
     } finally {
-        // loader.hide();
+        hideLoader()
+        console.log("hideLoader called");
     };
 };
 
-
-// await new Promise(resolve => setTimeout(resolve, 4000));
