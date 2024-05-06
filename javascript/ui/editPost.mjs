@@ -2,12 +2,25 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 
 const form = document.querySelector("form");
 
-// display the values from selected post
-const editTitle = JSON.parse(localStorage.getItem('editTitle'));
-const title = document.getElementById('title');
-title.value = editTitle;
+// get and display the values from selected post
+const urlParams = new URLSearchParams(window.location.search);
+const title = urlParams.get('title');
+const body = urlParams.get('body');
+const imgUrl = urlParams.get('imgUrl');
+const imgAlt = urlParams.get('imgAlt');
+const category = urlParams.get('category');
 
-const editBody = 
+const titleInput = document.getElementById('title');
+titleInput.value = title;
+const bodyInput = document.getElementById('body');
+bodyInput.value = body;
+const imgUrlInput = document.getElementById("img-url");
+imgUrlInput.value = imgUrl;
+const imgAltInput = document.getElementById("img-alt");
+imgAltInput.value = imgAlt;
+const categorySelect = document.getElementById("category");
+categorySelect.value = category;
+
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -55,7 +68,7 @@ form.addEventListener('submit', function(event) {
         .then(json => {
             console.log(json);
 
-            // window.location.href = '../post/manage.html';
+            window.location.href = '../post/manage.html';
 
             // redirect to manage.html
             // save to local storage?

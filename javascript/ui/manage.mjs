@@ -76,14 +76,22 @@ export function generateTableHtml(post) {
         localStorage.setItem('postId', JSON.stringify(postId));
         
         // save data from post
-        const editTitle = post.title;
-        localStorage.setItem('editTitle', JSON.stringify(editTitle));
-        const editBody = post.body;
-        localStorage.setItem('editBody', JSON.stringify(editBody));
+        const title = post.title;
+        const body = post.body;
+        const imgUrl = post.media.url;
+        const imgAlt = post.media.alt;
+        const category = post.tags;
         
+        const queryParams = new URLSearchParams({
+            title: title,
+            body: body,
+            imgUrl: imgUrl,
+            imgAlt: imgAlt,
+            category: category,
+        })
 
 
-        window.location.href = "./edit.html";
+        window.location.href = `./edit.html?${queryParams.toString()}`;
     });
 
     const deleteBtnCell = document.createElement("td");
