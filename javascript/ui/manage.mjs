@@ -39,7 +39,7 @@ export async function renderTable() {
     posts.forEach(post => {
         generateTableHtml(post)
     });
-}
+};
 
 export function generateTableHtml(post) {
     const tableBody = document.getElementById("tbody");

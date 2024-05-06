@@ -1,7 +1,7 @@
 import loader from "../ui/loader.mjs";
 
 export async function getPost(url) {
-    loader.show()
+    // loader.show()
     try {
         console.log(url);
         const token = localStorage.getItem('accessToken');
@@ -22,7 +22,7 @@ export async function getPost(url) {
     } catch (error) {
         console.log(error);
     } finally {
-        loader.hide();
+        // loader.hide();
     };
 };
 
