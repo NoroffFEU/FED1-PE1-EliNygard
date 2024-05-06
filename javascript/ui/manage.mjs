@@ -56,8 +56,13 @@ export function generateTableHtml(post) {
     author.textContent = removeUnderscore(authorName);
 
     const date = document.createElement("td");
-    const formattedDate = post.created;
-    date.textContent = formatDate(formattedDate)
+    if (post.updated === post.created) {
+        const formattedDate = post.created;
+        date.textContent = formatDate(formattedDate);
+    } else {
+        const formattedDate = post.updated;
+        date.textContent = formatDate(formattedDate);
+    }
 
     const pubBtnCell = document.createElement("td");
     const pubBtn = document.createElement("button");
@@ -90,8 +95,8 @@ export function generateTableHtml(post) {
             category: category,
         })
 
-
-        window.location.href = `./edit.html?${queryParams.toString()}`;
+        const queryParamsString = queryParams.toString();
+        window.location.href = `./edit.html?${queryParamsString}`;
     });
 
     const deleteBtnCell = document.createElement("td");
