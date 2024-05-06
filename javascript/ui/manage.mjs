@@ -75,6 +75,7 @@ export function generateTableHtml(post) {
         const postId = post.id;
         localStorage.setItem('postId', JSON.stringify(postId));
         window.location.href = "./edit.html";
+        // push values from the post to the form on edit.html?
         
     });
 

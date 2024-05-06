@@ -1,7 +1,7 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 
 
-document.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
 
     form.addEventListener('submit', function(event) {
@@ -58,6 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error); // Log any errors that occur
             });
     });
-});
+// });
 
 
