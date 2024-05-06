@@ -3,12 +3,13 @@ import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 const form = document.querySelector("form");
 
 // get and display the values from selected post
-const urlParams = new URLSearchParams(window.location.search);
-const title = urlParams.get('title');
-const body = urlParams.get('body');
-const imgUrl = urlParams.get('imgUrl');
-const imgAlt = urlParams.get('imgAlt');
-const category = urlParams.get('category');
+const parameterString = window.location.search;
+const searchParams = new URLSearchParams(parameterString);
+const title = searchParams.get('title');
+const body = searchParams.get('body');
+const imgUrl = searchParams.get('imgUrl');
+const imgAlt = searchParams.get('imgAlt');
+const category = searchParams.get('category');
 
 const titleInput = document.getElementById('title');
 titleInput.value = title;
