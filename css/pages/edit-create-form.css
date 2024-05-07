@@ -47,6 +47,11 @@ input[type="text"], textarea, select {
     background-color: #fff;
 }
 
+textarea {
+    overflow: auto;
+    height: 10rem;
+}
+
 select {
     max-width: 12rem;
 }
