@@ -28,9 +28,9 @@ function generatePostPageHtml(post) {
     postWrapper.classList.add("post-wrapper")
 
     const img = document.createElement("img")
-    img.url = post.media.url;
-    console.log(img.url);
+    img.src = post.media.url;
     img.alt = post.media.alt;
+    console.log(img);
 
     const postContainer = document.createElement("div")
     postContainer.classList.add("post-container")
