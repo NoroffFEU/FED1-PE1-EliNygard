@@ -1,5 +1,4 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
-import { getPost } from "../api/getPost.mjs";
 
 const form = document.querySelector("form");
 
@@ -69,7 +68,7 @@ form.addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(json => {
             console.log(json);
-
+            localStorage.removeItem("postId")
             window.location.href = '../post/manage.html';
 
             // redirect to manage.html
