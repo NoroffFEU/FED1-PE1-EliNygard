@@ -63,11 +63,3 @@ async function registerUser (url, userData) {
     });
 // });
 
-
-// const userData = {
-//     name: 'lelinyga',
-//     email: 'lelinyga@stud.noroff.no',
-//     password: 'Test1234'
-// }
-
-// registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
