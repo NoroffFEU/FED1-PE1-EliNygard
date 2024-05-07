@@ -8,10 +8,11 @@ async function renderPosts() {
     const responseData = await getPost(API_BASE + API_POSTS + API_NAME);
     const posts = responseData.data;
     console.log(posts);
-    const thumbnails = document.getElementById("thumbnails")
+    // const thumbWrapper = document.querySelector(".thumb-wrapper")
+    const imageGallery = document.querySelector(".image-gallery")
     posts.forEach(post => {
         const postThumb = generateThumbPostsHtml(post);
-        thumbnails.appendChild(postThumb)
+        imageGallery.appendChild(postThumb)
         
     })
 }
@@ -19,11 +20,11 @@ async function renderPosts() {
 await renderPosts();
 
 function generateThumbPostsHtml(post) {
-    const thumbWrapper = document.createElement("div")
-    thumbWrapper.classList.add("thumb-wrapper")
+    // const thumbWrapper = document.createElement("div")
+    // thumbWrapper.classList.add("thumb-wrapper")
 
-    const imageGallery = document.createElement("ul")
-    imageGallery.classList.add("image-gallery")
+    // const imageGallery = document.createElement("ul")
+    // imageGallery.classList.add("image-gallery")
 
     const listItem = document.createElement("li")
     
@@ -53,8 +54,8 @@ function generateThumbPostsHtml(post) {
     thumbContainer.append(thumbImg, textContainer)
     linkWrapper.append(thumbContainer, title)
     listItem.appendChild(linkWrapper)
-    imageGallery.appendChild(listItem)
-    thumbWrapper.appendChild(imageGallery)
+    // imageGallery.appendChild(listItem)
+    // thumbWrapper.appendChild(imageGallery)
 
-    return thumbWrapper;
+    return listItem;
 }

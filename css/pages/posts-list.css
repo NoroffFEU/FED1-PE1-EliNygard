@@ -76,10 +76,10 @@
 
 .image-gallery li img {
     object-fit: cover;
-    max-width: 100%;
     height: auto;
     vertical-align: middle;
     position: relative;
+    aspect-ratio: 16/9;
 
 }
 
