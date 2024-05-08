@@ -5,5 +5,5 @@ Use this file to describe your project.
 
 
 userLogin
-email: eli.nygaard@stud.noroff.no
-password: Myfirstblog25
+email: leli.nygard@stud.noroff.no
+password: Myfirstblog24
