@@ -38,7 +38,7 @@
 
     <!-- JS -->
     <script type="module" src="index.mjs"></script>
-    <script type="module" src="./javascript/ui/carousel.mjs"></script>
+    <!-- <script type="module" src="./javascript/ui/carousel.mjs"></script> -->
 
 </head>
 <body>
@@ -61,14 +61,13 @@
         <!-- Carousel start -->
         <section class="carousel-wrapper">
             <h2 class="font-primary">New Articles</h2>
-
-
-            <!-- test carousel -->
-
-            <!-- Slideshow container -->
             <!-- Carousel inspiration and adapted code from: https://www.w3schools.com/howto/howto_js_slideshow.asp  -->
+            <!-- <div class="slideshow-container">
+                <ul id="carousel"></ul>
+            </div> -->
+            
             <div class="slideshow-container">
-                <ul>
+                <ul id="carousel">
                     <li class="slide-container fade-to-next">
                         <div class="new-article">
                             <img src="./assets/images/01_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="">
@@ -81,36 +80,12 @@
                             </div>
                         </div>
                     </li>    
-                    <li class="slide-container fade-to-next">
-                        <div class="new-article">
-                            <img src="./assets/images/02_christina-wocintechchat-com-glRqyWJgUeY-unsplash.jpg" alt="">
-                            <div>
-                                <h3 class="font-secondary heading-secondary">The Future of AI - Trends and Predictions</h3>
-                                <p class="font-primary body-text text-overflow">
-                                    As technology continues to advance at an unprecedented pace, artificial intelligence (AI) stands at the forefront of innovation, reshaping industries and redefining possibilities. From revolutionizing healthcare to transforming transportation, the potential of AI knows no bounds. In this article, we delve into the current trends and future predictions that are shaping the landscape of AI.
-                                </p>
-                                <button class="button-carousel font-secondary uppercase">Read More</button>
-                            </div>
-                        </div>
-                    </li>    
-                    <li class="slide-container fade-to-next">
-                        <div class="new-article">
-                            <img src="./assets/images/03_teemu-paananen-bzdhc5b3Bxs-unsplash.jpg" alt="">
-                            <div>
-                                <h3 class="font-secondary heading-secondary">The Future of AI - Trends and Predictions</h3>
-                                <p class="font-primary body-text text-overflow">
-                                    As technology continues to advance at an unprecedented pace, artificial intelligence (AI) stands at the forefront of innovation, reshaping industries and redefining possibilities. From revolutionizing healthcare to transforming transportation, the potential of AI knows no bounds. In this article, we delve into the current trends and future predictions that are shaping the landscape of AI.
-                                </p>
-                                <button class="button-carousel font-secondary uppercase">Read More</button>
-                            </div>
-                        </div>
-                    </li>  
                 </ul>  
+            </div>
             
                 <!-- Next and previous buttons -->
                 <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-            </div>
             <!-- <br> -->
             
             <!-- The dots/circles -->

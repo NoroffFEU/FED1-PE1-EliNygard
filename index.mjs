@@ -1,5 +1,6 @@
 import { API_BASE, API_NAME, API_POSTS } from "./javascript/api/constantAPI.mjs";
 import { getPosts } from "./javascript/api/getPosts.mjs";
+import { generateCarouselItem } from "./javascript/generateHtml/carouselItem.mjs";
 import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
 import { currentSlide, plusSlides } from "./javascript/ui/carousel.mjs";
 
@@ -21,7 +22,22 @@ async function renderPosts() {
 
 await renderPosts();
 
+async function renderNewPostsCarousel() {
+    const responseData = await getPosts(API_BASE + API_POSTS + API_NAME);
+    const posts = responseData.data;
+    const newPosts = posts.filter(post => post.tags.includes("New Post"));
+    console.log(newPosts);
+    
+    const carousel = document.getElementById("carousel")
+    console.log(carousel);
+    newPosts.forEach(post => {
+        const carouselItem = generateCarouselItem(post);
+        console.log(carouselItem);
+        carousel.appendChild(carouselItem);
+    })
+}
 
+await renderNewPostsCarousel()
 
 
 // carousel buttons
