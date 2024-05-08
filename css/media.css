@@ -83,7 +83,7 @@
         flex-direction: row;
         gap: 1.25rem;
         padding: 2.5rem 1.5rem 3.75rem 1.5rem;
-        margin: 2.5rem;
+        margin: 2.5rem 2.5rem 1rem 2.5rem;
     }
 
     .new-article div {
@@ -114,7 +114,7 @@
 
     .carousel-buttons-container {
         justify-content: space-around;
-        padding: 0 0 2rem 0;
+        padding: 0;
     }
 
     /* thumnails home page*/

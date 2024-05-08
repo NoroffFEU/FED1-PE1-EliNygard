@@ -27,8 +27,23 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
+const dot1 = document.getElementById("dot-1")
+const dot2 = document.getElementById("dot-2")
+const dot3 = document.getElementById("dot-3")
 
-// keep this
+dot1.addEventListener('click', () => {
+  currentSlide(1)
+})
+
+dot2.addEventListener('click', () => {
+  currentSlide(2)
+})
+
+dot3.addEventListener('click', () => {
+  currentSlide(3)
+})
+
+
 const prev = document.getElementById("prev-button")
 const next = document.getElementById("next-button")
 
