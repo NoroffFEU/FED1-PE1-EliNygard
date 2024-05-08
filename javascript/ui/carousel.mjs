@@ -11,7 +11,7 @@ export function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 
-export function showSlides(n) {
+function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("slide-container");
   let dots = document.getElementsByClassName("dot");
