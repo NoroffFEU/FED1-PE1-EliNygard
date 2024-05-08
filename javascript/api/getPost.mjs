@@ -1,6 +1,6 @@
 import { hideLoader, showLoader } from "../ui/loader.mjs";
 
-export async function getPost(url) {
+export async function getPosts(url) {
     // showLoader()
     try {
         // await new Promise(resolve => setTimeout(resolve, 4000));

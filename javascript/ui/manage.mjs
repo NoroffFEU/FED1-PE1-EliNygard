@@ -1,6 +1,6 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 import { deletePost } from "../api/deletePost.mjs";
-import { getPost } from "../api/getPost.mjs";
+import { getPosts } from "../api/getPost.mjs";
 import { deleteSuccessMessage } from "../messages/deleteMessages.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 import { formatDate, removeUnderscore } from "./formatting.mjs";
@@ -34,7 +34,7 @@ export async function renderTable() {
     const userName = JSON.parse(localStorage.getItem("userName"))
     const name = userName.data.name;
     const API_NAME = `/${name}`;
-    const responseData = await getPost(API_BASE + API_POSTS + API_NAME);
+    const responseData = await getPosts(API_BASE + API_POSTS + API_NAME);
     const posts = responseData.data;
     console.log(posts);
     posts.forEach(post => {

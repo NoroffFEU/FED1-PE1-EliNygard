@@ -1,11 +1,11 @@
 import { API_BASE, API_POSTS } from "./javascript/api/constantAPI.mjs";
-import { getPost } from "./javascript/api/getPost.mjs";
+import { getPosts } from "./javascript/api/getPost.mjs";
 
 async function renderPosts() {
     const userName = JSON.parse(localStorage.getItem("userName"))
     const name = userName.data.name;
     const API_NAME = `/${name}`;
-    const responseData = await getPost(API_BASE + API_POSTS + API_NAME);
+    const responseData = await getPosts(API_BASE + API_POSTS + API_NAME);
     const posts = responseData.data;
     console.log(posts);
     const imageGallery = document.querySelector(".image-gallery")
