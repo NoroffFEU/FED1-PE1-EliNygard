@@ -17,7 +17,7 @@ export const API_LOGIN = "/login";
 
 export const API_POSTS = "/blog/posts";
 
-// export const API_NAME = `/${name}`
+export const API_NAME = "/Leli_Nygard"
 
 
 

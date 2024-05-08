@@ -27,9 +27,9 @@ function generatePostPageHtml(post) {
     const postWrapper = document.createElement("section")
     postWrapper.classList.add("post-wrapper")
 
-    // const img = document.createElement("img")
-    // img.src = post.media.url;
-    // img.alt = post.media.alt;
+    const img = document.createElement("img")
+    img.src = post.media.url;
+    img.alt = post.media.alt;
 
     const postContainer = document.createElement("div")
     postContainer.classList.add("post-container")
@@ -78,7 +78,7 @@ function generatePostPageHtml(post) {
     main.appendChild(postWrapper)
     postDetails.append(author, date, iconCopy)
     postContainer.append(title, postDetails, bodyText)
-    postWrapper.append(postContainer)
+    postWrapper.append(img, postContainer)
 
     return postWrapper;
 }

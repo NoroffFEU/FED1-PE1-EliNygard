@@ -1,13 +1,15 @@
-import { API_BASE, API_POSTS } from "./javascript/api/constantAPI.mjs";
+import { API_BASE, API_NAME, API_POSTS } from "./javascript/api/constantAPI.mjs";
 import { getPosts } from "./javascript/api/getPosts.mjs";
 
 async function renderPosts() {
-    const userName = JSON.parse(localStorage.getItem("userName"))
-    const name = userName.data.name;
-    const API_NAME = `/${name}`;
+    // const userName = JSON.parse(localStorage.getItem("userName"))
+    // const name = userName.data.name;
+    // const API_NAME = `/${name}`;
+
     const responseData = await getPosts(API_BASE + API_POSTS + API_NAME);
     const posts = responseData.data;
     console.log(posts);
+
     const imageGallery = document.querySelector(".image-gallery")
     posts.forEach(post => {
         const postThumb = generateThumbPostsHtml(post);
