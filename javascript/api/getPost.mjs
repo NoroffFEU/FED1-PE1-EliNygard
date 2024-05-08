@@ -1,17 +1,18 @@
 import { hideLoader, showLoader } from "../ui/loader.mjs";
 
-export async function getPosts(url) {
+export async function getPosts(url, token = null) {
     // showLoader()
     try {
         // await new Promise(resolve => setTimeout(resolve, 4000));
-        const token = localStorage.getItem('accessToken');
         const getData = {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
             }
         };
+        if (token) {
+            getData.headers.Authorization = `Bearer ${token}`;
+        }
         const response = await fetch(url, getData);
         const json = await response.json();
         return json;
