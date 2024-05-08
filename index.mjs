@@ -1,5 +1,7 @@
 import { API_BASE, API_NAME, API_POSTS } from "./javascript/api/constantAPI.mjs";
 import { getPosts } from "./javascript/api/getPosts.mjs";
+import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
+import { currentSlide, plusSlides } from "./javascript/ui/carousel.mjs";
 
 async function renderPosts() {
     // const userName = JSON.parse(localStorage.getItem("userName"))
@@ -19,45 +21,34 @@ async function renderPosts() {
 
 await renderPosts();
 
-function generateThumbPostsHtml(post) {
-    const listItem = document.createElement("li")
-    
-    const linkWrapper = document.createElement("a")
-    // linkWrapper.href = "./post/index.html" 
-    // url parameter with post id here?
-    linkWrapper.addEventListener('click', (event) => {
-        event.preventDefault();
-        localStorage.setItem("post", JSON.stringify(post));
-        console.log(JSON.stringify(post));
-        const postId = post.id;
-        const newUrl = `./post/index.html?post=${postId}` 
-        console.log(newUrl);
-        window.location.href = newUrl;
-    })
 
-    const thumbContainer = document.createElement("div")
-    thumbContainer.classList.add("thumb-container")
 
-    const thumbImg = document.createElement("img")
-    thumbImg.src = post.media.url;
-    thumbImg.alt = post.media.alt;
 
-    const textContainer = document.createElement("div")
-    textContainer.classList.add("read-more")
+// carousel buttons
+const dot1 = document.getElementById("dot-1")
+const dot2 = document.getElementById("dot-2")
+const dot3 = document.getElementById("dot-3")
 
-    const text = document.createElement("p")
-    text.textContent = "Read More"
+dot1.addEventListener('click', () => {
+  currentSlide(1)
+})
 
-    const title = document.createElement("h3")
-    title.classList.add("font-secondary")
-    title.textContent = post.title;
+dot2.addEventListener('click', () => {
+  currentSlide(2)
+})
 
-    textContainer.appendChild(text)
-    thumbContainer.append(thumbImg, textContainer)
-    linkWrapper.append(thumbContainer, title)
-    listItem.appendChild(linkWrapper)
-    // imageGallery.appendChild(listItem)
-    // thumbWrapper.appendChild(imageGallery)
+dot3.addEventListener('click', () => {
+  currentSlide(3)
+})
 
-    return listItem;
-}
+
+const prev = document.getElementById("prev-button")
+const next = document.getElementById("next-button")
+
+prev.addEventListener('click', () => {
+  plusSlides(-1)
+})
+
+next.addEventListener('click', () => {
+  plusSlides(1)
+})
