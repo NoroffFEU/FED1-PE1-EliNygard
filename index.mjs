@@ -21,11 +21,16 @@ function generateThumbPostsHtml(post) {
     const listItem = document.createElement("li")
     
     const linkWrapper = document.createElement("a")
-    linkWrapper.href = "./post/index.html" 
+    // linkWrapper.href = "./post/index.html" 
     // url parameter with post id here?
-    linkWrapper.addEventListener('click', () => {
+    linkWrapper.addEventListener('click', (event) => {
+        event.preventDefault();
         localStorage.setItem("post", JSON.stringify(post));
         console.log(JSON.stringify(post));
+        const postId = post.id;
+        const newUrl = `./post/index.html?post=${postId}` 
+        console.log(newUrl);
+        window.location.href = newUrl;
     })
 
     const thumbContainer = document.createElement("div")

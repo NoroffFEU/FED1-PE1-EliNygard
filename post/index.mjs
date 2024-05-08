@@ -1,4 +1,4 @@
-import { formatDate } from "../javascript/ui/formatting.mjs";
+import { formatDate, removeUnderscore } from "../javascript/ui/formatting.mjs";
 
 // async function renderSinglePost() {
     //     const userName = JSON.parse(localStorage.getItem("userName"))
@@ -19,7 +19,6 @@ import { formatDate } from "../javascript/ui/formatting.mjs";
         // await renderSinglePost();
         
 const singlePost = JSON.parse(localStorage.getItem("post"));
-console.log(singlePost);
 
 function generatePostPageHtml(post) {
     const main = document.querySelector("main")
@@ -30,7 +29,6 @@ function generatePostPageHtml(post) {
     const img = document.createElement("img")
     img.src = post.media.url;
     img.alt = post.media.alt;
-    console.log(img);
 
     const postContainer = document.createElement("div")
     postContainer.classList.add("post-container")
@@ -44,7 +42,7 @@ function generatePostPageHtml(post) {
 
     const author = document.createElement("p")
     author.setAttribute("id", "post-author")
-    author.textContent = post.author.name;
+    author.textContent = removeUnderscore(post.author.name);
 
     const date = document.createElement("p")
     date.setAttribute("id", "post-date")
@@ -59,6 +57,17 @@ function generatePostPageHtml(post) {
 
     const iconCopy = document.createElement("span")
     iconCopy.classList.add("share-icon", "fa-solid", "fa-link")
+    iconCopy.addEventListener('click', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get("post")
+        const postUrl = window.location.href; //current page url
+        const copyUrl = postUrl;
+        navigator.clipboard.writeText(copyUrl).then(() => {
+            console.log("Url copied!");
+        }).catch((error) => {
+            console.error("failed to copy url"), error;
+        });
+    });
 
     const bodyText = document.createElement("p")
     bodyText.classList.add("post-content", "font-primary", "body-text")
