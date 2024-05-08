@@ -1,6 +1,6 @@
 import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
 import { deletePost } from "../api/deletePost.mjs";
-import { getPosts } from "../api/getPost.mjs";
+import { getPosts } from "../api/getPosts.mjs";
 import { deleteSuccessMessage } from "../messages/deleteMessages.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 import { formatDate, removeUnderscore } from "./formatting.mjs";

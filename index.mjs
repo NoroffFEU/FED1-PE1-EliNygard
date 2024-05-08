@@ -1,5 +1,5 @@
 import { API_BASE, API_POSTS } from "./javascript/api/constantAPI.mjs";
-import { getPosts } from "./javascript/api/getPost.mjs";
+import { getPosts } from "./javascript/api/getPosts.mjs";
 
 async function renderPosts() {
     const userName = JSON.parse(localStorage.getItem("userName"))
