@@ -59,8 +59,8 @@ function generatePostPageHtml(post) {
     const iconCopy = document.createElement("span")
     iconCopy.classList.add("share-icon", "fa-solid", "fa-link")
     iconCopy.addEventListener('click', () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get("post")
+        // const urlParams = new URLSearchParams(window.location.search);
+        // const postId = urlParams.get("post")
         const postUrl = window.location.href; //current page url
         const copyUrl = postUrl;
         navigator.clipboard.writeText(copyUrl).then(() => {
