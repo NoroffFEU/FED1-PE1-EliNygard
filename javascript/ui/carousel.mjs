@@ -13,7 +13,7 @@ function currentSlide(n) {
 
 function showSlides(n) {
   let i;
-  let slides = document.getElementsByClassName("mySlides");
+  let slides = document.getElementsByClassName("slide-container");
   let dots = document.getElementsByClassName("dot");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
@@ -26,3 +26,17 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 }
+
+
+// keep this
+const prev = document.getElementById("prev-button")
+const next = document.getElementById("next-button")
+
+prev.addEventListener('click', () => {
+  plusSlides(-1)
+})
+
+next.addEventListener('click', () => {
+  plusSlides(1)
+})
+
