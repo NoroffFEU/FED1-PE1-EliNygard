@@ -40,6 +40,33 @@ async function renderNewPostsCarousel() {
 
 await renderNewPostsCarousel()
 
+// NEW SLIDER CODE FROM YOUTUBE
+
+const prevButton = document.getElementById("prev-button")
+prevButton.addEventListener('click', () => {
+  prevSlide()
+})
+
+const nextButton = document.getElementById("next-button")
+nextButton.addEventListener('click', () => {
+  nextSlide()
+})
+
+const slides = document.querySelectorAll("#carousel li")
+console.log(slides);
+let slideIndex = 0;
+
+initializeSlider();
+
+function initializeSlider() {
+  slides[slideIndex].classList.add("display-slide")
+}
+
+function showSlide(index) {}
+
+function prevSlide(){}
+
+function nextSlide(){}
 
 
 

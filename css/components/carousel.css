@@ -24,9 +24,22 @@
     padding: 0;
 }
 
+
+/* FROM YOUTUBE */
 .slide-container {
+  position: relative;
   display: none;
 }
+
+.slideshow-container ul li.display-slide {
+  display: block;
+}
+
+/* YOUTUBE END */
+
+/* .slide-container {
+  display: none;
+} */
 
 .fade-to-next {
   animation-name: fade;
