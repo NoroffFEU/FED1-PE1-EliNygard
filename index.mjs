@@ -55,14 +55,12 @@ nextButton.addEventListener('click', () => {
 const slides = document.querySelectorAll("#carousel li")
 console.log(slides);
 let slideIndex = 0;
-let intervalId = null;
 
 document.addEventListener("DOMContentLoaded", initializeSlider())
 
 function initializeSlider() {
   if(slides.length > 0) {
       slides[slideIndex].classList.add("display-slide")
-      intervalId = setInterval(nextSlide, 3000)
     }
 }
 
@@ -80,7 +78,10 @@ function showSlide(index) {
   slides[slideIndex].classList.add("display-slide")
 }
 
-function prevSlide(){}
+function prevSlide(){
+  slideIndex--;
+  showSlide(slideIndex)
+}
 
 function nextSlide(){
   slideIndex++;
