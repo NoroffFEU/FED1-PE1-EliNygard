@@ -44,29 +44,48 @@ await renderNewPostsCarousel()
 
 const prevButton = document.getElementById("prev-button")
 prevButton.addEventListener('click', () => {
-  prevSlide()
+    prevSlide()
 })
 
 const nextButton = document.getElementById("next-button")
 nextButton.addEventListener('click', () => {
-  nextSlide()
+    nextSlide()
 })
 
 const slides = document.querySelectorAll("#carousel li")
 console.log(slides);
 let slideIndex = 0;
+let intervalId = null;
 
-initializeSlider();
+document.addEventListener("DOMContentLoaded", initializeSlider())
 
 function initializeSlider() {
+  if(slides.length > 0) {
+      slides[slideIndex].classList.add("display-slide")
+      intervalId = setInterval(nextSlide, 3000)
+    }
+}
+
+function showSlide(index) {
+  if (index >= slides.length){
+    slideIndex = 0;
+  }
+  else if(index < 0) {
+    slideIndex = slides.length -1;
+  }
+
+  slides.forEach(slide => {
+    slide.classList.remove("display-slide")
+  })
   slides[slideIndex].classList.add("display-slide")
 }
 
-function showSlide(index) {}
-
 function prevSlide(){}
 
-function nextSlide(){}
+function nextSlide(){
+  slideIndex++;
+  showSlide(slideIndex)
+}
 
 
 
