@@ -30,15 +30,20 @@ async function renderNewPostsCarousel() {
     
     const carousel = document.getElementById("carousel")
     console.log(carousel);
-    newPosts.forEach(post => {
-        const carouselItem = generateCarouselItem(post);
+    newPosts.forEach(newPost => {
+        const carouselItem = generateCarouselItem(newPost);
         console.log(carouselItem);
         carousel.appendChild(carouselItem);
+
     })
 }
 
-// await renderNewPostsCarousel()
+await renderNewPostsCarousel()
 
+
+
+
+// FROM W3SCHOOLS CODE
 
 // carousel buttons
 // const dot1 = document.getElementById("dot-1")
