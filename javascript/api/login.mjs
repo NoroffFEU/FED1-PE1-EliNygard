@@ -21,7 +21,7 @@ async function loginUser(url, userData) {
             const accessToken = json.data.accessToken;
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('loginSuccess', true);
-            localStorage.setItem('userName', JSON.stringify(json));
+            localStorage.setItem('userName', JSON.stringify(json.data.name));
             
             return json;
         } else {

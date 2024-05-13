@@ -1,4 +1,4 @@
-import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
+import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 import { deletePost } from "../api/deletePost.mjs";
 import { getPosts } from "../api/getPosts.mjs";
 import { deleteSuccessMessage } from "../messages/deleteMessages.mjs";
@@ -32,8 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
 export async function renderTable() {
 
     const userName = JSON.parse(localStorage.getItem("userName"))
-    const name = userName.data.name;
-    const API_NAME = `/${name}`;
+    console.log(userName);
+    // const name = userName.data.name;
+    // console.log(name);
+    // const API_NAME = `/${name}`;
     const token = localStorage.getItem("accessToken")
     const responseData = await getPosts(API_BASE + API_POSTS + API_NAME, token);
     const posts = responseData.data;
