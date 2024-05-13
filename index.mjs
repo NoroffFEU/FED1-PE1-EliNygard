@@ -2,7 +2,6 @@ import { API_BASE, API_NAME, API_POSTS } from "./javascript/api/constantAPI.mjs"
 import { getPosts } from "./javascript/api/getPosts.mjs";
 import { generateCarouselItem } from "./javascript/generateHtml/carouselItem.mjs";
 import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
-// import { currentSlide, plusSlides } from "./javascript/ui/carousel.mjs";
 
 async function renderPosts() {
     // const userName = JSON.parse(localStorage.getItem("userName"))
@@ -41,6 +40,7 @@ async function renderNewPostsCarousel() {
 await renderNewPostsCarousel()
 
 // NEW SLIDER CODE FROM YOUTUBE
+// can not display carousel items when slider code is moved to another file. Find out! 
 
 const prevButton = document.getElementById("prev-button")
 prevButton.addEventListener('click', () => {
@@ -52,17 +52,21 @@ nextButton.addEventListener('click', () => {
     nextSlide()
 })
 
+
+// try to add dots to the slider?
+
+
 const slides = document.querySelectorAll("#carousel li")
-console.log(slides);
 let slideIndex = 0;
 
-document.addEventListener("DOMContentLoaded", initializeSlider())
 
 function initializeSlider() {
   if(slides.length > 0) {
-      slides[slideIndex].classList.add("display-slide")
-    }
+    slides[slideIndex].classList.add("display-slide")
+  }
 }
+
+document.addEventListener("DOMContentLoaded", initializeSlider())
 
 function showSlide(index) {
   if (index >= slides.length){
