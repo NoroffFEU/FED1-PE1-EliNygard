@@ -61,7 +61,7 @@ loginForm.addEventListener('submit', async function (event) {
     
 });
 
-//Event listeners for form when user wants to try again
+//Event listener for form when user wants to try again
 loginForm.addEventListener('click', removeErrorMessage);
 
 

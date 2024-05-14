@@ -1,3 +1,5 @@
+import { removeUnderscore } from "../ui/formatting.mjs";
+
 export function registerMessageSuccess () {
     const messageContainer = document.createElement("div")
     messageContainer.classList.add("message-container")
@@ -13,5 +15,5 @@ export function registerMessageSuccess () {
 
     setTimeout(() => {
         message.remove();
-    }, 2000);
+    }, 3000);
 };

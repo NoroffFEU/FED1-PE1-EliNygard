@@ -50,9 +50,6 @@ export async function renderTable() {
 
     const userName = JSON.parse(localStorage.getItem("userName"))
     console.log(userName);
-    // const name = userName.data.name;
-    // console.log(name);
-    // const API_NAME = `/${name}`;
     const token = localStorage.getItem("accessToken")
     const responseData = await getPosts(API_BASE + API_POSTS + API_NAME, token);
     const posts = responseData.data;

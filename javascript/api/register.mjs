@@ -70,11 +70,13 @@ registerForm.addEventListener('submit', async function (event) {
 
     console.log(userData);
 
-    const loginResponse = await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
-    if (loginResponse) {
-        // window.location.href = '../post/manage.html';
-    }
+    await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
+
+    // const loginResponse = await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
+    // if (loginResponse) {
+    //     window.location.href = '../post/manage.html';
+    // }
 });
 
-// event listeners for input fields. When user want to try again
+// event listener for input fields. When user want to try again
 registerForm.addEventListener('click', removeErrorMessage);
