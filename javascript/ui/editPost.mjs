@@ -1,4 +1,4 @@
-import { API_BASE, API_POSTS } from "../api/constantAPI.mjs";
+import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 
 const form = document.querySelector("form");
 
@@ -55,10 +55,9 @@ form.addEventListener('submit', function(event) {
         },
     };
 
-    // get the username for endpoint
-    const userName = JSON.parse(localStorage.getItem("userName"))
-    const name = userName.data.name;
-    const API_NAME = `/${name}`;
+    // const userName = JSON.parse(localStorage.getItem("userName"))
+    // const name = userName.data.name;
+    // const API_NAME = `/${name}`;
 
     const postId = JSON.parse(localStorage.getItem("postId"))
     const API_ID = `/${postId}`
