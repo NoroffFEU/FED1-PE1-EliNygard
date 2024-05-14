@@ -84,4 +84,5 @@ function generatePostPageHtml(post) {
     return postWrapper;
 }
 
+
 generatePostPageHtml(singlePost)

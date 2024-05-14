@@ -2,24 +2,33 @@ import { API_BASE, API_NAME, API_POSTS } from "./javascript/api/constantAPI.mjs"
 import { getPosts } from "./javascript/api/getPosts.mjs";
 import { generateCarouselItem } from "./javascript/generateHtml/carouselItem.mjs";
 import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
+import { hideLoader, showLoader } from "./javascript/ui/loader.mjs";
 
 async function checkAndRenderPosts() {
   const userName = JSON.parse(localStorage.getItem("userName"));
 
-  if(userName) {
-    // if user is logged in
-    await renderPosts(API_BASE + API_POSTS + API_NAME);
-    await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
-  } else {
-      // If user is not logged in, render posts from this account anyway
-      await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
-      await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
+  showLoader()
+
+  try {
+    await new Promise(resolve => setTimeout(resolve, 9000));
+    if(userName) {
+      // if user is logged in
+      await renderPosts(API_BASE + API_POSTS + API_NAME);
+      await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
+    } else {
+        // If user is not logged in, render posts from this account anyway
+        await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
+        await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
+    }
+  } finally {
+    hideLoader();
   }
 }
 
 await checkAndRenderPosts()
 
 async function renderPosts(url) {
+
 
     const responseData = await getPosts(url);
     const posts = responseData.data;

@@ -1,7 +1,4 @@
-import { hideLoader, showLoader } from "../ui/loader.mjs";
-
 export async function getPosts(url, token = null) {
-    // showLoader()
     try {
         // await new Promise(resolve => setTimeout(resolve, 4000));
         const getData = {
@@ -19,7 +16,6 @@ export async function getPosts(url, token = null) {
     } catch (error) {
         console.log(error);
     } finally {
-        // hideLoader()
     };
 };
 
