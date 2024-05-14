@@ -21,7 +21,14 @@ export function generateCarouselItem(post) {
 
     const button = document.createElement("button")
     button.classList.add("button-carousel", "font-secondary", "uppercase")
-    button.textContent = "Read More"
+    button.textContent = "Read More";
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        localStorage.setItem("post", JSON.stringify(post));
+        const postId = post.id;
+        const newUrl = `./post/index.html?post=${postId}`;
+        window.location.href = newUrl;
+    })
 
     contentContainer.append(title, body, button)
     newArticleContainer.append(img, contentContainer)

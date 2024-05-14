@@ -25,13 +25,10 @@ async function renderNewPostsCarousel() {
     const responseData = await getPosts(API_BASE + API_POSTS + API_NAME);
     const posts = responseData.data;
     const newPosts = posts.filter(post => post.tags.includes("New Post"));
-    console.log(newPosts);
     
     const carousel = document.getElementById("carousel")
-    console.log(carousel);
     newPosts.forEach(newPost => {
         const carouselItem = generateCarouselItem(newPost);
-        console.log(carouselItem);
         carousel.appendChild(carouselItem);
 
     })

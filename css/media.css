@@ -132,6 +132,10 @@
 
     /* post page */
 
+    .post-container {
+        margin-top: 2rem;
+    }
+
     .post-details{
         gap: 4rem;
         font-size: 1.2rem;
