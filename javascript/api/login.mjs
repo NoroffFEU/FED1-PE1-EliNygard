@@ -23,6 +23,8 @@ async function loginUser(url, userData) {
             localStorage.setItem('loginSuccess', true);
             localStorage.setItem('userName', JSON.stringify(json.data.name));
             
+            window.location.href = '../post/manage.html';
+            
             return json;
         } else {
             if (response.status === 401) {
@@ -35,35 +37,32 @@ async function loginUser(url, userData) {
         console.log('Error:', error);
     } finally {
         // loader hide
-        window.location.href = '../post/manage.html';
     }
 };
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-    const loginForm = document.getElementById('js-login-form');
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
+const loginForm = document.getElementById('js-login-form');
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
 
-    //Functions to handle form submission
-    loginForm.addEventListener('submit', async function (event) {
-        event.preventDefault();
+//Functions to handle form submission
+loginForm.addEventListener('submit', async function (event) {
+    event.preventDefault();
 
-        const email = emailInput.value;
-        const password = passwordInput.value;
+    const email = emailInput.value;
+    const password = passwordInput.value;
 
-        const userData = {
-            email: email,
-            password: password
-        };
+    const userData = {
+        email: email,
+        password: password
+    };
 
-        await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
-        
-    });
+    await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
     
-    //Event listeners for input fields
-    emailInput.addEventListener('click', removeErrorMessage);
-    passwordInput.addEventListener('click', removeErrorMessage);
-// });
+});
+
+//Event listeners for input fields
+emailInput.addEventListener('click', removeErrorMessage);
+passwordInput.addEventListener('click', removeErrorMessage);
 
 

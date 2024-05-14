@@ -24,10 +24,12 @@ async function registerUser (url, userData) {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('userName', JSON.stringify(json.data.name));
             
+            // replace alert with success message
             alert('User registered successfully');
             
             return json;
         } else {
+            // display error message ()
             console.log("Error", json.error);
         }
     } catch (error) {

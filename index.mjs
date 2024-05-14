@@ -20,9 +20,6 @@ async function checkAndRenderPosts() {
 await checkAndRenderPosts()
 
 async function renderPosts(url) {
-    // const userName = JSON.parse(localStorage.getItem("userName"))
-    // const name = userName.data.name;
-    // const API_NAME = `/${name}`;
 
     const responseData = await getPosts(url);
     const posts = responseData.data;
