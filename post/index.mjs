@@ -58,6 +58,7 @@ function generatePostPageHtml(post) {
 
     const iconCopy = document.createElement("span")
     iconCopy.classList.add("share-icon", "fa-solid", "fa-link")
+    iconCopy.setAttribute("title", "Copy link")
     iconCopy.addEventListener('click', () => {
         // const urlParams = new URLSearchParams(window.location.search);
         // const postId = urlParams.get("post")
