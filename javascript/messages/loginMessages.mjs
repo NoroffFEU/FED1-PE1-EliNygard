@@ -13,9 +13,9 @@ export function loginMessageSuccess () {
     messageContainer.appendChild(message);
     document.body.appendChild(messageContainer);
 
-    // setTimeout(() => {
-    //     message.remove();
-    // }, 2000);
+    setTimeout(() => {
+        message.remove();
+    }, 2000);
 };
 
 // after adding this message I got an error in the console: for the document.addEventListener in the login.mjs file

@@ -79,7 +79,7 @@
 }
 
 .text-overflow {
-    overflow-x: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
