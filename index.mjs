@@ -13,13 +13,13 @@ async function renderPosts() {
     console.log(posts);
 
     const imageGallery = document.querySelector(".image-gallery")
+    imageGallery.innerHTML = '';
     posts.forEach(post => {
         const postThumb = generateThumbPostsHtml(post);
         imageGallery.appendChild(postThumb)
     })
 }
 
-await renderPosts();
 
 async function renderNewPostsCarousel() {
     const responseData = await getPosts(API_BASE + API_POSTS + API_NAME);
@@ -27,6 +27,7 @@ async function renderNewPostsCarousel() {
     const newPosts = posts.filter(post => post.tags.includes("New Post"));
     
     const carousel = document.getElementById("carousel")
+    carousel.innerHTML = '';
     newPosts.forEach(newPost => {
         const carouselItem = generateCarouselItem(newPost);
         carousel.appendChild(carouselItem);
@@ -88,6 +89,12 @@ function nextSlide(){
   slideIndex++;
   showSlide(slideIndex)
 }
+
+async function renderHomePage() {
+    await renderPosts();
+}
+
+await renderHomePage()
 
 
 
