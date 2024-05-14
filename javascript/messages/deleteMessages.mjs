@@ -15,15 +15,9 @@ export function deleteSuccessMessage() {
 };
 
 
-export function deleteConfirmMessage() {
-    const postId = post.id;
-    localStorage.setItem('postId', JSON.stringify(postId))
-    
 
-    
-}
 
-export function generateConfirmHtml() {
+export function generateConfirmHtml(post) {
     const messageContainer = document.createElement("div");
     messageContainer.classList.add("message-container", "dialog");
     
@@ -39,12 +33,31 @@ export function generateConfirmHtml() {
     confirmButton.setAttribute("value", "true");
     confirmButton.setAttribute("name", "choice")
     confirmButton.textContent = "Yes";
+    confirmButton.addEventListener('click', () => {
+        
+        const dialog = document.querySelector(".dialog")
+        if (dialog) {
+            const postId = post.id;
+            localStorage.setItem('postId', JSON.stringify(postId))
+            deletePost(postId);
+            dialog.remove();
+        } else {
+            console.error("error", error);
+        }
+    })
 
     const cancelButton = document.createElement("button")
     cancelButton.classList.add("confirm-button", "button-small", "button")
     cancelButton.setAttribute("value", "false")
     cancelButton.setAttribute("name", "choice")
     cancelButton.textContent = "Cancel"
+    cancelButton.addEventListener('click', () => {
+        const dialog = document.querySelector(".dialog")
+        if (dialog) {
+            dialog.remove();
+        }
+    })
+
 
     confirmButtonContainer.append(confirmButton, cancelButton)
     messageContainer.append(message, confirmButtonContainer)

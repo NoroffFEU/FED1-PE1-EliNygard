@@ -1,5 +1,4 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
-import { deletePost } from "../api/deletePost.mjs";
 import { getPosts } from "../api/getPosts.mjs";
 import { deleteSuccessMessage, generateConfirmHtml } from "../messages/deleteMessages.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
@@ -110,15 +109,8 @@ export function generateTableHtml(post) {
     deleteBtn.setAttribute("id", "js-btn-delete");
     deleteBtn.setAttribute("aria-label", "Delete Post");
     
-    const dialog = document.querySelector(".dialog")
     deleteBtn.addEventListener('click', () => {
-        dialog.show;
-        // const postId = post.id;
-        // localStorage.setItem('postId', JSON.stringify(postId))
-        // const confirmed = confirm("Are you sure?")
-        // if (confirmed) {
-        //     deletePost(postId);
-        // }
+        generateConfirmHtml(post)
     });
 
     deleteBtnCell.appendChild(deleteBtn);
