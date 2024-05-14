@@ -24,7 +24,7 @@ async function loginUser(url, userData) {
             localStorage.setItem('userName', JSON.stringify(json.data.name));
             
             window.location.href = '../post/manage.html';
-            
+
             return json;
         } else {
             if (response.status === 401) {
@@ -61,8 +61,7 @@ loginForm.addEventListener('submit', async function (event) {
     
 });
 
-//Event listeners for input fields
-emailInput.addEventListener('click', removeErrorMessage);
-passwordInput.addEventListener('click', removeErrorMessage);
+//Event listeners for form when user wants to try again
+loginForm.addEventListener('click', removeErrorMessage);
 
 

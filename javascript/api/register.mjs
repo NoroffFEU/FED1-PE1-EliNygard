@@ -44,10 +44,6 @@ async function registerUser (url, userData) {
 }
 
 const registerForm = document.getElementById('js-registration-form');
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const confirmPasswordInput = document.getElementById('confirm-password');
 
 registerForm.addEventListener('submit', async function (event) {
     event.preventDefault(); //prevents the default form submission behavior
