@@ -1,4 +1,4 @@
-import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
+import { API_BASE, API_ID, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 
 const form = document.querySelector("form");
 
@@ -59,8 +59,8 @@ form.addEventListener('submit', function(event) {
     // const name = userName.data.name;
     // const API_NAME = `/${name}`;
 
-    const postId = JSON.parse(localStorage.getItem("postId"))
-    const API_ID = `/${postId}`
+    // const postId = JSON.parse(localStorage.getItem("postId"))
+    // const API_ID = `/${postId}`
 
     // Send the request
     fetch(API_BASE + API_POSTS + API_NAME + API_ID, requestOptions)

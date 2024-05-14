@@ -1,15 +1,15 @@
-import { API_BASE, API_POSTS } from "./constantAPI.mjs";
+import { API_BASE, API_ID, API_POSTS } from "./constantAPI.mjs";
 
 export function deletePost() {
     // get id of selected post ✅
     // get the url ✅
 
-    const postId = JSON.parse(localStorage.getItem('postId'));
-    const API_ID = `/${postId}`;
+    // const postId = JSON.parse(localStorage.getItem('postId'));
+    // const API_ID = `/${postId}`;
 
-    const userName = JSON.parse(localStorage.getItem("userName"))
-    const name = userName.data.name;
-    const API_NAME = `/${name}`;
+    // const userName = JSON.parse(localStorage.getItem("userName"))
+    // const name = userName.data.name;
+    // const API_NAME = `/${name}`;
 
     const token = localStorage.getItem('accessToken');
     

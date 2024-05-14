@@ -21,6 +21,9 @@ const userName = JSON.parse(localStorage.getItem("userName"))
 export const API_NAME = `/${userName}`;
 // export const API_NAME = "/Leli_Nygard"
 
+const postId = JSON.parse(localStorage.getItem("postId"))
+export const API_ID = `/${postId}`;
+
 
 
 
