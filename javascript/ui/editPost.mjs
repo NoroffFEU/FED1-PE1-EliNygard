@@ -1,4 +1,5 @@
 import { API_BASE, API_ID, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
+import { extractErrorMessages, renderErrorMessageHtml } from "../messages/errorMessage.mjs";
 
 const form = document.querySelector("form");
 
@@ -67,8 +68,13 @@ form.addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(json => {
             console.log(json);
-            localStorage.removeItem("postId")
-            window.location.href = '../post/manage.html';
+            if(json.okay) {
+                localStorage.removeItem("postId")
+                window.location.href = '../post/manage.html';
+            } else {
+                const errorMessages = extractErrorMessages(json)
+                renderErrorMessageHtml(errorMessages)
+            }
 
             // redirect to manage.html
             // save to local storage?
