@@ -6,9 +6,8 @@
     width: 85%;
     width: 3em;
     height: 3em;
-    border: 0.25em solid;
+    border: 0.4em solid var(--color-theme-dark-blue);
     border-bottom-color: transparent;
-    color: var(--color-theme-dark-blue);
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
