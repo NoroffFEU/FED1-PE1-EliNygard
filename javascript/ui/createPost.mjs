@@ -35,10 +35,6 @@ form.addEventListener('submit', function(event) {
             Authorization: `Bearer ${token}`,
         },
     };
-
-    // const userName = JSON.parse(localStorage.getItem("userName"))
-    // const name = userName.data.name;
-    // const API_NAME = `/${name}`;
     
     // Send the request
     fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
@@ -56,11 +52,6 @@ form.addEventListener('submit', function(event) {
                 //     console.log(message);
                 // }) 
             }
-            
-            // Save to local storage?
-            // Add to post/index.html
-            // Add to manage.html table ✅
-            // displayPost(json);
         })
         .catch(error => {
             console.error('Error:', error); // Log any errors that occur

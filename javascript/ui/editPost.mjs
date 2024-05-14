@@ -56,13 +56,6 @@ form.addEventListener('submit', function(event) {
         },
     };
 
-    // const userName = JSON.parse(localStorage.getItem("userName"))
-    // const name = userName.data.name;
-    // const API_NAME = `/${name}`;
-
-    // const postId = JSON.parse(localStorage.getItem("postId"))
-    // const API_ID = `/${postId}`
-
     // Send the request
     fetch(API_BASE + API_POSTS + API_NAME + API_ID, requestOptions)
         .then(response => response.json())
@@ -76,13 +69,8 @@ form.addEventListener('submit', function(event) {
                 renderErrorMessageHtml(errorMessages)
             }
 
-            // redirect to manage.html
-            // save to local storage?
-            // add to post/index.html=
-            // displayPosts(json)?
         })
         .catch(error => {
             console.error('error', error);
         })
-
 })
