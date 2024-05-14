@@ -1,4 +1,4 @@
-import { API_BASE, API_ID, API_POSTS } from "./constantAPI.mjs";
+import { API_BASE, API_ID, API_NAME, API_POSTS } from "./constantAPI.mjs";
 
 export function deletePost() {
     // get id of selected post ✅
