@@ -64,6 +64,6 @@ registerForm.addEventListener('submit', async function (event) {
 
     const loginResponse = await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
     if (loginResponse) {
-        // window.location.href = '../post/manage.html';
+        window.location.href = '../post/manage.html';
     }
 });
