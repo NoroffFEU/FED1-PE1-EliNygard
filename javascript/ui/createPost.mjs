@@ -45,7 +45,7 @@ form.addEventListener('submit', function(event) {
         .then(json => {
             console.log(json);
             
-            window.location.href = '../post/manage.html';
+            // window.location.href = '../post/manage.html';
 
             
             // Save to local storage?

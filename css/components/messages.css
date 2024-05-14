@@ -5,18 +5,28 @@
     left: 50%;
     width: 85%;
     max-width: 500px;
+    background-color: var(--color-theme-dark-blue);
 }
 
 .message-success {
     display: flex;
-    background-color: var(--color-theme-dark-blue);
+    flex-direction: column;
     color: #fff;
     justify-content: center;
-    padding: 2rem 0rem;
-
+    align-items: center;
+    padding: 2rem 0.5rem;
+    text-align: center;
 }
 
 .login-message-error {
     color: #A20000;
     font-size: .8rem;
+}
+
+.confirm-button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    margin: .5rem 0 2rem 0;
 }
