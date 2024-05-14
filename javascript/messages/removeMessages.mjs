@@ -4,3 +4,10 @@ export function removeErrorMessage() {
             errorMessage.remove();
         }
 }
+
+export function removeRegisterErrorMessage() {
+    const errorMessage = document.querySelector(".error-message-container")
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+}

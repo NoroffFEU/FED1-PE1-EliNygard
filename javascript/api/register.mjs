@@ -1,3 +1,5 @@
+import { confirmPasswordError } from "../messages/loginMessages.mjs";
+import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 
 async function registerUser (url, userData) {
@@ -29,7 +31,9 @@ async function registerUser (url, userData) {
             
             return json;
         } else {
-            // display error message ()
+            // display error message
+            const errorMessages = extractErrorMessages(json)
+            renderErrorMessageHtml(errorMessages)
             console.log("Error", json.error);
         }
     } catch (error) {
@@ -40,6 +44,10 @@ async function registerUser (url, userData) {
 }
 
 const registerForm = document.getElementById('js-registration-form');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const confirmPasswordInput = document.getElementById('confirm-password');
 
 registerForm.addEventListener('submit', async function (event) {
     event.preventDefault(); //prevents the default form submission behavior
@@ -51,7 +59,7 @@ registerForm.addEventListener('submit', async function (event) {
     
     
     if (password !== confirmPassword) {
-        alert("Passwords do not match! Try again");
+        confirmPasswordError()
         return;
     };
     
@@ -66,6 +74,9 @@ registerForm.addEventListener('submit', async function (event) {
 
     const loginResponse = await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
     if (loginResponse) {
-        window.location.href = '../post/manage.html';
+        // window.location.href = '../post/manage.html';
     }
 });
+
+// event listeners for input fields. When user want to try again
+registerForm.addEventListener('click', removeErrorMessage);

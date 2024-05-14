@@ -198,9 +198,13 @@
 
     .message-success {
         padding: 2rem 1rem;
+    }
+    
+    .message-success .login-message-error {
         font-size: 1.125rem;
         line-height: 1.7rem;
     }
+
     
 }
 

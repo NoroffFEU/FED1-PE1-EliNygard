@@ -29,3 +29,14 @@ export function loginMessageError() {
     
     messageContainer.appendChild(message);
 };
+
+
+export function confirmPasswordError() {
+    const messageContainer = document.querySelector(".password-error-container")
+
+    const message = document.createElement("p")
+    message.classList.add("login-message-error")
+    message.textContent = "Passwords do not match. Please try again."
+
+    messageContainer.appendChild(message);
+}
