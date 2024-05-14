@@ -17,15 +17,13 @@ export const API_LOGIN = "/login";
 
 export const API_POSTS = "/blog/posts";
 
-
-
 const userName = JSON.parse(localStorage.getItem("userName"))
 export const API_NAME = `/${userName}`;
-// export const API_NAME = "/Leli_Nygard"
 
 const postId = JSON.parse(localStorage.getItem("postId"))
 export const API_ID = `/${postId}`;
 
+// export const API_NAME = "/Leli_Nygard"
 
 
 

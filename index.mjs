@@ -3,12 +3,28 @@ import { getPosts } from "./javascript/api/getPosts.mjs";
 import { generateCarouselItem } from "./javascript/generateHtml/carouselItem.mjs";
 import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
 
-async function renderPosts() {
+async function checkAndRenderPosts() {
+  const userName = JSON.parse(localStorage.getItem("userName"));
+
+  if(userName) {
+    // if user is logged in
+    await renderPosts(API_BASE + API_POSTS + API_NAME);
+    await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
+  } else {
+      // If user is not logged in, render posts from this account anyway
+      await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
+      await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
+  }
+}
+
+await checkAndRenderPosts()
+
+async function renderPosts(url) {
     // const userName = JSON.parse(localStorage.getItem("userName"))
     // const name = userName.data.name;
     // const API_NAME = `/${name}`;
 
-    const responseData = await getPosts(API_BASE + API_POSTS + API_NAME);
+    const responseData = await getPosts(url);
     const posts = responseData.data;
     console.log(posts);
 
@@ -21,8 +37,8 @@ async function renderPosts() {
 }
 
 
-async function renderNewPostsCarousel() {
-    const responseData = await getPosts(API_BASE + API_POSTS + API_NAME);
+async function renderNewPostsCarousel(url) {
+    const responseData = await getPosts(url);
     const posts = responseData.data;
     const newPosts = posts.filter(post => post.tags.includes("New Post"));
     
@@ -35,7 +51,7 @@ async function renderNewPostsCarousel() {
     })
 }
 
-await renderNewPostsCarousel()
+// await renderNewPostsCarousel()
 
 // NEW SLIDER CODE FROM YOUTUBE
 // can not display carousel items when slider code is moved to another file. Find out! 
@@ -91,7 +107,7 @@ function nextSlide(){
 }
 
 async function renderHomePage() {
-    await renderPosts();
+    // await renderPosts();
 }
 
 await renderHomePage()
