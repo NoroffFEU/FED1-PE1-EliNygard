@@ -2,6 +2,7 @@ import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 
 async function registerUser (url, userData) {
     // loader show
+
     try {
         const postData = {
             method: 'POST',
@@ -10,10 +11,14 @@ async function registerUser (url, userData) {
               },
             body: JSON.stringify(userData),
             };
+
+        console.log("Request payload", postData);
+
         const response = await fetch(url, postData);
         console.log(response);
         const json = await response.json();
         console.log(json);
+
         if (response.ok) {
             const accessToken = json.data.accessToken;
             localStorage.setItem('accessToken', accessToken);
@@ -32,34 +37,33 @@ async function registerUser (url, userData) {
     }
 }
 
-// document.addEventListener('DOMContentLoaded', function () {
-    const registerForm = document.getElementById('js-registration-form');
+const registerForm = document.getElementById('js-registration-form');
+
+registerForm.addEventListener('submit', async function (event) {
+    event.preventDefault(); //prevents the default form submission behavior
     
-    registerForm.addEventListener('submit', async function (event) {
-        event.preventDefault(); //prevents the default form submission behavior
-        
-        const name = document.getElementById('name').value;
-        console.log(name);
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
-        
-        
-        if (password !== confirmPassword) {
-            alert("Passwords do not match! Try again");
-            return;
-        };
-        
-        const userData = {
-            name: name,
-            email: email,
-            password: password
-        };
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    
+    
+    if (password !== confirmPassword) {
+        alert("Passwords do not match! Try again");
+        return;
+    };
+    
+    const userData = {
+        name: name,
+        email: email,
+        password: password
+    };
 
-        const loginResponse = await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
-        if (loginResponse) {
-            window.location.href = '../post/manage.html';
-        }
-    });
-// });
 
+    console.log(userData);
+
+    const loginResponse = await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
+    if (loginResponse) {
+        // window.location.href = '../post/manage.html';
+    }
+});
