@@ -1,5 +1,5 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
-import { displayErrorMessage } from "../messages/errorMessage.mjs";
+import { extractErrorMessages } from "../messages/errorMessage.mjs";
 
 
 const form = document.querySelector('form');
@@ -50,7 +50,9 @@ form.addEventListener('submit', function(event) {
                 window.location.href = '../post/manage.html';
             } else {
                 console.log('Error', json.errors[0].message)
-                displayErrorMessage(json)
+                const errorMessages = extractErrorMessages(json)
+                console.log(errorMessages);
+                errorMessages.forEach(message => console.log(message));
             }
             
             // Save to local storage?

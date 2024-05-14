@@ -35,7 +35,7 @@ export function generateConfirmHtml(post) {
     confirmButton.textContent = "Yes";
     confirmButton.addEventListener('click', () => {
         
-        const dialog = document.querySelector(".dialog")
+        const dialog = document.querySelector(".dialog") //could be replaced by messageContainer
         if (dialog) {
             const postId = post.id;
             localStorage.setItem('postId', JSON.stringify(postId))
