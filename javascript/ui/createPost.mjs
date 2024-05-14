@@ -1,4 +1,5 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
+import { displayErrorMessage } from "../messages/errorMessage.mjs";
 
 
 const form = document.querySelector('form');
@@ -44,9 +45,13 @@ form.addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(json => {
             console.log(json);
-            
-            // window.location.href = '../post/manage.html';
 
+            if(json.okay) {
+                window.location.href = '../post/manage.html';
+            } else {
+                console.log('Error', json.errors[0].message)
+                displayErrorMessage(json)
+            }
             
             // Save to local storage?
             // Add to post/index.html
