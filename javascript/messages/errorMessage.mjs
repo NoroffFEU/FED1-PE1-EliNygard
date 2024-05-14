@@ -1,16 +1,33 @@
 export function extractErrorMessages(json) {
-    console.log(json.errors);
     const errors = json.errors;
-    console.log(errors);
     if (errors) {
-        console.log(errors);
         return errors.map(error => error.message).filter(Boolean);
     }
 }
 
-export function renderErrorMessageHtml() {
+export function renderErrorMessageHtml(message) {
+    console.log("jeg er her");
     const errorContainer = document.createElement("div")
-    errorContainer.classList.add = "error-container"
+    errorContainer.classList.add("error-container", "message-container")
 
-    
+    const errorMessage = document.createElement("p")
+    errorMessage.classList.add("message-success")
+    errorMessage.textContent = `The post could not be added. Please check the following: ${message}`;
+    console.log(errorMessage.textContent);
+
+    const confirmButtonContainer = document.createElement("div")
+    confirmButtonContainer.classList.add("confirm-button-container")
+
+    const confirmButton = document.createElement("button")
+    confirmButton.classList.add("confirm-button", "button-small", "button")
+    confirmButton.textContent = "OK";
+    confirmButton.addEventListener('click', () => {
+        if(errorContainer) {
+            errorContainer.remove();
+        }
+    })
+
+    confirmButtonContainer.appendChild(confirmButton);
+    errorContainer.append(errorMessage, confirmButtonContainer);
+    document.body.appendChild(errorContainer);
 }

@@ -192,6 +192,15 @@
         margin: 5rem 0 0 0;
     }
 
+
+
+    /* messages */
+
+    .message-success {
+        padding: 2rem 1rem;
+        font-size: 1.125rem;
+        line-height: 1.7rem;
+    }
     
 }
 
