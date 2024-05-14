@@ -3,15 +3,17 @@
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    
-    
+    width: 85%;
+    max-width: 500px;
 }
 
 .message-success {
     display: flex;
     background-color: var(--color-theme-dark-blue);
     color: #fff;
-    padding: 3rem 2rem;
+    justify-content: center;
+    padding: 2rem 0rem;
+
 }
 
 .login-message-error {
