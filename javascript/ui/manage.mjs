@@ -2,23 +2,41 @@ import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 import { getPosts } from "../api/getPosts.mjs";
 import { deleteSuccessMessage, generateConfirmHtml } from "../messages/deleteMessages.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
+import { registerMessageSuccess } from "../messages/registerMessages.mjs";
 import { formatDate, removeUnderscore } from "./formatting.mjs";
 
 
 // Activating login success message
 document.addEventListener("DOMContentLoaded", function () {
-    const loginSuccess = localStorage.getItem("loginSuccess");
-    // console.log(loginMessageSuccess);
-    if (loginSuccess) {
-        loginMessageSuccess();
-        localStorage.removeItem("loginSuccess");
+    const displayMessage = (key, callback) => {
+        if (localStorage.getItem(key)) {
+            callback();
+            localStorage.removeItem(key);
+        }
     }
-    const deleteSuccess = localStorage.getItem("deleteSuccess");
-    if (deleteSuccess) {
-        deleteSuccessMessage();
-        localStorage.removeItem("deleteSuccess");
-    }
+    displayMessage("loginSuccess", loginMessageSuccess);
+    displayMessage("registerSuccess", registerMessageSuccess);
+    displayMessage("deleteSuccess", deleteSuccessMessage);
 });
+
+
+    // const loginSuccess = localStorage.getItem("loginSuccess");
+    // const registerSuccess = localStorage.getItem("registerSuccess")
+    // if (loginSuccess) {
+    //     loginMessageSuccess();
+    //     localStorage.removeItem("loginSuccess");
+    // }
+    
+    // if (registerSuccess) {
+    //     registerMessageSuccess();
+    //     localStorage.removeItem("registerSuccess");
+    // }
+
+    // const deleteSuccess = localStorage.getItem("deleteSuccess");
+    // if (deleteSuccess) {
+    //     deleteSuccessMessage();
+    //     localStorage.removeItem("deleteSuccess");
+    // }
 
 // display posts ✅ (generated into each row in table) ✅
 

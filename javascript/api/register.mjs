@@ -24,10 +24,12 @@ async function registerUser (url, userData) {
         if (response.ok) {
             const accessToken = json.data.accessToken;
             localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('registerSuccess', true);
             localStorage.setItem('userName', JSON.stringify(json.data.name));
             
+            window.location.href = '../post/manage.html';
             // replace alert with success message
-            alert('User registered successfully');
+            // alert('User registered successfully');
             
             return json;
         } else {
