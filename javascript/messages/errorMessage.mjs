@@ -6,13 +6,12 @@ export function extractErrorMessages(json) {
 }
 
 export function renderErrorMessageHtml(message) {
-    console.log("jeg er her");
     const errorContainer = document.createElement("div")
     errorContainer.classList.add("error-container", "message-container")
 
     const errorMessage = document.createElement("p")
     errorMessage.classList.add("message-success")
-    errorMessage.textContent = `The post could not be added. Please check the following: ${message}`;
+    errorMessage.textContent = `Something went wrong. Please check the following: ${message}`;
     console.log(errorMessage.textContent);
 
     const confirmButtonContainer = document.createElement("div")

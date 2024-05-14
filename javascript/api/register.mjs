@@ -1,3 +1,4 @@
+import { extractErrorMessages, renderErrorMessageHtml } from "../messages/errorMessage.mjs";
 import { confirmPasswordError } from "../messages/loginMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
@@ -14,7 +15,6 @@ async function registerUser (url, userData) {
             body: JSON.stringify(userData),
             };
 
-        console.log("Request payload", postData);
 
         const response = await fetch(url, postData);
         console.log(response);
