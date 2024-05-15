@@ -61,14 +61,15 @@ form.addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(json => {
             console.log(json);
-            if(json.okay) {
-                localStorage.removeItem("postId")
-                window.location.href = '../post/manage.html';
-            } else {
+            if (json.errors) {
+                console.log(json.errors);
                 const errorMessages = extractErrorMessages(json)
                 renderErrorMessageHtml(errorMessages)
-            }
 
+            } else {
+                localStorage.removeItem("postId")
+                window.location.href = '../post/manage.html';
+            }
         })
         .catch(error => {
             console.error('error', error);
