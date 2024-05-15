@@ -1,22 +1,7 @@
+import { copyUrlMessage } from "../javascript/messages/copyUrlMessage.mjs";
 import { formatDate, removeUnderscore } from "../javascript/ui/formatting.mjs";
 
-// async function renderSinglePost() {
-    //     const userName = JSON.parse(localStorage.getItem("userName"))
-    //     const name = userName.data.name;
-    //     const API_NAME = `/${name}`;
-    //     const postId = JSON.parse(localStorage.getItem("postId"))
-    //     console.log(postId);
-    //     const API_ID = `/${postId}`;
-    
-    //     const responseData = await getPost(API_BASE + API_POSTS + API_NAME + API_ID);
-    //     const singlePost = responseData.data;
-    //     console.log(singlePost);
-    //     singlePost.forEach(singlePost => {
-        //         generatePostPageHtml(singlePost)
-        //     })
-        // }
-        
-        // await renderSinglePost();
+
         
 const singlePost = JSON.parse(localStorage.getItem("post"));
 console.log(singlePost);
@@ -56,17 +41,17 @@ function generatePostPageHtml(post) {
         date.textContent = formatDate(formattedDate);
     }
 
+    const iconCopyContainer = document.createElement("div")
+    iconCopyContainer.classList.add("icon-copy-container")
+
     const iconCopy = document.createElement("span")
     iconCopy.classList.add("share-icon", "fa-solid", "fa-link")
     iconCopy.setAttribute("title", "Copy link")
     iconCopy.addEventListener('click', () => {
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const postId = urlParams.get("post")
         const postUrl = window.location.href; //current page url
         const copyUrl = postUrl;
         navigator.clipboard.writeText(copyUrl).then(() => {
-            console.log("Url copied!");
-            copyUrlMessage()
+            iconCopyContainer.appendChild(copyUrlMessage())
         }).catch((error) => {
             console.error("failed to copy url"), error;
         });
@@ -76,21 +61,32 @@ function generatePostPageHtml(post) {
     bodyText.classList.add("post-content", "font-primary", "body-text")
     bodyText.textContent = post.body;
 
-
     main.appendChild(postWrapper)
-    postDetails.append(author, date, iconCopy)
+    postDetails.append(author, date, iconCopyContainer)
+    iconCopyContainer.appendChild(iconCopy)
     postContainer.append(title, postDetails, bodyText)
     postWrapper.append(img, postContainer)
 
     return postWrapper;
 }
 
-
 generatePostPageHtml(singlePost)
 
-function copyUrlMessage() {
-    const message = document.createElement("p")
-    message.textContent = "Link copied!"
 
-    document.body.appendChild(message)
-}
+// async function renderSinglePost() {
+    //     const userName = JSON.parse(localStorage.getItem("userName"))
+    //     const name = userName.data.name;
+    //     const API_NAME = `/${name}`;
+    //     const postId = JSON.parse(localStorage.getItem("postId"))
+    //     console.log(postId);
+    //     const API_ID = `/${postId}`;
+    
+    //     const responseData = await getPost(API_BASE + API_POSTS + API_NAME + API_ID);
+    //     const singlePost = responseData.data;
+    //     console.log(singlePost);
+    //     singlePost.forEach(singlePost => {
+        //         generatePostPageHtml(singlePost)
+        //     })
+        // }
+        
+        // await renderSinglePost();
