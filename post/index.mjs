@@ -66,6 +66,7 @@ function generatePostPageHtml(post) {
         const copyUrl = postUrl;
         navigator.clipboard.writeText(copyUrl).then(() => {
             console.log("Url copied!");
+            copyUrlMessage()
         }).catch((error) => {
             console.error("failed to copy url"), error;
         });
@@ -86,3 +87,10 @@ function generatePostPageHtml(post) {
 
 
 generatePostPageHtml(singlePost)
+
+function copyUrlMessage() {
+    const message = document.createElement("p")
+    message.textContent = "Link copied!"
+
+    document.body.appendChild(message)
+}
