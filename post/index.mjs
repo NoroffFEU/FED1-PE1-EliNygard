@@ -1,10 +1,26 @@
 import { copyUrlMessage } from "../javascript/messages/copyUrlMessage.mjs";
 import { formatDate, removeUnderscore } from "../javascript/ui/formatting.mjs";
+import { hideLoader, showLoader } from "../javascript/ui/loader.mjs";
 
+async function renderBlogPostPage() {
+    const singlePost = JSON.parse(localStorage.getItem("post"));
+    
+    showLoader()
+    
+    try {
+        // Promise for testing, REMOVE
+        // await new Promise(resolve => setTimeout(resolve, 4000)); 
+        generatePostPageHtml(singlePost)
+    } catch {
+        console.log("something went wrong");
+    } finally {
+        hideLoader()
+    }
+}
+
+await renderBlogPostPage()
 
         
-const singlePost = JSON.parse(localStorage.getItem("post"));
-console.log(singlePost);
 
 function generatePostPageHtml(post) {
     const main = document.querySelector("main")
@@ -70,7 +86,7 @@ function generatePostPageHtml(post) {
     return postWrapper;
 }
 
-generatePostPageHtml(singlePost)
+// generatePostPageHtml(singlePost)
 
 
 // async function renderSinglePost() {

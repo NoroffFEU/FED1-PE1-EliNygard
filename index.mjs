@@ -10,7 +10,8 @@ async function checkAndRenderPosts() {
   showLoader()
 
   try {
-    await new Promise(resolve => setTimeout(resolve, 9000));
+    // Promise for testing, REMOVE
+    await new Promise(resolve => setTimeout(resolve, 2000));
     if(userName) {
       // if user is logged in
       await renderPosts(API_BASE + API_POSTS + API_NAME);
