@@ -1,12 +1,16 @@
 import { extractErrorMessages, renderErrorMessageHtml } from "../messages/errorMessage.mjs";
 import { confirmPasswordError } from "../messages/loginMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
+import { hideLoader, showLoader } from "../ui/loader.mjs";
 import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 
 async function registerUser (url, userData) {
     // loader show
+    showLoader();
 
     try {
+        // Promise for testing, REMOVE
+        await new Promise(resolve => setTimeout(resolve, 2000));
         const postData = {
             method: 'POST',
             headers: {
@@ -42,6 +46,7 @@ async function registerUser (url, userData) {
             console.error('Error:', error);
     } finally {
         // loader hide
+        hideLoader();
     }
 }
 
