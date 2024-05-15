@@ -1,11 +1,15 @@
 import { loginMessageError } from "../messages/loginMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
+import { hideLoader, showLoader } from "../ui/loader.mjs";
 import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
 
 
 async function loginUser(url, userData) {
-    // loader show
+    showLoader()
+
     try {
+        // Promise for testing, REMOVE
+        await new Promise(resolve => setTimeout(resolve, 4000));
         const postData = {
             method: 'POST',
             headers: {
@@ -36,7 +40,7 @@ async function loginUser(url, userData) {
     }catch (error) {
         console.log('Error:', error);
     } finally {
-        // loader hide
+        hideLoader();
     }
 };
 

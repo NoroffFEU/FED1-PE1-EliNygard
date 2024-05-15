@@ -5,8 +5,10 @@ import { hideLoader, showLoader } from "../javascript/ui/loader.mjs";
 async function renderBlogPostPage() {
     const singlePost = JSON.parse(localStorage.getItem("post"));
     
+    //should I getPosts with id in stead of local storage?
+
     showLoader()
-    
+
     try {
         // Promise for testing, REMOVE
         // await new Promise(resolve => setTimeout(resolve, 4000)); 
