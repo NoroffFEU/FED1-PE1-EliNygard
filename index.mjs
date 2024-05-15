@@ -59,6 +59,42 @@ async function renderNewPostsCarousel(url) {
 
 // await renderNewPostsCarousel()
 
+// PAGINATION MOVE TO SEPARATE FILE
+
+function paginate(items, itemsPerPage) {
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  const pages = [];
+
+  for (let i = 0; i < totalPages; i++) {
+    const start = i * itemsPerPage;
+    const end = start + itemsPerPage;
+    pages.push(items.slice(start, end))
+  }
+  return pages;
+}
+
+function renderPagination(paginatedPosts) {
+  const pagination = document.querySelector(".pagination")
+  const imageGallery = document.querySelector(".image-gallery")
+  pagination.innerHTML = "";
+
+  paginatedPosts.forEach((page, index) => {
+    const button = document.createElement("button")
+    button.classList.add("pagination-button")
+    button.title = "Previous Page"
+    button.setAttribute("aria-label", "Previous Page")
+    button.textContent = index + 1;
+    button.addEventListener('click', async () => {
+      imageGallery.innerHTML = "";
+      
+      // scroll to section
+    });
+    pagination.append(button);
+  })
+}
+
+
+
 // NEW SLIDER CODE FROM YOUTUBE
 // can not display carousel items when slider code is moved to another file. Find out! 
 
