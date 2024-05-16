@@ -11,16 +11,18 @@ async function checkAndRenderPosts() {
 
   try {
     // Promise for testing, REMOVE
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // await new Promise(resolve => setTimeout(resolve, 2000));
     if(userName) {
       // if user is logged in
       await renderPosts(API_BASE + API_POSTS + API_NAME);
       await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
     } else {
         // If user is not logged in, render posts from this account anyway
-        await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
-        await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
+        // await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
+        // await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
     }
+  } catch (error){
+    console.error(error);
   } finally {
     hideLoader();
   }

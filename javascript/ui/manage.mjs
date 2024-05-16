@@ -4,6 +4,7 @@ import { deleteSuccessMessage, generateConfirmHtml } from "../messages/deleteMes
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 import { registerMessageSuccess } from "../messages/registerMessages.mjs";
 import { formatDate, removeUnderscore } from "./formatting.mjs";
+import { hideLoader, showLoader } from "./loader.mjs";
 
 
 // Activating login success message
@@ -48,15 +49,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 export async function renderTable() {
 
-    const userName = JSON.parse(localStorage.getItem("userName"))
-    console.log(userName);
-    const token = localStorage.getItem("accessToken")
-    const responseData = await getPosts(API_BASE + API_POSTS + API_NAME, token);
-    const posts = responseData.data;
-    console.log(posts);
-    posts.forEach(post => {
-        generateTableHtml(post)
-    });
+    showLoader();
+
+    try {
+        // Promise for testing, REMOVE
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        const userName = JSON.parse(localStorage.getItem("userName"))
+        console.log(userName);
+        const token = localStorage.getItem("accessToken")
+        const responseData = await getPosts(API_BASE + API_POSTS + API_NAME, token);
+        const posts = responseData.data;
+        console.log(posts);
+        posts.forEach(post => {
+            generateTableHtml(post)
+        });
+    } catch {
+        console.log("catch error here");
+    } finally {
+        hideLoader();
+    }
 };
 
 export function generateTableHtml(post) {

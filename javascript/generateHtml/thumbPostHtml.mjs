@@ -7,6 +7,7 @@ export function generateThumbPostsHtml(post) {
     linkWrapper.addEventListener('click', (event) => {
         event.preventDefault();
         localStorage.setItem("post", JSON.stringify(post));
+        localStorage.setItem("postId", JSON.stringify(post.id))
         console.log(JSON.stringify(post));
         const postId = post.id;
         const newUrl = `./post/index.html?post=${postId}` 
