@@ -18,7 +18,7 @@ async function renderBlogPostPage(url) {
 
         const main = document.querySelector("main")
         // main.innerHTML = '';
-        // singlePost.forEach(singlePost => {
+        // singlePost.forEach(post => {
             const blogPost = generatePostPageHtml(singlePost);
             main.appendChild(blogPost)
             
