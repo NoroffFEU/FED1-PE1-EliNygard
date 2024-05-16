@@ -7,6 +7,16 @@ async function loginUser(url, userData) {
   showLoader();
 
   try {
+      // validation
+      if (!userData.email) {
+        throw new Error("No email provided");
+        // replace with ERROR_NO_EMAIL
+      }
+  
+      if (!userData.password) {
+        throw new Error("No password provided");
+      }
+
     // Promise for testing, REMOVE
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const postData = {
@@ -16,20 +26,9 @@ async function loginUser(url, userData) {
       },
       body: JSON.stringify(userData),
     };
+
     const response = await fetch(url, postData);
-    console.log(response);
     const json = await response.json();
-    console.log(json);
-
-    // validation
-    if (!userData.email) {
-      throw new Error("No email provided");
-      // replace with ERROR_NO_EMAIL
-    }
-
-    if (!userData.password) {
-      throw new Error("No password provided");
-    }
 
     if (response.ok) {
       const accessToken = json.data.accessToken;
@@ -42,17 +41,14 @@ async function loginUser(url, userData) {
       return json;
     } else {
       if (response.status === 401) {
-        loginMessageError();
+        loginMessageError(); // move this closer to user?
+        throw new Error("Unauthorized: Invalid credentials")
       } else {
-        console.log(
-          "Error",
-          json.error || "Something went wrong. Please try again."
-        );
+        throw new Error(json.error || "Something went wrong. Please try again")
       }
     }
   } catch (error) {
-    console.log("Error:", error);
-    alert(error)
+    throw error;
   } finally {
     hideLoader();
   }
@@ -80,9 +76,10 @@ async function onLogIn(event) {
     };
 
     await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
-  } catch (err) {
+  } catch (error) {
     //tell the user what's wrong. This is not showing because error is being caught in loginuser func
-    alert(err);
+    alert(error.message);
+    console.log(error.message);
   }
 }
 
