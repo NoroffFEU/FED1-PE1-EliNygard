@@ -81,7 +81,7 @@ async function onLogIn(event) {
 
     await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
   } catch (err) {
-    //tell the user what's wrong
+    //tell the user what's wrong. This is not showing because error is being caught in loginuser func
     alert(err);
   }
 }
