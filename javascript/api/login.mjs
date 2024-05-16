@@ -8,7 +8,7 @@ async function loginUser(url, userData) {
 
   try {
     // Promise for testing, REMOVE
-    await new Promise((resolve) => setTimeout(resolve, 4000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const postData = {
       method: "POST",
       headers: {
@@ -20,6 +20,17 @@ async function loginUser(url, userData) {
     console.log(response);
     const json = await response.json();
     console.log(json);
+
+    // validation
+    if (!userData.email) {
+      throw new Error("No email provided");
+      // replace with ERROR_NO_EMAIL
+    }
+
+    if (!userData.password) {
+      throw new Error("No password provided");
+    }
+
     if (response.ok) {
       const accessToken = json.data.accessToken;
       localStorage.setItem("accessToken", accessToken);
@@ -46,6 +57,15 @@ async function loginUser(url, userData) {
   }
 }
 
+// 1. put listener inside a function
+// 2. try...catch: try cont + await loginUser. Catch error and alert.
+//      This is the error the user reads in the dom. Create an error.
+// 3. in loginUser create a if(!userName) throw new Error (use error I create) or error.log
+
+
+
+
+
 const loginForm = document.getElementById("js-login-form");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
@@ -67,3 +87,43 @@ loginForm.addEventListener("submit", async function (event) {
 
 //Event listener for form when user wants to try again
 loginForm.addEventListener("click", removeErrorMessage);
+
+
+
+// tried to create a function for the listener: 
+
+// async function onLogIn(event) {
+//   event.preventDefault();
+//   try {
+    
+
+//       await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
+//     } catch (error) {
+//     // tell the user
+//     console.error(error);
+//     alert(error);
+//   }
+// }
+
+
+// onLogIn();
+
+// function setLogInListener() {
+//     const loginForm = document.getElementById("js-login-form");
+//     const emailInput = document.getElementById("email");
+//     const passwordInput = document.getElementById("password");
+
+//     loginForm.addEventListener("submit", async function (event) {
+//         event.preventDefault();
+    
+//         const email = emailInput.value;
+//         const password = passwordInput.value;
+    
+//         const userData = {
+//         email: email,
+//         password: password,
+//         };
+//     })
+// }
+
+// setLogInListener()
