@@ -1,43 +1,44 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 import { getPosts } from "../api/getPosts.mjs";
-import { deleteSuccessMessage, generateConfirmHtml } from "../messages/deleteMessages.mjs";
+import {
+  deleteSuccessMessage,
+  generateConfirmHtml,
+} from "../messages/deleteMessages.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 import { registerMessageSuccess } from "../messages/registerMessages.mjs";
 import { formatDate, removeUnderscore } from "./formatting.mjs";
 import { hideLoader, showLoader } from "./loader.mjs";
 
-
 // Activating login success message
 document.addEventListener("DOMContentLoaded", function () {
-    const displayMessage = (key, callback) => {
-        if (localStorage.getItem(key)) {
-            callback();
-            localStorage.removeItem(key);
-        }
+  const displayMessage = (key, callback) => {
+    if (localStorage.getItem(key)) {
+      callback();
+      localStorage.removeItem(key);
     }
-    displayMessage("loginSuccess", loginMessageSuccess);
-    displayMessage("registerSuccess", registerMessageSuccess);
-    displayMessage("deleteSuccess", deleteSuccessMessage);
+  };
+  displayMessage("loginSuccess", loginMessageSuccess);
+  displayMessage("registerSuccess", registerMessageSuccess);
+  displayMessage("deleteSuccess", deleteSuccessMessage);
 });
 
+// const loginSuccess = localStorage.getItem("loginSuccess");
+// const registerSuccess = localStorage.getItem("registerSuccess")
+// if (loginSuccess) {
+//     loginMessageSuccess();
+//     localStorage.removeItem("loginSuccess");
+// }
 
-    // const loginSuccess = localStorage.getItem("loginSuccess");
-    // const registerSuccess = localStorage.getItem("registerSuccess")
-    // if (loginSuccess) {
-    //     loginMessageSuccess();
-    //     localStorage.removeItem("loginSuccess");
-    // }
-    
-    // if (registerSuccess) {
-    //     registerMessageSuccess();
-    //     localStorage.removeItem("registerSuccess");
-    // }
+// if (registerSuccess) {
+//     registerMessageSuccess();
+//     localStorage.removeItem("registerSuccess");
+// }
 
-    // const deleteSuccess = localStorage.getItem("deleteSuccess");
-    // if (deleteSuccess) {
-    //     deleteSuccessMessage();
-    //     localStorage.removeItem("deleteSuccess");
-    // }
+// const deleteSuccess = localStorage.getItem("deleteSuccess");
+// if (deleteSuccess) {
+//     deleteSuccessMessage();
+//     localStorage.removeItem("deleteSuccess");
+// }
 
 // display posts ✅ (generated into each row in table) ✅
 
@@ -46,104 +47,102 @@ document.addEventListener("DOMContentLoaded", function () {
 // 1. generate tableHtml ✅
 // (when button Add post on create.html is clicked, empty form)
 
-
 export async function renderTable() {
+  showLoader();
 
-    showLoader();
-
-    try {
-        // Promise for testing, REMOVE
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        const userName = JSON.parse(localStorage.getItem("userName"))
-        console.log(userName);
-        const token = localStorage.getItem("accessToken")
-        const responseData = await getPosts(API_BASE + API_POSTS + API_NAME, token);
-        const posts = responseData.data;
-        console.log(posts);
-        posts.forEach(post => {
-            generateTableHtml(post)
-        });
-    } catch {
-        console.log("catch error here");
-    } finally {
-        hideLoader();
-    }
-};
+  try {
+    // Promise for testing, REMOVE
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const userName = JSON.parse(localStorage.getItem("userName"));
+    console.log(userName);
+    const token = localStorage.getItem("accessToken");
+    const responseData = await getPosts(API_BASE + API_POSTS + API_NAME, token);
+    const posts = responseData.data;
+    console.log(posts);
+    posts.forEach((post) => {
+      generateTableHtml(post);
+    });
+  } catch {
+    console.log("catch error here");
+  } finally {
+    hideLoader();
+  }
+}
 
 export function generateTableHtml(post) {
-    const tableBody = document.getElementById("tbody");
+  const tableBody = document.getElementById("tbody");
 
-    const tableRow = document.createElement("tr");
+  const tableRow = document.createElement("tr");
+  const postId = post.id;
+  tableRow.setAttribute("data-post-id", postId);
+
+  const title = document.createElement("td");
+  title.innerHTML = post.title;
+
+  const author = document.createElement("td");
+  const authorName = post.author.name;
+  author.textContent = removeUnderscore(authorName);
+
+  const date = document.createElement("td");
+  if (post.updated === post.created) {
+    const formattedDate = post.created;
+    date.textContent = formatDate(formattedDate);
+  } else {
+    const formattedDate = post.updated;
+    date.textContent = formatDate(formattedDate);
+  }
+
+  const pubBtnCell = document.createElement("td");
+  const pubBtn = document.createElement("button");
+  pubBtn.textContent = "Publish";
+  pubBtn.classList.add("button", "button-small", "button-transparent");
+  pubBtn.setAttribute("id", "js-btn-publish");
+
+  const editBtnCell = document.createElement("td");
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.classList.add("button", "button-small", "button-transparent");
+  editBtn.setAttribute("id", "js-btn-edit");
+  editBtn.setAttribute("aria-label", "Edit Post");
+  editBtn.addEventListener("click", () => {
     const postId = post.id;
-    tableRow.setAttribute("data-post-id", postId);
+    localStorage.setItem("postId", JSON.stringify(postId));
 
-    const title = document.createElement("td");
-    title.innerHTML = post.title;
+    // save data from post
+    const title = post.title;
+    const body = post.body;
+    const imgUrl = post.media.url;
+    const imgAlt = post.media.alt;
+    const category = post.tags;
 
-    const author = document.createElement("td");
-    const authorName = post.author.name;
-    author.textContent = removeUnderscore(authorName);
-
-    const date = document.createElement("td");
-    if (post.updated === post.created) {
-        const formattedDate = post.created;
-        date.textContent = formatDate(formattedDate);
-    } else {
-        const formattedDate = post.updated;
-        date.textContent = formatDate(formattedDate);
-    }
-
-    const pubBtnCell = document.createElement("td");
-    const pubBtn = document.createElement("button");
-    pubBtn.textContent = "Publish"
-    pubBtn.classList.add("button", "button-small", "button-transparent");
-    pubBtn.setAttribute("id", "js-btn-publish");
-
-    const editBtnCell = document.createElement("td");
-    const editBtn = document.createElement("button");
-    editBtn.textContent = "Edit";
-    editBtn.classList.add("button", "button-small", "button-transparent");
-    editBtn.setAttribute("id", "js-btn-edit");
-    editBtn.setAttribute("aria-label", "Edit Post");
-    editBtn.addEventListener('click', () => {
-        const postId = post.id;
-        localStorage.setItem('postId', JSON.stringify(postId));
-        
-        // save data from post
-        const title = post.title;
-        const body = post.body;
-        const imgUrl = post.media.url;
-        const imgAlt = post.media.alt;
-        const category = post.tags;
-        
-        const queryParams = new URLSearchParams({
-            title: title,
-            body: body,
-            imgUrl: imgUrl,
-            imgAlt: imgAlt,
-            category: category,
-        })
-
-        const queryParamsString = queryParams.toString();
-        window.location.href = `./edit.html?${queryParamsString}`;
+    const queryParams = new URLSearchParams({
+      title: title,
+      body: body,
+      imgUrl: imgUrl,
+      imgAlt: imgAlt,
+      category: category,
     });
 
-    const deleteBtnCell = document.createElement("td");
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-    deleteBtn.classList.add("button", "button-small");
-    deleteBtn.setAttribute("id", "js-btn-delete");
-    deleteBtn.setAttribute("aria-label", "Delete Post");
-    
-    deleteBtn.addEventListener('click', () => {
-        generateConfirmHtml(post)
-    });
+    const queryParamsString = queryParams.toString();
+    window.location.href = `./edit.html?${queryParamsString}`;
+  });
 
-    deleteBtnCell.appendChild(deleteBtn);
-    editBtnCell.appendChild(editBtn);
-    pubBtnCell.appendChild(pubBtn);
-    tableRow.append(title, author, date, pubBtnCell, editBtnCell, deleteBtnCell);
-    tableBody.appendChild(tableRow);
+  const deleteBtnCell = document.createElement("td");
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.classList.add("button", "button-small");
+  deleteBtn.setAttribute("id", "js-btn-delete");
+  deleteBtn.setAttribute("aria-label", "Delete Post");
+
+  deleteBtn.addEventListener("click", () => {
+    generateConfirmHtml(post);
+  });
+
+  deleteBtnCell.appendChild(deleteBtn);
+  editBtnCell.appendChild(editBtn);
+  pubBtnCell.appendChild(pubBtn);
+  tableRow.append(title, author, date, pubBtnCell, editBtnCell, deleteBtnCell);
+  tableBody.appendChild(tableRow);
 }
 
 // delete post
@@ -160,7 +159,7 @@ export function generateTableHtml(post) {
 //     const API_NAME = `/${name}`;
 
 //     const token = localStorage.getItem('accessToken');
-    
+
 //     fetch(API_BASE + API_POSTS + API_NAME + API_ID, {
 //         method: 'DELETE',
 //         headers: {
@@ -184,5 +183,3 @@ export function generateTableHtml(post) {
 //         console.error('Error', error);
 //     })
 // }
-
-
