@@ -121,6 +121,13 @@ function setLogInListener() {
 
 setLogInListener();
 
+
+// Event listener for form when user wants to try again
+document.forms.login.addEventListener("click", removeErrorMessage);
+
+
+
+// old code, added into a try..catch:
 // const loginForm = document.getElementById("js-login-form");
 // const emailInput = document.getElementById("email");
 // const passwordInput = document.getElementById("password");
@@ -140,5 +147,3 @@ setLogInListener();
 //   await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
 // });
 
-// Event listener for form when user wants to try again
-document.forms.login.addEventListener("click", removeErrorMessage);
