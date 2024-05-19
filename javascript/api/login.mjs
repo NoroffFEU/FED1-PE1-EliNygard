@@ -5,20 +5,18 @@ import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
 
 // deep level
 async function loginUser(url, userData) {
-  showLoader();
-
-  // error messages:
+  
+  // validate the form inputs:
   if (!userData.email) {
     throw new Error("No email provided");
     // replace with ERROR_NO_EMAIL
-
-    // need to stop this function
   }
-
+  
   if (!userData.password) {
     throw new Error("No password provided");
   }
   try {
+    showLoader();
     // Promise for testing loader, REMOVE
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const postData = {
@@ -51,7 +49,6 @@ async function loginUser(url, userData) {
     }
   } catch (error) {
     console.log(error);
-    throw error;
   } finally {
     hideLoader();
   }
@@ -65,30 +62,13 @@ async function loginUser(url, userData) {
 // need a function for loginform event listener: "submit", onLogIn
 // function onLogIn: try APIs, userData
 
-// semi deep level
+// surface level
 async function onLogIn(event) {
   event.preventDefault();
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
   const email = emailInput.value;
   const password = passwordInput.value;
-
-  // validate the form inputs:
-  if (!email) {
-    alert("Please enter your email");
-    console.log("enter email");
-    emailInput.focus();
-    return;
-  }
-  // add validation on email @ and so on
-
-
-  if (!password) {
-    alert("Please enter your password");
-    console.log("Please enter your password");
-    passwordInput.focus();
-    return;
-  }
 
   try {
     const userData = {
@@ -98,10 +78,10 @@ async function onLogIn(event) {
 
     await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
   } catch (error) {
-    //tell the user what's wrong. This is not showing because error is being caught in loginuser func
-    // alert(error.message);
+    alert(error.message);
+    // (generate a container and append to document to replace alert)
     console.log(error.message);
-  }
+  } 
 }
 
 document.forms.login.email.addEventListener("input", (event) => {
