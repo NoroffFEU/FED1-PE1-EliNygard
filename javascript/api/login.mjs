@@ -3,21 +3,23 @@ import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
 import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
 
+// deep level
 async function loginUser(url, userData) {
   showLoader();
 
-  try {
-      // validation
-      if (!userData.email) {
-        throw new Error("No email provided");
-        // replace with ERROR_NO_EMAIL
-      }
-  
-      if (!userData.password) {
-        throw new Error("No password provided");
-      }
+  // error messages:
+  if (!userData.email) {
+    throw new Error("No email provided");
+    // replace with ERROR_NO_EMAIL
 
-    // Promise for testing, REMOVE
+    // need to stop this function
+  }
+
+  if (!userData.password) {
+    throw new Error("No password provided");
+  }
+  try {
+    // Promise for testing loader, REMOVE
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const postData = {
       method: "POST",
@@ -42,19 +44,20 @@ async function loginUser(url, userData) {
     } else {
       if (response.status === 401) {
         loginMessageError(); // move this closer to user?
-        throw new Error("Unauthorized: Invalid credentials")
+        throw new Error("Unauthorized: Invalid credentials");
       } else {
-        throw new Error(json.error || "Something went wrong. Please try again")
+        throw new Error(json.error || "Something went wrong. Please try again");
       }
     }
   } catch (error) {
+    console.log(error);
     throw error;
   } finally {
     hideLoader();
   }
 }
 
-// 1. put listener inside a function
+// 1. put listener inside a function ✅
 // 2. try...catch: try cont + await loginUser. Catch error and alert.
 //      This is the error the user reads in the dom. Create an error.
 // 3. in loginUser create a if(!userName) throw new Error (use error I create) or error.log
@@ -62,14 +65,32 @@ async function loginUser(url, userData) {
 // need a function for loginform event listener: "submit", onLogIn
 // function onLogIn: try APIs, userData
 
+// semi deep level
 async function onLogIn(event) {
   event.preventDefault();
-  try {
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const email = emailInput.value;
-    const password = passwordInput.value;
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const email = emailInput.value;
+  const password = passwordInput.value;
 
+  // validate the form inputs:
+  if (!email) {
+    alert("Please enter your email");
+    console.log("enter email");
+    emailInput.focus();
+    return;
+  }
+  // add validation on email @ and so on
+
+  
+  if (!password) {
+    alert("Please enter your password");
+    console.log("Please enter your password");
+    passwordInput.focus();
+    return;
+  }
+
+  try {
     const userData = {
       email: email,
       password: password,
@@ -83,12 +104,13 @@ async function onLogIn(event) {
   }
 }
 
-function setUserDataListener() {
+// surface level
+function setLogInListener() {
   const loginForm = document.getElementById("js-login-form");
   loginForm.addEventListener("submit", onLogIn);
 }
 
-setUserDataListener();
+setLogInListener();
 
 // const loginForm = document.getElementById("js-login-form");
 // const emailInput = document.getElementById("email");
@@ -111,5 +133,3 @@ setUserDataListener();
 
 //Event listener for form when user wants to try again
 // loginForm.addEventListener("click", removeErrorMessage);
-
-

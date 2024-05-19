@@ -1,0 +1,1 @@
+// create a function i.e setCustomValidity. Generate html and append, but add message on the validation it self. So it can be reused. Replace with alerts

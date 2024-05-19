@@ -59,18 +59,18 @@
                 
                 <h1 class="font-primary color-theme-dark-blue heading-primary">Create an account</h1>
                 
-                <form id="js-registration-form" action="../post/manage.html" method="GET">
+                <form name="register" id="js-registration-form" action="../post/manage.html" method="GET">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" placeholder="Name" required>
+                    <input type="text" name="name" id="name" placeholder="Name">
                     
                     <label for="email">E-mail address</label>
-                    <input type="email" name="email" id="email" placeholder="E-mail address" required>
+                    <input type="email" name="email" id="email" placeholder="E-mail address">
                     
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" minlength="6" placeholder="Password" required>
+                    <input type="password" name="password" id="password" required placeholder="Password">
                     
                     <label for="confirm-password">Confirm password</label>
-                    <input type="password" name="confirm-password" id="confirm-password" minlength="6" placeholder="Confirm password" required>
+                    <input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm password">
                     
                     <div class="password-error-container error-message-container"></div>
 
