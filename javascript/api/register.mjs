@@ -85,6 +85,15 @@ async function registerUser(url, userData) {
 //     }
 // })
 
+document.forms.register.email.addEventListener("input", (event) => {
+    event.preventDefault();
+    if (email.validity.typeMismatch) {
+        email.setCustomValidity(`Enter a valid email address. "${email.value}" must include a '@' and/or '.'.`)
+    } else {
+        email.setCustomValidity("")
+    }
+})
+
 // submit form with inputs:
 const registerForm = document.getElementById("js-registration-form");
 
@@ -117,7 +126,6 @@ registerForm.addEventListener("submit", async function (event) {
     alert("Please enter your email address.");
     return;
   }
-  // add check if email has @ and so on
 
   if (!password) {
     alert("Please enter a password");
@@ -148,6 +156,7 @@ registerForm.addEventListener("submit", async function (event) {
   //     window.location.href = '../post/manage.html';
   // }
 });
+
 
 // event listener for input fields. When user want to try again
 registerForm.addEventListener("click", () => {
