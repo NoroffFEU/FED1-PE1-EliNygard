@@ -28,7 +28,11 @@ async function registerUser(url, userData) {
     const json = await response.json();
     console.log(json);
 
-    if (response.ok) {
+    if (!response.ok) {
+      const errorMessages = extractErrorMessages(json);
+      renderErrorMessageHtml(errorMessages);
+      console.log("Error", errorMessages);
+    } else {
       const accessToken = json.data.accessToken;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("registerSuccess", true);
@@ -39,12 +43,28 @@ async function registerUser(url, userData) {
       // alert('User registered successfully');
 
       return json;
-    } else {
-      // display error message
-      const errorMessages = extractErrorMessages(json);
-      renderErrorMessageHtml(errorMessages);
-      console.log("Error", json.error);
     }
+
+    // if (response.ok) {
+    //   const accessToken = json.data.accessToken;
+    //   localStorage.setItem("accessToken", accessToken);
+    //   localStorage.setItem("registerSuccess", true);
+    //   localStorage.setItem("userName", JSON.stringify(json.data.name));
+
+    //   window.location.href = "../post/manage.html";
+    //   // replace alert with success message
+    //   // alert('User registered successfully');
+
+    //   return json;
+
+    // }
+
+    // else {
+    //   // display error message
+    //   const errorMessages = extractErrorMessages(json);
+    //   renderErrorMessageHtml(errorMessages);
+    //   console.log("Error", json.error);
+    // }
   } catch (error) {
     console.error("Error:", error);
   } finally {
@@ -53,18 +73,19 @@ async function registerUser(url, userData) {
   }
 }
 
-// check if user exixts 
-document.forms.register.addEventListener("input", async (event) => {
-    const username = event.target;
-    const available = await checkUsernameAvailability(username.value)
+// check if user exits:
+// document.forms.register.addEventListener("input", async (event) => {
+//     const username = event.target;
+//     const available = await checkUsernameAvailability(username.value)
 
-    if(!available) {
-        alert(`The username ${username.value} is taken. Please try another name.`)
-    } else {
-        // do nothing
-    }
-})
+//     if(!available) {
+//         alert(`The username ${username.value} is taken. Please try another name.`)
+//     } else {
+//         // do nothing or // clear the custom error message
+//     }
+// })
 
+// submit form with inputs:
 const registerForm = document.getElementById("js-registration-form");
 
 registerForm.addEventListener("submit", async function (event) {
@@ -76,28 +97,32 @@ registerForm.addEventListener("submit", async function (event) {
   const confirmPassword = document.getElementById("confirm-password").value;
 
   // validate form inputs:
-  // add validation on if user exists
   if (!name) {
-    alert("Please enter a user name.")
+    alert("Please enter a user name.");
     console.log("enter name");
     return;
   }
 
-  if(name.length < 3) {
-    alert("user name must be a minimum of 3 characters. Please try again")
+  //   const available = await checkUsernameAvailability(name)
+  //   if(!available) {
+  //     alert("not avail")
+  //   }
+
+  if (name.length < 3) {
+    alert("user name must be a minimum of 3 characters. Please try again");
   }
 
   if (!email) {
-    alert("Please enter your email address.")
+    alert("Please enter your email address.");
   }
   // add check if email has @ and so on
 
   if (!password) {
-    alert("Please enter a password")
+    alert("Please enter a password");
   }
   if (password.length < 6) {
-    alert("Password must be a minimum of 6 characters. Please try again.")
-}
+    alert("Password must be a minimum of 6 characters. Please try again.");
+  }
   if (password !== confirmPassword) {
     confirmPasswordError();
     console.log("no match");
