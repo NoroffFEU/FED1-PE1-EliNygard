@@ -5,18 +5,19 @@ import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
 
 // deep level
 async function loginUser(url, userData) {
-  
   // validate the form inputs:
   if (!userData.email) {
     throw new Error("No email provided");
     // replace with ERROR_NO_EMAIL
   }
-  
+
   if (!userData.password) {
     throw new Error("No password provided");
   }
+
+  showLoader();
+
   try {
-    showLoader();
     // Promise for testing loader, REMOVE
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const postData = {
@@ -30,7 +31,9 @@ async function loginUser(url, userData) {
     const response = await fetch(url, postData);
     const json = await response.json();
 
-    if (response.ok) {
+    if (!response.ok) {
+      throw new Error("Unauthorized: Invalid credentials");
+    } else {
       const accessToken = json.data.accessToken;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("loginSuccess", true);
@@ -39,16 +42,27 @@ async function loginUser(url, userData) {
       window.location.href = "../post/manage.html";
 
       return json;
-    } else {
-      if (response.status === 401) {
-        loginMessageError(); // move this closer to user?
-        throw new Error("Unauthorized: Invalid credentials"); 
-      } else {
-        throw new Error(json.error || "Something went wrong. Please try again");
-      }
     }
+
+    // if (response.ok) {
+    //   const accessToken = json.data.accessToken;
+    //   localStorage.setItem("accessToken", accessToken);
+    //   localStorage.setItem("loginSuccess", true);
+    //   localStorage.setItem("userName", JSON.stringify(json.data.name));
+
+    //   window.location.href = "../post/manage.html";
+
+    //   return json;
+    // } else {
+    //   if (response.status === 401) {
+    //     loginMessageError(); // move this closer to user?
+    //     throw new Error("Unauthorized: Invalid credentials");
+    //   } else {
+    //     throw new Error(json.error || "Something went wrong. Please try again");
+    //   }
+    // }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   } finally {
     hideLoader();
   }
@@ -81,17 +95,19 @@ async function onLogIn(event) {
     alert(error.message);
     // (generate a container and append to document to replace alert)
     console.log(error.message);
-  } 
+  }
 }
 
 document.forms.login.email.addEventListener("input", (event) => {
   event.preventDefault();
   if (email.validity.typeMismatch) {
-      email.setCustomValidity(`Enter a valid email address. "${email.value}" must include a '@' and/or '.'.`)
+    email.setCustomValidity(
+      `Enter a valid email address. "${email.value}" must include a '@' and/or '.'.`
+    );
   } else {
-      email.setCustomValidity("")
+    email.setCustomValidity("");
   }
-})
+});
 
 // surface level
 function setLogInListener() {
@@ -101,11 +117,8 @@ function setLogInListener() {
 
 setLogInListener();
 
-
 // Event listener for form when user wants to try again
 document.forms.login.addEventListener("click", removeErrorMessage);
-
-
 
 // old code, added into a try..catch:
 // const loginForm = document.getElementById("js-login-form");
@@ -126,4 +139,3 @@ document.forms.login.addEventListener("click", removeErrorMessage);
 
 //   await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
 // });
-

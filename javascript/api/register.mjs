@@ -9,7 +9,8 @@ import { checkUsernameAvailability } from "./checkUsernameAvailability.mjs";
 import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 
 async function registerUser(url, userData) {
-  // loader show
+  // validate the form inputs:
+
   showLoader();
 
   try {
@@ -68,7 +69,6 @@ async function registerUser(url, userData) {
   } catch (error) {
     console.error("Error:", error);
   } finally {
-    // loader hide
     hideLoader();
   }
 }
@@ -87,13 +87,15 @@ async function registerUser(url, userData) {
 
 // check correct input type in forms:
 document.forms.register.email.addEventListener("input", (event) => {
-    event.preventDefault();
-    if (email.validity.typeMismatch) {
-        email.setCustomValidity(`Enter a valid email address. "${email.value}" must include a '@' and/or '.'.`)
-    } else {
-        email.setCustomValidity("")
-    }
-})
+  event.preventDefault();
+  if (email.validity.typeMismatch) {
+    email.setCustomValidity(
+      `Enter a valid email address. "${email.value}" must include a '@' and/or '.'.`
+    );
+  } else {
+    email.setCustomValidity("");
+  }
+});
 
 // submit form with inputs:
 const registerForm = document.getElementById("js-registration-form");
@@ -158,7 +160,6 @@ registerForm.addEventListener("submit", async function (event) {
   //     window.location.href = '../post/manage.html';
   // }
 });
-
 
 // event listener for input fields. When user want to try again
 registerForm.addEventListener("click", () => {
