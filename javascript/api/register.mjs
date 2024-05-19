@@ -110,34 +110,38 @@ registerForm.addEventListener("submit", async function (event) {
 
   if (name.length < 3) {
     alert("user name must be a minimum of 3 characters. Please try again");
+    return;
   }
 
   if (!email) {
     alert("Please enter your email address.");
+    return;
   }
   // add check if email has @ and so on
 
   if (!password) {
     alert("Please enter a password");
+    return;
   }
   if (password.length < 6) {
     alert("Password must be a minimum of 6 characters. Please try again.");
+    return;
   }
   if (password !== confirmPassword) {
     confirmPasswordError();
     console.log("no match");
     return;
+  } else {
+    const userData = {
+      name: name,
+      email: email,
+      password: password,
+    };
+
+    console.log(userData);
+
+    await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
   }
-
-  const userData = {
-    name: name,
-    email: email,
-    password: password,
-  };
-
-  console.log(userData);
-
-  await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
 
   // const loginResponse = await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
   // if (loginResponse) {
