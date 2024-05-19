@@ -15,6 +15,8 @@ async function loginUser(url, userData) {
     throw new Error("No password provided");
   }
 
+  
+
   showLoader();
 
   try {
@@ -31,8 +33,10 @@ async function loginUser(url, userData) {
     const response = await fetch(url, postData);
     const json = await response.json();
 
+    // stops at catch in this block
+    // would like to specify if: check if email and password match
     if (!response.ok) {
-      throw new Error("Unauthorized: Invalid credentials");
+      throw new Error("Wrong email or password")
     } else {
       const accessToken = json.data.accessToken;
       localStorage.setItem("accessToken", accessToken);
@@ -43,7 +47,6 @@ async function loginUser(url, userData) {
 
       return json;
     }
-
     // if (response.ok) {
     //   const accessToken = json.data.accessToken;
     //   localStorage.setItem("accessToken", accessToken);
@@ -54,15 +57,14 @@ async function loginUser(url, userData) {
 
     //   return json;
     // } else {
-    //   if (response.status === 401) {
-    //     loginMessageError(); // move this closer to user?
-    //     throw new Error("Unauthorized: Invalid credentials");
-    //   } else {
-    //     throw new Error(json.error || "Something went wrong. Please try again");
-    //   }
+      
     // }
-  } catch (error) {
-    console.error(error);
+    
+  } catch (error){
+    //this should maybe be at lower level?
+    loginMessageError()
+    console.log(error);
+    // console.error(("Error", error));
   } finally {
     hideLoader();
   }
@@ -92,9 +94,11 @@ async function onLogIn(event) {
 
     await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
   } catch (error) {
-    alert(error.message);
+    console.error(error);
+    alert(error);
+    console.log(error);
     // (generate a container and append to document to replace alert)
-    console.log(error.message);
+    // use loginMessageError, but create a general one and put in error message
   }
 }
 

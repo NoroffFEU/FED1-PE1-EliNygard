@@ -2,14 +2,38 @@ import {
   extractErrorMessages,
   renderErrorMessageHtml,
 } from "../messages/errorMessage.mjs";
-import { confirmPasswordError } from "../messages/loginMessages.mjs";
+// import { confirmPasswordError } from "../messages/loginMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
-import { checkUsernameAvailability } from "./checkUsernameAvailability.mjs";
+// import { checkUsernameAvailability } from "./checkUsernameAvailability.mjs";
 import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 
 async function registerUser(url, userData) {
   // validate the form inputs:
+  if (!userData.name) {
+    throw new Error("Please enter a user name.");
+  }
+  if (userData.name.length < 3) {
+    throw new Error(
+      "user name must be a minimum of 3 characters. Please try again"
+    );
+  }
+  if (!userData.email) {
+    throw new Error("Please enter your email address.");
+  }
+  if (!userData.password) {
+    throw new Error("Please enter a password");
+  }
+  if (userData.password.length < 6) {
+    throw new Error(
+      "Password must be a minimum of 6 characters. Please try again."
+    );
+  }
+  if (userData.password !== userData.confirmPassword) {
+    throw new Error("Passwords do not match. Please try again")
+    // confirmPasswordError();
+    // console.log("no match");
+  }
 
   showLoader();
 
@@ -67,7 +91,7 @@ async function registerUser(url, userData) {
     //   console.log("Error", json.error);
     // }
   } catch (error) {
-    console.error("Error:", error);
+    console.error(error);
   } finally {
     hideLoader();
   }
@@ -106,14 +130,14 @@ registerForm.addEventListener("submit", async function (event) {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirm-password").value;
+//   const confirmPassword = document.getElementById("confirm-password").value;
 
   // validate form inputs:
-  if (!name) {
-    alert("Please enter a user name.");
-    console.log("enter name");
-    return;
-  }
+  //   if (!name) {
+  //     alert("Please enter a user name.");
+  //     console.log("enter name");
+  //     return;
+  //   }
 
   // availability is not working properly. Everything is stated as not available, even "a"
   //   const available = await checkUsernameAvailability(name)
@@ -121,29 +145,30 @@ registerForm.addEventListener("submit", async function (event) {
   //     alert("not avail")
   //   }
 
-  if (name.length < 3) {
-    alert("user name must be a minimum of 3 characters. Please try again");
-    return;
-  }
+  //   if (name.length < 3) {
+  //     alert("user name must be a minimum of 3 characters. Please try again");
+  //     return;
+  //   }
 
-  if (!email) {
-    alert("Please enter your email address.");
-    return;
-  }
+  //   if (!email) {
+  //     alert("Please enter your email address.");
+  //     return;
+  //   }
 
-  if (!password) {
-    alert("Please enter a password");
-    return;
-  }
-  if (password.length < 6) {
-    alert("Password must be a minimum of 6 characters. Please try again.");
-    return;
-  }
-  if (password !== confirmPassword) {
-    confirmPasswordError();
-    console.log("no match");
-    return;
-  } else {
+  //   if (!password) {
+  //     alert("Please enter a password");
+  //     return;
+  //   }
+  //   if (password.length < 6) {
+  //     alert("Password must be a minimum of 6 characters. Please try again.");
+  //     return;
+  //   }
+  //   if (password !== confirmPassword) {
+  //     confirmPasswordError();
+  //     console.log("no match");
+  //     return;
+  //   } else {
+  try {
     const userData = {
       name: name,
       email: email,
@@ -153,7 +178,11 @@ registerForm.addEventListener("submit", async function (event) {
     console.log(userData);
 
     await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
+  } catch (error) {
+    alert(error);
+    console.log(error);
   }
+  //   }
 
   // const loginResponse = await registerUser(API_BASE + API_AUTH + API_REGISTER, userData);
   // if (loginResponse) {
