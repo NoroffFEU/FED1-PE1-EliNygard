@@ -85,6 +85,7 @@ async function registerUser(url, userData) {
 //     }
 // })
 
+// check correct input type in forms:
 document.forms.register.email.addEventListener("input", (event) => {
     event.preventDefault();
     if (email.validity.typeMismatch) {
@@ -112,6 +113,7 @@ registerForm.addEventListener("submit", async function (event) {
     return;
   }
 
+  // availability is not working properly. Everything is stated as not available, even "a"
   //   const available = await checkUsernameAvailability(name)
   //   if(!available) {
   //     alert("not avail")

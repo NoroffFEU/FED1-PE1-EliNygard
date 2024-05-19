@@ -44,7 +44,7 @@ async function loginUser(url, userData) {
     } else {
       if (response.status === 401) {
         loginMessageError(); // move this closer to user?
-        throw new Error("Unauthorized: Invalid credentials");
+        throw new Error("Unauthorized: Invalid credentials"); 
       } else {
         throw new Error(json.error || "Something went wrong. Please try again");
       }
@@ -82,7 +82,7 @@ async function onLogIn(event) {
   }
   // add validation on email @ and so on
 
-  
+
   if (!password) {
     alert("Please enter your password");
     console.log("Please enter your password");
@@ -99,10 +99,19 @@ async function onLogIn(event) {
     await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
   } catch (error) {
     //tell the user what's wrong. This is not showing because error is being caught in loginuser func
-    alert(error.message);
+    // alert(error.message);
     console.log(error.message);
   }
 }
+
+document.forms.login.email.addEventListener("input", (event) => {
+  event.preventDefault();
+  if (email.validity.typeMismatch) {
+      email.setCustomValidity(`Enter a valid email address. "${email.value}" must include a '@' and/or '.'.`)
+  } else {
+      email.setCustomValidity("")
+  }
+})
 
 // surface level
 function setLogInListener() {
@@ -131,5 +140,5 @@ setLogInListener();
 //   await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
 // });
 
-//Event listener for form when user wants to try again
-// loginForm.addEventListener("click", removeErrorMessage);
+// Event listener for form when user wants to try again
+document.forms.login.addEventListener("click", removeErrorMessage);
