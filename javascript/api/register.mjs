@@ -5,6 +5,7 @@ import {
 import { confirmPasswordError } from "../messages/loginMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
+import { checkUsernameAvailability } from "./checkUsernameAvailability.mjs";
 import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 
 async function registerUser(url, userData) {
@@ -52,6 +53,18 @@ async function registerUser(url, userData) {
   }
 }
 
+// check if user exixts 
+document.forms.register.addEventListener("input", async (event) => {
+    const username = event.target;
+    const available = await checkUsernameAvailability(username.value)
+
+    if(!available) {
+        alert(`The username ${username.value} is taken. Please try another name.`)
+    } else {
+        // do nothing
+    }
+})
+
 const registerForm = document.getElementById("js-registration-form");
 
 registerForm.addEventListener("submit", async function (event) {
@@ -62,7 +75,6 @@ registerForm.addEventListener("submit", async function (event) {
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirm-password").value;
 
-  console.log("Name", name);
   // validate form inputs:
   // add validation on if user exists
   if (!name) {
