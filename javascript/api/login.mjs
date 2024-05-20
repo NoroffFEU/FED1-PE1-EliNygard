@@ -48,6 +48,7 @@ async function loginUser(url, userData) {
       const errorMessages = extractErrorMessages(json);
       renderErrorMessageHtml(errorMessages);
       console.log(("Error", errorMessages));
+      return;
     } else {
       const accessToken = json.data.accessToken;
       console.log(accessToken);
@@ -83,10 +84,7 @@ async function onLogIn(event) {
   const password = passwordInput.value;
 
   try {
-    const userData = {
-      email: email,
-      password: password,
-    };
+    const userData = { email, password };
 
     await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
   } catch (error) {
