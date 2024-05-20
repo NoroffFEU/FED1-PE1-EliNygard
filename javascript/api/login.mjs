@@ -1,37 +1,42 @@
+import {
+  extractErrorMessages,
+  renderErrorMessageHtml,
+} from "../messages/errorMessage.mjs";
 import { loginMessageError } from "../messages/loginMessages.mjs";
 import { registerMessageSuccess } from "../messages/registerMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
 import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
+import { validateUserData } from "./validateUserData.mjs";
 
 // Activating register success message
 document.addEventListener("DOMContentLoaded", function () {
   const displayMessage = (key, callback) => {
-    if(localStorage.getItem(key)) {
-      callback()
-      localStorage.removeItem(key)
+    if (localStorage.getItem(key)) {
+      callback();
+      localStorage.removeItem(key);
     }
-  }
-  displayMessage("registerSuccess", registerMessageSuccess)
-})
+  };
+  displayMessage("registerSuccess", registerMessageSuccess);
+});
 
 // deep level
 async function loginUser(url, userData) {
-  // validate the form inputs:
-  if (!userData.email) {
-    throw new Error("No email provided");
-    // replace with ERROR_NO_EMAIL
-  }
-
-  if (!userData.password) {
-    throw new Error("No password provided");
-  }
-
   showLoader();
 
   try {
     // Promise for testing loader, REMOVE
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    // validate the form inputs:
+    if (!userData.email) {
+      throw new Error("No email provided");
+      // replace with ERROR_NO_EMAIL
+    }
+
+    if (!userData.password) {
+      throw new Error("No password provided");
+    }
+
     const postData = {
       method: "POST",
       headers: {
@@ -47,7 +52,9 @@ async function loginUser(url, userData) {
     // stops at catch in this block
     // would like to specify if: check if email and password match
     if (!response.ok) {
-      throw new Error("Wrong email or password");
+      const errorMessages = extractErrorMessages(json);
+      renderErrorMessageHtml(errorMessages);
+      console.log(("Error", errorMessages));
     } else {
       const accessToken = json.data.accessToken;
       console.log(accessToken);
@@ -77,7 +84,8 @@ async function loginUser(url, userData) {
     // }
   } catch (error) {
     //this should maybe be at lower level?
-    loginMessageError();
+    // loginMessageError();
+    alert(error);
     console.log(error);
     // console.error(("Error", error));
   } finally {
