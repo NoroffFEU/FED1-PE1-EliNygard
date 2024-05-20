@@ -63,18 +63,6 @@ async function loginUser(url, userData) {
 
       return json;
     }
-    // if (response.ok) {
-    //   const accessToken = json.data.accessToken;
-    //   localStorage.setItem("accessToken", accessToken);
-    //   localStorage.setItem("loginSuccess", true);
-    //   localStorage.setItem("userName", JSON.stringify(json.data.name));
-
-    //   window.location.href = "../post/manage.html";
-
-    //   return json;
-    // } else {
-
-    // }
   } catch (error) {
     //this should maybe be at lower level?
     // loginMessageError();
@@ -85,14 +73,6 @@ async function loginUser(url, userData) {
     hideLoader();
   }
 }
-
-// 1. put listener inside a function ✅
-// 2. try...catch: try cont + await loginUser. Catch error and alert.
-//      This is the error the user reads in the dom. Create an error.
-// 3. in loginUser create a if(!userName) throw new Error (use error I create) or error.log
-
-// need a function for loginform event listener: "submit", onLogIn
-// function onLogIn: try APIs, userData
 
 // surface level
 async function onLogIn(event) {
@@ -118,17 +98,6 @@ async function onLogIn(event) {
   }
 }
 
-document.forms.login.email.addEventListener("input", (event) => {
-  event.preventDefault();
-  if (email.validity.typeMismatch) {
-    email.setCustomValidity(
-      `Enter a valid email address. "${email.value}" must include a '@' and/or '.'.`
-    );
-  } else {
-    email.setCustomValidity("");
-  }
-});
-
 // surface level
 function setLogInListener() {
   const loginForm = document.getElementById("js-login-form");
@@ -139,23 +108,3 @@ setLogInListener();
 
 // Event listener for form when user wants to try again
 document.forms.login.addEventListener("click", removeErrorMessage);
-
-// old code, added into a try..catch:
-// const loginForm = document.getElementById("js-login-form");
-// const emailInput = document.getElementById("email");
-// const passwordInput = document.getElementById("password");
-
-//Functions to handle form submission
-// loginForm.addEventListener("submit", async function (event) {
-//   event.preventDefault();
-
-//   const email = emailInput.value;
-//   const password = passwordInput.value;
-
-//   const userData = {
-//     email: email,
-//     password: password,
-//   };
-
-//   await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
-// });

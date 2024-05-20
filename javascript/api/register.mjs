@@ -70,16 +70,16 @@ async function registerUser(url, userData, confirmPassword) {
 // })
 
 // check correct input type in forms:
-document.forms.register.email.addEventListener("input", (event) => {
-  event.preventDefault();
-  if (email.validity.typeMismatch) {
-    email.setCustomValidity(
-      `Enter a valid email address. "${email.value}" must include a '@' and/or '.'.`
-    );
-  } else {
-    email.setCustomValidity("");
-  }
-});
+// document.forms.register.email.addEventListener("input", (event) => {
+//   event.preventDefault();
+//   if (email.validity.typeMismatch) {
+//     email.setCustomValidity(
+//       `Enter a valid email address. "${email.value}" must include a '@' and/or '.'.`
+//     );
+//   } else {
+//     email.setCustomValidity("");
+//   }
+// });
 
 // submit form with inputs:
 const registerForm = document.getElementById("js-registration-form");
