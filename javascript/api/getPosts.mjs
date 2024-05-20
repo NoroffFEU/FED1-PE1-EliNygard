@@ -14,10 +14,7 @@ export async function getPosts(url, token = null) {
         const json = await response.json();
         return json;
     } catch (error) {
-        console.log(error);
+        console.error(error);
     } finally {
     };
 };
-
-
-// loader prevents getPosts to work on index.mjs RESEARCH 
