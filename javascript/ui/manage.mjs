@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
   displayMessage("loginSuccess", loginMessageSuccess);
-  displayMessage("registerSuccess", registerMessageSuccess);
+  // displayMessage("registerSuccess", registerMessageSuccess);
   displayMessage("deleteSuccess", deleteSuccessMessage);
 });
 

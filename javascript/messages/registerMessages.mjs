@@ -8,7 +8,7 @@ export function registerMessageSuccess () {
     message.classList.add("message-success");
     
     const userName = JSON.parse(localStorage.getItem("userName"))
-    message.textContent = removeUnderscore(`User registered successfully. Welcome ${userName}!`);
+    message.textContent = removeUnderscore(`User registered successfully. Please log in.`);
     
     messageContainer.appendChild(message);
     document.body.appendChild(messageContainer);

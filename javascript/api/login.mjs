@@ -1,7 +1,19 @@
 import { loginMessageError } from "../messages/loginMessages.mjs";
+import { registerMessageSuccess } from "../messages/registerMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
 import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
+
+// Activating register success message
+document.addEventListener("DOMContentLoaded", function () {
+  const displayMessage = (key, callback) => {
+    if(localStorage.getItem(key)) {
+      callback()
+      localStorage.removeItem(key)
+    }
+  }
+  displayMessage("registerSuccess", registerMessageSuccess)
+})
 
 // deep level
 async function loginUser(url, userData) {
@@ -14,8 +26,6 @@ async function loginUser(url, userData) {
   if (!userData.password) {
     throw new Error("No password provided");
   }
-
-  
 
   showLoader();
 
@@ -32,18 +42,24 @@ async function loginUser(url, userData) {
 
     const response = await fetch(url, postData);
     const json = await response.json();
+    console.log(json);
 
     // stops at catch in this block
     // would like to specify if: check if email and password match
     if (!response.ok) {
-      throw new Error("Wrong email or password")
+      throw new Error("Wrong email or password");
     } else {
       const accessToken = json.data.accessToken;
-      localStorage.setItem("accessToken", accessToken);
-      localStorage.setItem("loginSuccess", true);
-      localStorage.setItem("userName", JSON.stringify(json.data.name));
+      console.log(accessToken);
+      if (accessToken) {
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("loginSuccess", true);
+        localStorage.setItem("userName", JSON.stringify(json.data.name));
 
-      window.location.href = "../post/manage.html";
+        window.location.href = "../post/manage.html";
+      } else {
+        console.log("Access token not found in response. Try again.");
+      }
 
       return json;
     }
@@ -57,12 +73,11 @@ async function loginUser(url, userData) {
 
     //   return json;
     // } else {
-      
+
     // }
-    
-  } catch (error){
+  } catch (error) {
     //this should maybe be at lower level?
-    loginMessageError()
+    loginMessageError();
     console.log(error);
     // console.error(("Error", error));
   } finally {
