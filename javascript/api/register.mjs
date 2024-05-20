@@ -25,14 +25,11 @@ async function registerUser(url, userData, confirmPassword) {
     };
 
     const response = await fetch(url, postData);
-    console.log(response);
     const json = await response.json();
-    console.log(json);
 
     if (!response.ok) {
       const errorMessages = extractErrorMessages(json);
       renderErrorMessageHtml(errorMessages);
-      console.log("Error", errorMessages);
       return;
     } else {
       localStorage.setItem("registerSuccess", true);
@@ -41,8 +38,8 @@ async function registerUser(url, userData, confirmPassword) {
     }
     return json;
   } catch (error) {
-    console.log(error);
-    alert(error);
+    console.error(error); // Log errors in console
+    alert(error.message); //display error to user
     //create: renderErrorMessageHtml(error.message)
   } finally {
     hideLoader();
@@ -65,8 +62,8 @@ async function onRegister(event) {
       confirmPassword
     );
   } catch (error) {
-    console.log(error);
-    alert(error);
+    console.error(error); // Log errors in console
+    alert(error.message); //display error to user
     // (generate a container and append to document to replace alert)
   }
 }
