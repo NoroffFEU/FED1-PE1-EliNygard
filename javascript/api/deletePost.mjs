@@ -1,6 +1,6 @@
-import { API_BASE, API_ID, API_NAME, API_POSTS } from "./constantAPI.mjs";
+import { API_BASE, API_NAME, API_POSTS } from "./constantAPI.mjs";
 
-export function deletePost() {
+export function deletePost(postId) {
     // get id of selected post ✅
     // get the url ✅
 
@@ -12,8 +12,9 @@ export function deletePost() {
     // const API_NAME = `/${name}`;
 
     const token = localStorage.getItem('accessToken');
+    console.log(postId);
     
-    fetch(API_BASE + API_POSTS + API_NAME + API_ID, {
+    fetch(API_BASE + API_POSTS + API_NAME + `/${postId}`, {
         method: 'DELETE',
         headers: {
             Authorization: `Bearer ${token}`,
