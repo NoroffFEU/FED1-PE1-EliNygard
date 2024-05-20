@@ -6,7 +6,7 @@ import {
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
 import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
-import { validateUserData } from "./validateUserData.mjs";
+import { validateRegistrationData } from "./validateUserData.mjs";
 
 async function registerUser(url, userData, confirmPassword) {
   
@@ -16,7 +16,7 @@ async function registerUser(url, userData, confirmPassword) {
     // Promise for testing, REMOVE
     // await new Promise((resolve) => setTimeout(resolve, 2000));
     // throw errors if validation fails:
-    await validateUserData(userData, confirmPassword)
+    validateRegistrationData(userData, confirmPassword)
 
     const postData = {
       method: "POST",

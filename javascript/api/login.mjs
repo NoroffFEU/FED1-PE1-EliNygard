@@ -2,12 +2,12 @@ import {
   extractErrorMessages,
   renderErrorMessageHtml,
 } from "../messages/errorMessage.mjs";
-import { loginMessageError } from "../messages/loginMessages.mjs";
+// import { loginMessageError } from "../messages/loginMessages.mjs";
 import { registerMessageSuccess } from "../messages/registerMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
 import { API_AUTH, API_BASE, API_LOGIN } from "./constantAPI.mjs";
-import { validateUserData } from "./validateUserData.mjs";
+import { validateLoginData } from "./validateUserData.mjs";
 
 // Activating register success message
 document.addEventListener("DOMContentLoaded", function () {
@@ -27,15 +27,8 @@ async function loginUser(url, userData) {
   try {
     // Promise for testing loader, REMOVE
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-    // validate the form inputs:
-    if (!userData.email) {
-      throw new Error("No email provided");
-      // replace with ERROR_NO_EMAIL
-    }
-
-    if (!userData.password) {
-      throw new Error("No password provided");
-    }
+    
+    validateLoginData(userData)
 
     const postData = {
       method: "POST",
