@@ -38,24 +38,36 @@ form.addEventListener("submit", function (event) {
     },
   };
 
+  
   // Send the request
   fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
-    .then((response) => response.json())
-    .then((json) => {
-      console.log(json);
-
+  .then((response) => response.json())
+  .then((json) => {
+      
       if (json.okay) {
-        window.location.href = "../post/manage.html";
-      } else {
-        // const errorMessages = extractErrorMessages(json);
-        // renderErrorMessageHtml(errorMessages);
-        // errorMessages.forEach(message => {
-        //     renderErrorMessageHtml(message)
-        //     console.log(message);
-        // })
-      }
+          window.location.href = "../post/manage.html";
+
+        } 
+        // form validation: 
+        if(!title) {
+            throw new Error("Can not create new post. Please add a title.")
+        }
+
     })
     .catch((error) => {
-      console.error("Error:", error); // Log any errors that occur
+        console.error("Error:", error); // Log any errors that occur in console
+      alert(error) // display error to user
     });
 });
+
+
+
+
+//else {
+//     const errorMessages = extractErrorMessages(json);
+//     renderErrorMessageHtml(errorMessages);
+//     errorMessages.forEach(message => {
+//         renderErrorMessageHtml(message)
+//         console.log(message);
+//     })
+// }
