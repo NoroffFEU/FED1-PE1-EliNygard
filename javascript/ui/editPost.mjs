@@ -60,9 +60,9 @@ form.addEventListener("submit", function (event) {
   fetch(API_BASE + API_POSTS + API_NAME + API_ID, requestOptions)
     .then((response) => response.json())
     .then((json) => {
-        if (!title) {
-            throw new Error("Can not update post. Please add a title.")
-        }
+      if (!title) {
+        throw new Error("Can not update post. Please add a title.");
+      }
       if (json.errors) {
         console.log(json.errors);
         const errorMessages = extractErrorMessages(json);
@@ -70,11 +70,12 @@ form.addEventListener("submit", function (event) {
       } else {
         localStorage.removeItem("postId");
         console.log("updated");
+        localStorage.setItem("editSuccess", true);
         window.location.href = "../post/manage.html";
       }
     })
     .catch((error) => {
       console.error(error); // Log errors in console
-      alert(error.message) //display error to user
+      alert(error.message); //display error to user
     });
 });

@@ -2,10 +2,11 @@ import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 import { getPosts } from "../api/getPosts.mjs";
 import { generateTableHtml } from "../generateHtml/manageTableHtml.mjs";
 import { deleteSuccessMessage } from "../messages/deleteMessages.mjs";
+import { editSuccessMessage } from "../messages/editMessage.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 import { hideLoader, showLoader } from "./loader.mjs";
 
-// Activating login success message
+// Activating messages
 document.addEventListener("DOMContentLoaded", function () {
   const displayMessage = (key, callback) => {
     if (localStorage.getItem(key)) {
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   displayMessage("loginSuccess", loginMessageSuccess);
   displayMessage("deleteSuccess", deleteSuccessMessage);
+  displayMessage("editSuccess", editSuccessMessage);
 });
 
 // (when button Add post on create.html is clicked, empty form)
