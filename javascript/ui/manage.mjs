@@ -28,7 +28,7 @@ export async function renderTable() {
 
   try {
     // Promise for testing, REMOVE
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    // await new Promise((resolve) => setTimeout(resolve, 500));
     const userName = JSON.parse(localStorage.getItem("userName"));
     console.log(userName);
     const token = localStorage.getItem("accessToken");
