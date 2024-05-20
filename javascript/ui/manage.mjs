@@ -1,8 +1,9 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 import { getPosts } from "../api/getPosts.mjs";
 import { generateTableHtml } from "../generateHtml/manageTableHtml.mjs";
+import { createSuccessMessage } from "../messages/createPostMessage.mjs";
 import { deleteSuccessMessage } from "../messages/deleteMessages.mjs";
-import { editSuccessMessage } from "../messages/editMessage.mjs";
+import { editSuccessMessage } from "../messages/editPostMessage.mjs";
 import { loginMessageSuccess } from "../messages/loginMessages.mjs";
 import { hideLoader, showLoader } from "./loader.mjs";
 
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   displayMessage("loginSuccess", loginMessageSuccess);
   displayMessage("deleteSuccess", deleteSuccessMessage);
   displayMessage("editSuccess", editSuccessMessage);
+  displayMessage("createSuccess", createSuccessMessage);
 });
 
 // (when button Add post on create.html is clicked, empty form)
@@ -26,7 +28,7 @@ export async function renderTable() {
 
   try {
     // Promise for testing, REMOVE
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     const userName = JSON.parse(localStorage.getItem("userName"));
     console.log(userName);
     const token = localStorage.getItem("accessToken");

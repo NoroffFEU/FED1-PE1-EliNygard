@@ -48,6 +48,7 @@ form.addEventListener("submit", function (event) {
         }
         else {
             console.log("created");
+            localStorage.setItem("createSuccess", true);
             window.location.href = "../post/manage.html"
         }
     })
