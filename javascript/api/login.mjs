@@ -41,18 +41,15 @@ async function loginUser(url, userData) {
 
     const response = await fetch(url, postData);
     const json = await response.json();
-    console.log(json);
 
     // stops at catch in this block
     // would like to specify if: check if email and password match
     if (!response.ok) {
       const errorMessages = extractErrorMessages(json);
       renderErrorMessageHtml(errorMessages);
-      console.log(("Error", errorMessages));
       return;
     } else {
       const accessToken = json.data.accessToken;
-      console.log(accessToken);
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("loginSuccess", true);
@@ -68,9 +65,8 @@ async function loginUser(url, userData) {
   } catch (error) {
     //this should maybe be at lower level?
     // loginMessageError();
-    alert(error);
-    console.log(error);
-    // console.error(("Error", error));
+    console.error((error)); // Log errors in console
+    alert(error.message); //display error to user
   } finally {
     hideLoader();
   }
@@ -89,9 +85,8 @@ async function onLogIn(event) {
 
     await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
   } catch (error) {
-    console.error(error);
-    alert(error);
-    console.log(error);
+    console.error(error); // Log errors in console
+    alert(error); //display error to user
     // (generate a container and append to document to replace alert)
     // use loginMessageError, but create a general one and put in error message
   }
