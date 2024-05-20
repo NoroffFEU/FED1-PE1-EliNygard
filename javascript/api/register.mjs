@@ -13,7 +13,7 @@ async function registerUser(url, userData, confirmPassword) {
   try {
     // Promise for testing, REMOVE
     // await new Promise((resolve) => setTimeout(resolve, 2000));
-    // throw errors if validation fails:
+    // throw errors and validation:
     validateRegistrationData(userData, confirmPassword);
 
     const postData = {
