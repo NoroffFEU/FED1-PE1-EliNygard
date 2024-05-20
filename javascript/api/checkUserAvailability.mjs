@@ -19,3 +19,22 @@ export async function checkUsernameAvailability(username) {
     hideLoader();
   }
 }
+
+export async function checkEmailAvailability(email) {
+  showLoader();
+  try {
+    const response = fetch(API_BASE + API_AUTH + API_REGISTER, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+    return response.status === 200;
+  } catch (error) {
+    console.error("Error checking if email is available.", error);
+    return false;
+  } finally {
+    hideLoader();
+  }
+}
