@@ -55,8 +55,8 @@ form.addEventListener("submit", function (event) {
 
     })
     .catch((error) => {
-        console.error("Error:", error); // Log any errors that occur in console
-      alert(error) // display error to user
+        console.error(error); // Log any errors that occur in console
+      alert(error.message) // display error to user
     });
 });
 
