@@ -9,14 +9,13 @@ import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 import { validateRegistrationData } from "./validateUserData.mjs";
 
 async function registerUser(url, userData, confirmPassword) {
-  
   showLoader();
-  
+
   try {
     // Promise for testing, REMOVE
     // await new Promise((resolve) => setTimeout(resolve, 2000));
     // throw errors if validation fails:
-    validateRegistrationData(userData, confirmPassword)
+    validateRegistrationData(userData, confirmPassword);
 
     const postData = {
       method: "POST",
@@ -51,8 +50,8 @@ async function registerUser(url, userData, confirmPassword) {
     // }
   } catch (error) {
     console.log(error);
-    alert(error)
-    //create: renderErrorMessageHtml(error.message) 
+    alert(error);
+    //create: renderErrorMessageHtml(error.message)
   } finally {
     hideLoader();
   }
@@ -93,18 +92,20 @@ registerForm.addEventListener("submit", async function (event) {
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirm-password").value;
 
-  
-    try {
-      const userData = { name, email, password };
+  try {
+    const userData = { name, email, password };
 
-      console.log(userData);
+    console.log(userData);
 
-      await registerUser(API_BASE + API_AUTH + API_REGISTER, userData, confirmPassword);
-    } catch (error) {
-      // alert(error);
-      console.log(error);
-    }
-  
+    await registerUser(
+      API_BASE + API_AUTH + API_REGISTER,
+      userData,
+      confirmPassword
+    );
+  } catch (error) {
+    // alert(error);
+    console.log(error);
+  }
 });
 
 // event listener for input fields. When user want to try again

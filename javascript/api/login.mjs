@@ -27,8 +27,8 @@ async function loginUser(url, userData) {
   try {
     // Promise for testing loader, REMOVE
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    validateLoginData(userData)
+
+    validateLoginData(userData);
 
     const postData = {
       method: "POST",

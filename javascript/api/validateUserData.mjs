@@ -3,67 +3,61 @@
 //   checkUsernameAvailability,
 // } from "./checkUserAvailability.mjs";
 
-
-
-
 export function validateRegistrationData(userData, confirmPassword) {
-    validateUsername(userData.name)
-    validateEmail(userData.email)
-    validatePassword(userData.password)
+  validateUsername(userData.name);
+  validateEmail(userData.email);
+  validatePassword(userData.password);
 
-    if (userData.password !== confirmPassword) {
-        throw new Error("passwords do not match. Please try again");
-    }
-
+  if (userData.password !== confirmPassword) {
+    throw new Error("passwords do not match. Please try again");
+  }
 }
 
 export function validateLoginData(userData) {
-    validateEmail(userData.email)
-    validatePassword(userData.password)
+  validateEmail(userData.email);
+  validatePassword(userData.password);
 }
 
-
-
 function validateEmail(email) {
-    if(!email) {
-        throw new Error("Please enter your email address.")
-    }
-    //check for @ etc
+  if (!email) {
+    throw new Error("Please enter your email address.");
+  }
+  //check for @ etc
 }
 
 function validatePassword(password) {
-    if(!password) {
-        throw new Error("Please enter a password.")
-    }
-    if(password.length < 8) {
-        throw new Error("Password must be a minimum of 8 characters")
-    }
+  if (!password) {
+    throw new Error("Please enter a password.");
+  }
+  if (password.length < 8) {
+    throw new Error("Password must be a minimum of 8 characters");
+  }
 }
 
 function validateUsername(username) {
-    if(!username) {
-        throw new Error("Please enter a name")
-    }
-    if(username.length < 3) {
-        throw new Error(
-            "user name must be a minimum of 3 characters. Please try again"
-        );
-    }
+  if (!username) {
+    throw new Error("Please enter a name");
+  }
+  if (username.length < 3) {
+    throw new Error(
+      "user name must be a minimum of 3 characters. Please try again"
+    );
+  }
 }
 
 // export async function validateUserData(userData, confirmPassword) {
-    //   const availableUsername = await checkUsernameAvailability(userData.name);
-    //   const availableEmail = await checkEmailAvailability(userData.email);
-    //   console.log(availableEmail);
-    // if (userData.password !== confirmPassword) {
-    //     throw new Error("passwords do not match. Please try again");
-    // }
-    //   if (!availableUsername) {
-        //     console.log("name not available");
+//   const availableUsername = await checkUsernameAvailability(userData.name);
+//   const availableEmail = await checkEmailAvailability(userData.email);
+//   console.log(availableEmail);
+// if (userData.password !== confirmPassword) {
+//     throw new Error("passwords do not match. Please try again");
+// }
+//   if (!availableUsername) {
+//     console.log("name not available");
 //     throw new Error("username is taken");
 //   }
 //   if (!availableEmail) {
-    //     console.log("email not available");
-    //     throw new Error("Email is already registered on a user. Please try again");
-    //   }
+//     console.log("email not available");
+//     throw new Error("Email is already registered on a user. Please try again");
+//   }
 // }
