@@ -69,6 +69,7 @@ form.addEventListener("submit", function (event) {
         renderErrorMessageHtml(errorMessages);
       } else {
         localStorage.removeItem("postId");
+        console.log("updated");
         window.location.href = "../post/manage.html";
       }
     })

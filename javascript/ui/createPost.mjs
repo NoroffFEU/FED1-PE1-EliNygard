@@ -1,10 +1,8 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
-// import {
-//   extractErrorMessages,
-//   renderErrorMessageHtml,
-// } from "../messages/errorMessage.mjs";
-
-
+import {
+  extractErrorMessages,
+  renderErrorMessageHtml,
+} from "../messages/errorMessage.mjs";
 
 const form = document.querySelector("form");
 
@@ -38,36 +36,106 @@ form.addEventListener("submit", function (event) {
     },
   };
 
-  
   // Send the request
   fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
-  .then((response) => response.json())
-  .then((json) => {
-      
-      if (json.okay) {
-          window.location.href = "../post/manage.html";
-
-        } 
-        // form validation: 
-        if(!title) {
-            throw new Error("Can not create new post. Please add a title.")
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json);
+        if(json.errors) {
+            console.log(json.errors);
+            const errorMessages = extractErrorMessages(json);
+        renderErrorMessageHtml(errorMessages);
         }
-
+        else {
+            console.log("created");
+            window.location.href = "../post/manage.html"
+        }
     })
     .catch((error) => {
-        console.error(error); // Log any errors that occur in console
-      alert(error.message) // display error to user
+      console.error("Error:", error); // Log any errors that occur
     });
 });
 
+// TRYING TO PUT INTO SEVERAL FUNCTIONS, BUT FAILED. NOT WORKING. TRY LATER
 
+// document.addEventListener("DOMContentLoaded", () => {
+//     setCreatePostListener();
+//   });
 
+//   function setCreatePostListener() {
+//     const form = document.forms.createPost;
+//     form.addEventListener("submit", onCreatePost);
+//   }
 
-//else {
-//     const errorMessages = extractErrorMessages(json);
-//     renderErrorMessageHtml(errorMessages);
-//     errorMessages.forEach(message => {
-//         renderErrorMessageHtml(message)
-//         console.log(message);
-//     })
-// }
+//   async function onCreatePost(event) {
+//     event.preventDefault();
+//     try {
+//       const postData = getFormValues();
+//       validatePostFormData(postData);
+//       const requestOptions = constructRequestOptions(postData);
+//       await sendPostRequest(API_BASE + API_POSTS + API_NAME, requestOptions);
+//       window.location.href = "manage.html";
+//     } catch (error) {
+//       console.error(error); // log error in console
+//       alert(error.message); //display error to user
+//     }
+//   }
+
+//   function getFormValues() {
+//     return {
+//       title: document.getElementById("title").value,
+//       body: document.getElementById("body").value,
+//       imgUrl: document.getElementById("img-url").value,
+//       imgAlt: document.getElementById("img-alt").value,
+//       category: document.getElementById("category").value,
+//       token: localStorage.getItem("accessToken"),
+//     };
+//   }
+
+//   function validatePostFormData({ title }) {
+//     if (!title) {
+//       throw new Error("Can not create new post. Please add a title.");
+//     }
+//   }
+
+//   function constructRequestOptions({
+//     title,
+//     body,
+//     imgUrl,
+//     imgAlt,
+//     category,
+//     token,
+//   }) {
+//     return {
+//       method: "POST",
+//       body: JSON.stringify({
+//         title: title,
+//         body: body,
+//         media: {
+//           url: imgUrl,
+//           alt: imgAlt,
+//         },
+//         tags: [category],
+//       }),
+//       headers: {
+//         "Content-type": "application/json; charset=UTF-8",
+//         Authorization: `Bearer ${token}`,
+//       },
+//     };
+//   }
+
+//   async function sendPostRequest(url, requestOptions) {
+//     showLoader();
+//     try {
+//       const response = await fetch(url, requestOptions);
+//       const json = await response.json();
+//       console.log(json);
+//       if(!json.okay){
+//           console.log("no json");
+//       }
+//     } catch (error) {
+//       throw error;
+//     } finally {
+//       hideLoader();
+//     }
+//   }
