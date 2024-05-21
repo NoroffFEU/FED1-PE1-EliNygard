@@ -10,7 +10,7 @@ export function extractErrorMessages(json) {
 export function renderErrorMessageHtml(messages) {
   // check if there is 'messages' in array before render the error messages
   // if the array is empty, the function returns without doing anything
-  if (extractErrorMessages.length >= 1) {
+  if (messages.length >= 1) {
     const errorContainer = document.createElement("div");
     errorContainer.classList.add("error-container", "message-container");
 

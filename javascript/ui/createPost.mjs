@@ -10,11 +10,11 @@ form.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the form from submitting normally
 
   // Get values from form inputs
-  const title = document.getElementById("title").value;
-  const body = document.getElementById("body").value;
-  const imgUrl = document.getElementById("img-url").value;
-  const imgAlt = document.getElementById("img-alt").value;
-  const category = document.getElementById("category").value;
+  const title = document.getElementById("title").value.trim();
+  const body = document.getElementById("body").value.trim();
+  const imgUrl = document.getElementById("img-url").value.trim();
+  const imgAlt = document.getElementById("img-alt").value.trim();
+  const category = document.getElementById("category").value.trim();
 
   const token = localStorage.getItem("accessToken");
 
@@ -39,20 +39,38 @@ form.addEventListener("submit", function (event) {
   // Send the request
   fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
     .then((response) => response.json())
-    .then((json) => {
-      console.log(json);
-      if (json.errors) {
-        console.log(json.errors);
-        const errorMessages = extractErrorMessages(json);
-        renderErrorMessageHtml(errorMessages);
-      } else {
+    .then(
+      (json) => {
+        console.log(json);
+
+        // validate form:
+        if (!title) {
+          throw new Error("Please add a title.");
+        }
+        if (!imgUrl) {
+          throw new Error("Please add an image url.");
+        }
+        if (!imgAlt) {
+          throw new Error(
+            "Can not update post. Please add a descriptive image text."
+          );
+        }
+
+        // if (json.errors) {
+        //   console.log(json.errors);
+        //   const errorMessages = extractErrorMessages(json);
+        //   renderErrorMessageHtml(errorMessages);
+        // }
+        // else {
         console.log("created");
         localStorage.setItem("createSuccess", true);
         window.location.href = "../post/manage.html";
       }
-    })
+      // }
+    )
     .catch((error) => {
-      console.error("Error:", error); // Log any errors that occur
+      alert(error.message) //display error to user
+      console.error("Error:", error.message); // Log any errors that occur
     });
 });
 

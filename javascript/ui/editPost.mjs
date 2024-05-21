@@ -63,6 +63,12 @@ form.addEventListener("submit", function (event) {
       if (!title) {
         throw new Error("Can not update post. Please add a title.");
       }
+      if (!imgUrl) {
+        throw new Error("Can not update post. Please add an image url.")
+      }
+      if(!imgAlt) {
+        throw new Error("Can not update post. Please add a descriptive image text.")
+      }
       if (json.errors) {
         console.log(json.errors);
         const errorMessages = extractErrorMessages(json);
