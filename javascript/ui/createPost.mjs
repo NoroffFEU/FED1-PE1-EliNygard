@@ -57,16 +57,16 @@ form.addEventListener("submit", function (event) {
         }
 
         // if (json.errors) {
-        //   console.log(json.errors);
-        //   const errorMessages = extractErrorMessages(json);
-        //   renderErrorMessageHtml(errorMessages);
+          // console.log(json.errors);
+          // throw new Error (`${json.errors}`)
+          // const errorMessages = extractErrorMessages(json);
+          // renderErrorMessageHtml(errorMessages);
         // }
-        // else {
-        console.log("created");
+        else {
         localStorage.setItem("createSuccess", true);
         window.location.href = "../post/manage.html";
       }
-      // }
+      }
     )
     .catch((error) => {
       alert(error.message) //display error to user

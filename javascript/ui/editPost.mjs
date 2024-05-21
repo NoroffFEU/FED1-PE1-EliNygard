@@ -69,19 +69,20 @@ form.addEventListener("submit", function (event) {
       if(!imgAlt) {
         throw new Error("Can not update post. Please add a descriptive image text.")
       }
-      if (json.errors) {
-        console.log(json.errors);
-        const errorMessages = extractErrorMessages(json);
-        renderErrorMessageHtml(errorMessages);
-      } else {
+      // if (json.errors) {
+      //   console.log(json.errors);
+      //   const errorMessages = extractErrorMessages(json);
+      //   renderErrorMessageHtml(errorMessages);
+      // } 
+      else {
         localStorage.removeItem("postId");
-        console.log("updated");
         localStorage.setItem("editSuccess", true);
         window.location.href = "../post/manage.html";
       }
     })
     .catch((error) => {
       console.error(error); // Log errors in console
+      console.error(json.errors);
       alert(error.message); //display error to user
     });
 });
