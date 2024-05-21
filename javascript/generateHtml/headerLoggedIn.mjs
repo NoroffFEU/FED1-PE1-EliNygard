@@ -1,6 +1,7 @@
+import { removeUnderscore } from "../ui/formatting.mjs";
+
 export function generateHeaderLoggedInHtml() {
   const header = document.getElementById("header-logged-in");
-  header.classList.add("bg-color-theme-light");
 
   const nav = document.createElement("nav");
   nav.classList.add("h-f-container", "header-container", "font-primary");
@@ -16,8 +17,16 @@ export function generateHeaderLoggedInHtml() {
   const rightContainer = document.createElement("div");
   rightContainer.classList.add("content-right");
 
-  const userName = document.createElement("p");
-
+  const userName = JSON.parse(localStorage.getItem("userName"))
+  const user = document.createElement("p");
+  user.textContent = removeUnderscore(userName) 
+  
   const logOutBtn = document.createElement("button");
   logOutBtn.classList.add("button", "button-small");
+  logOutBtn.textContent = "Log out"
+
+  rightContainer.append(user, logOutBtn)
+  leftContainer.appendChild(linkHome)
+  nav.append(leftContainer, rightContainer)
+  header.appendChild(nav)
 }

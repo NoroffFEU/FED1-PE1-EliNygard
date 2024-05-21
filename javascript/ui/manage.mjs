@@ -1,5 +1,6 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 import { getPosts } from "../api/getPosts.mjs";
+import { generateHeaderLoggedInHtml } from "../generateHtml/headerLoggedIn.mjs";
 import { generateTableHtml } from "../generateHtml/manageTableHtml.mjs";
 import { createSuccessMessage } from "../messages/createPostMessage.mjs";
 import { deleteSuccessMessage } from "../messages/deleteMessages.mjs";
@@ -49,7 +50,7 @@ async function renderTable() {
 
 async function main() {
   await renderTable();
-
+  generateHeaderLoggedInHtml()
 }
 
 main();
