@@ -1,4 +1,8 @@
-import { API_BASE, API_NAME, API_POSTS } from "./javascript/api/constantAPI.mjs";
+import {
+  API_BASE,
+  API_NAME,
+  API_POSTS,
+} from "./javascript/api/constantAPI.mjs";
 import { getPosts } from "./javascript/api/getPosts.mjs";
 import { generateCarouselItem } from "./javascript/generateHtml/carouselItem.mjs";
 import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
@@ -7,57 +11,58 @@ import { hideLoader, showLoader } from "./javascript/ui/loader.mjs";
 async function checkAndRenderPosts() {
   const userName = JSON.parse(localStorage.getItem("userName"));
 
-  showLoader()
+  showLoader();
 
   try {
     // Promise for testing, REMOVE
     // await new Promise(resolve => setTimeout(resolve, 2000));
-    if(userName) {
+    if (userName) {
       // if user is logged in
       await renderPosts(API_BASE + API_POSTS + API_NAME);
       await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
     } else {
-        // If user is not logged in, render posts from this account anyway
-        // await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
-        // await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
+      // If user is not logged in, render posts from this account anyway
+      // await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
+      // await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
     }
-  } catch (error){
+  } catch (error) {
     console.error(error);
   } finally {
     hideLoader();
   }
 }
 
-await checkAndRenderPosts()
+await checkAndRenderPosts();
 
 async function renderPosts(url) {
+  const responseData = await getPosts(url);
+  const posts = responseData.data;
+  console.log(posts);
 
+  // slice the 12 latests posts:
+  const slicedPosts = posts.slice(0, 12);
 
-    const responseData = await getPosts(url);
-    const posts = responseData.data;
-    console.log(posts);
-
-    const imageGallery = document.querySelector(".image-gallery")
-    imageGallery.innerHTML = '';
-    posts.forEach(post => {
-        const postThumb = generateThumbPostsHtml(post);
-        imageGallery.appendChild(postThumb)
-    })
+  const imageGallery = document.querySelector(".image-gallery");
+  imageGallery.innerHTML = "";
+  slicedPosts.forEach((post) => {
+    const postThumb = generateThumbPostsHtml(post);
+    imageGallery.appendChild(postThumb);
+  });
 }
 
-
 async function renderNewPostsCarousel(url) {
-    const responseData = await getPosts(url);
-    const posts = responseData.data;
-    const newPosts = posts.filter(post => post.tags.includes("New Post"));
-    
-    const carousel = document.getElementById("carousel")
-    carousel.innerHTML = '';
-    newPosts.forEach(newPost => {
-        const carouselItem = generateCarouselItem(newPost);
-        carousel.appendChild(carouselItem);
+  const responseData = await getPosts(url);
+  const posts = responseData.data;
 
-    })
+  // slice the 3 latest posts:
+  const latestPosts = posts.slice(0, 3);
+
+  const carousel = document.getElementById("carousel");
+  carousel.innerHTML = "";
+  latestPosts.forEach((newPost) => {
+    const carouselItem = generateCarouselItem(newPost);
+    carousel.appendChild(carouselItem);
+  });
 }
 
 // await renderNewPostsCarousel()
@@ -71,93 +76,85 @@ function paginate(items, itemsPerPage) {
   for (let i = 0; i < totalPages; i++) {
     const start = i * itemsPerPage;
     const end = start + itemsPerPage;
-    pages.push(items.slice(start, end))
+    pages.push(items.slice(start, end));
   }
   return pages;
 }
 
 function renderPagination(paginatedPosts) {
-  const pagination = document.querySelector(".pagination")
-  const imageGallery = document.querySelector(".image-gallery")
+  const pagination = document.querySelector(".pagination");
+  const imageGallery = document.querySelector(".image-gallery");
   pagination.innerHTML = "";
 
   paginatedPosts.forEach((page, index) => {
-    const button = document.createElement("button")
-    button.classList.add("pagination-button")
-    button.title = "Previous Page"
-    button.setAttribute("aria-label", "Previous Page")
+    const button = document.createElement("button");
+    button.classList.add("pagination-button");
+    button.title = "Previous Page";
+    button.setAttribute("aria-label", "Previous Page");
     button.textContent = index + 1;
-    button.addEventListener('click', async () => {
+    button.addEventListener("click", async () => {
       imageGallery.innerHTML = "";
-      
+
       // scroll to section
     });
     pagination.append(button);
-  })
+  });
 }
 
-
-
 // NEW SLIDER CODE FROM YOUTUBE
-// can not display carousel items when slider code is moved to another file. Find out! 
+// can not display carousel items when slider code is moved to another file. Find out!
 
-const prevButton = document.getElementById("prev-button")
-prevButton.addEventListener('click', () => {
-    prevSlide()
-})
+const prevButton = document.getElementById("prev-button");
+prevButton.addEventListener("click", () => {
+  prevSlide();
+});
 
-const nextButton = document.getElementById("next-button")
-nextButton.addEventListener('click', () => {
-    nextSlide()
-})
-
+const nextButton = document.getElementById("next-button");
+nextButton.addEventListener("click", () => {
+  nextSlide();
+});
 
 // try to add dots to the slider?
 
-
-const slides = document.querySelectorAll("#carousel li")
+const slides = document.querySelectorAll("#carousel li");
 let slideIndex = 0;
 
-
 function initializeSlider() {
-  if(slides.length > 0) {
-    slides[slideIndex].classList.add("display-slide")
+  if (slides.length > 0) {
+    slides[slideIndex].classList.add("display-slide");
   }
 }
 
-document.addEventListener("DOMContentLoaded", initializeSlider())
+document.addEventListener("DOMContentLoaded", initializeSlider());
 
 function showSlide(index) {
-  if (index >= slides.length){
+  if (index >= slides.length) {
     slideIndex = 0;
-  }
-  else if(index < 0) {
-    slideIndex = slides.length -1;
+  } else if (index < 0) {
+    slideIndex = slides.length - 1;
   }
 
-  slides.forEach(slide => {
-    slide.classList.remove("display-slide")
-  })
-  slides[slideIndex].classList.add("display-slide")
+  slides.forEach((slide) => {
+    slide.classList.remove("display-slide");
+  });
+  slides[slideIndex].classList.add("display-slide");
 }
 
-function prevSlide(){
+function prevSlide() {
   slideIndex--;
-  showSlide(slideIndex)
+  showSlide(slideIndex);
 }
 
-function nextSlide(){
+function nextSlide() {
   slideIndex++;
-  showSlide(slideIndex)
+  showSlide(slideIndex);
 }
 
 async function renderHomePage() {
-    // await renderPosts();
+  // await renderPosts();
 }
 
-await renderHomePage()
-
-
+await renderHomePage();
 
 // FROM W3SCHOOLS CODE
 
@@ -177,7 +174,6 @@ await renderHomePage()
 // dot3.addEventListener('click', () => {
 //   currentSlide(3)
 // })
-
 
 // const prev = document.getElementById("prev-button")
 // const next = document.getElementById("next-button")

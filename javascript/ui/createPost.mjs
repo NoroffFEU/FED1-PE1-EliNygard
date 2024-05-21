@@ -41,16 +41,15 @@ form.addEventListener("submit", function (event) {
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
-        if(json.errors) {
-            console.log(json.errors);
-            const errorMessages = extractErrorMessages(json);
+      if (json.errors) {
+        console.log(json.errors);
+        const errorMessages = extractErrorMessages(json);
         renderErrorMessageHtml(errorMessages);
-        }
-        else {
-            console.log("created");
-            localStorage.setItem("createSuccess", true);
-            window.location.href = "../post/manage.html"
-        }
+      } else {
+        console.log("created");
+        localStorage.setItem("createSuccess", true);
+        window.location.href = "../post/manage.html";
+      }
     })
     .catch((error) => {
       console.error("Error:", error); // Log any errors that occur
