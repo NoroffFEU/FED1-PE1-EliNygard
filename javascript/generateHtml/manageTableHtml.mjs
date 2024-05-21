@@ -72,7 +72,7 @@ export function generateTableHtml(post) {
   
     deleteBtnCell.appendChild(deleteBtn);
     editBtnCell.appendChild(editBtn);
-    pubBtnCell.appendChild(pubBtn);
-    tableRow.append(title, author, date, pubBtnCell, editBtnCell, deleteBtnCell);
+    // pubBtnCell.appendChild(pubBtn);
+    tableRow.append(title, author, date, editBtnCell, deleteBtnCell);
     tableBody.appendChild(tableRow);
   }
