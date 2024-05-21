@@ -1,8 +1,8 @@
 import { API_BASE, API_ID, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
-import {
-  extractErrorMessages,
-  renderErrorMessageHtml,
-} from "../messages/errorMessage.mjs";
+// import {
+//   extractErrorMessages,
+//   renderErrorMessageHtml,
+// } from "../messages/errorMessage.mjs";
 
 const form = document.querySelector("form");
 
@@ -60,6 +60,7 @@ form.addEventListener("submit", function (event) {
   fetch(API_BASE + API_POSTS + API_NAME + API_ID, requestOptions)
     .then((response) => response.json())
     .then((json) => {
+      console.log(json);
       if (!title) {
         throw new Error("Can not update post. Please add a title.");
       }

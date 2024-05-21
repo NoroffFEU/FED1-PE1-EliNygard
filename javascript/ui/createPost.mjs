@@ -1,8 +1,8 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
-import {
-  extractErrorMessages,
-  renderErrorMessageHtml,
-} from "../messages/errorMessage.mjs";
+// import {
+//   extractErrorMessages,
+//   renderErrorMessageHtml,
+// } from "../messages/errorMessage.mjs";
 
 const form = document.querySelector("form");
 
