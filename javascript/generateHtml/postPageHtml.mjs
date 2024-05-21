@@ -1,5 +1,6 @@
 import { copyUrlMessage } from "../messages/copyUrlMessage.mjs";
 import { formatDate, removeUnderscore } from "../ui/formatting.mjs";
+import { scrollToTop } from "../utils/scroll.mjs";
 
 export function generatePostPageHtml(post) {
   // const main = document.querySelector("main")
@@ -59,10 +60,21 @@ export function generatePostPageHtml(post) {
   bodyText.classList.add("post-content", "font-primary", "body-text");
   bodyText.textContent = post.body;
 
+  const scrollBtnContainer = document.createElement("div")
+  scrollBtnContainer.classList.add("flex", "flex-center")
+
+  const scrollButton = document.createElement("button")
+  scrollButton.classList.add("button", "button-small")
+  scrollButton.textContent = "Scroll To Top"
+  scrollButton.addEventListener("click", () => {
+    scrollToTop()
+  })
+
   // main.appendChild(postWrapper)
   postDetails.append(author, date, iconCopyContainer);
   iconCopyContainer.appendChild(iconCopy);
-  postContainer.append(title, postDetails, bodyText);
+  scrollBtnContainer.appendChild(scrollButton)
+  postContainer.append(title, postDetails, bodyText, scrollBtnContainer);
   postWrapper.append(img, postContainer);
 
   return postWrapper;
