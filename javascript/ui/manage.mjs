@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // (when button Add post on create.html is clicked, empty form)
 
-export async function renderTable() {
+async function renderTable() {
   showLoader();
 
   try {
@@ -44,3 +44,12 @@ export async function renderTable() {
     hideLoader();
   }
 }
+
+
+
+async function main() {
+  await renderTable();
+
+}
+
+main();
