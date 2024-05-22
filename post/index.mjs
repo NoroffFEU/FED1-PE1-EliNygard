@@ -9,25 +9,31 @@ import { generatePostPageHtml } from "../javascript/generateHtml/postPageHtml.mj
 import { hideLoader, showLoader } from "../javascript/ui/loader.mjs";
 
 async function renderBlogPostPage(url) {
+  const responseData = await getPosts(url);
+  console.log(responseData);
+  const singlePost = responseData.data;
+  console.log(singlePost);
+
+  const main = document.querySelector("main");
+  // main.innerHTML = '';
+  const blogPost = generatePostPageHtml(singlePost);
+  main.appendChild(blogPost);
+}
+
+async function main() {
+  const userName = JSON.parse(localStorage.getItem("userName"));
   showLoader();
-
   try {
-    // Promise for testing loader, REMOVE
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const responseData = await getPosts(url);
-    console.log(responseData);
-    const singlePost = responseData.data;
-    console.log(singlePost);
-
-    const main = document.querySelector("main");
-    // main.innerHTML = '';
-    const blogPost = generatePostPageHtml(singlePost);
-    main.appendChild(blogPost);
-  } catch (error) {
-    console.error("Error", error);
+    if (userName) {
+      await renderBlogPostPage(API_BASE + API_POSTS + API_NAME + API_ID);
+    } else {
+      // If user is not logged in:
+      await renderBlogPostPage(API_BASE + API_POSTS + "/Leli_Nygard" + API_ID);
+    }
+  } catch {
+    console.error(error);
   } finally {
     hideLoader();
   }
 }
-
-await renderBlogPostPage(API_BASE + API_POSTS + API_NAME + API_ID);
+main();
