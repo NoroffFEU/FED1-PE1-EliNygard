@@ -47,6 +47,9 @@ form.addEventListener("submit", function (event) {
         if (!title) {
           throw new Error("Please add a title.");
         }
+        if (body.length > 1999) {
+          throw new Error("The post body text is over 2000 characters. Please try again")
+        }
         if (!imgUrl) {
           throw new Error("Please add an image url.");
         }

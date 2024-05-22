@@ -13,7 +13,7 @@ async function renderBlogPostPage(url) {
 
   try {
     // Promise for testing loader, REMOVE
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
     const responseData = await getPosts(url);
     console.log(responseData);
     const singlePost = responseData.data;
@@ -21,11 +21,8 @@ async function renderBlogPostPage(url) {
 
     const main = document.querySelector("main");
     // main.innerHTML = '';
-    // singlePost.forEach(post => {
     const blogPost = generatePostPageHtml(singlePost);
     main.appendChild(blogPost);
-
-    // })
   } catch (error) {
     console.error("Error", error);
   } finally {
