@@ -5,6 +5,8 @@ import {
   API_POSTS,
 } from "../javascript/api/constantAPI.mjs";
 import { getPosts } from "../javascript/api/getPosts.mjs";
+import { generateHeaderHtml } from "../javascript/generateHtml/header.mjs";
+import { generateHeaderLoggedInHtml } from "../javascript/generateHtml/headerLoggedIn.mjs";
 import { generatePostPageHtml } from "../javascript/generateHtml/postPageHtml.mjs";
 import { hideLoader, showLoader } from "../javascript/ui/loader.mjs";
 
@@ -25,9 +27,11 @@ async function main() {
   showLoader();
   try {
     if (userName) {
+      generateHeaderLoggedInHtml()
       await renderBlogPostPage(API_BASE + API_POSTS + API_NAME + API_ID);
     } else {
       // If user is not logged in:
+      generateHeaderHtml()
       await renderBlogPostPage(API_BASE + API_POSTS + "/Leli_Nygard" + API_ID);
     }
   } catch {

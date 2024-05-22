@@ -5,6 +5,8 @@ import {
 } from "./javascript/api/constantAPI.mjs";
 import { getPosts } from "./javascript/api/getPosts.mjs";
 import { generateCarouselItem } from "./javascript/generateHtml/carouselItem.mjs";
+import { generateHeaderHtml } from "./javascript/generateHtml/header.mjs";
+import { generateHeaderLoggedInHtml } from "./javascript/generateHtml/headerLoggedIn.mjs";
 import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
 import { hideLoader, showLoader } from "./javascript/ui/loader.mjs";
 
@@ -18,12 +20,14 @@ async function checkAndRenderPosts() {
     // await new Promise(resolve => setTimeout(resolve, 2000));
     if (userName) {
       // if user is logged in
+      await generateHeaderLoggedInHtml();
       await renderPosts(API_BASE + API_POSTS + API_NAME);
       await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
     } else {
       // If user is not logged in, render posts from this account anyway
-      await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
-      await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
+      await generateHeaderHtml();
+      await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard");
+      await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard");
     }
   } catch (error) {
     console.error(error);
@@ -69,37 +73,37 @@ async function renderNewPostsCarousel(url) {
 
 // PAGINATION MOVE TO SEPARATE FILE
 
-function paginate(items, itemsPerPage) {
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  const pages = [];
+// function paginate(items, itemsPerPage) {
+//   const totalPages = Math.ceil(items.length / itemsPerPage);
+//   const pages = [];
 
-  for (let i = 0; i < totalPages; i++) {
-    const start = i * itemsPerPage;
-    const end = start + itemsPerPage;
-    pages.push(items.slice(start, end));
-  }
-  return pages;
-}
+//   for (let i = 0; i < totalPages; i++) {
+//     const start = i * itemsPerPage;
+//     const end = start + itemsPerPage;
+//     pages.push(items.slice(start, end));
+//   }
+//   return pages;
+// }
 
-function renderPagination(paginatedPosts) {
-  const pagination = document.querySelector(".pagination");
-  const imageGallery = document.querySelector(".image-gallery");
-  pagination.innerHTML = "";
+// function renderPagination(paginatedPosts) {
+//   const pagination = document.querySelector(".pagination");
+//   const imageGallery = document.querySelector(".image-gallery");
+//   pagination.innerHTML = "";
 
-  paginatedPosts.forEach((page, index) => {
-    const button = document.createElement("button");
-    button.classList.add("pagination-button");
-    button.title = "Previous Page";
-    button.setAttribute("aria-label", "Previous Page");
-    button.textContent = index + 1;
-    button.addEventListener("click", async () => {
-      imageGallery.innerHTML = "";
+//   paginatedPosts.forEach((page, index) => {
+//     const button = document.createElement("button");
+//     button.classList.add("pagination-button");
+//     button.title = "Previous Page";
+//     button.setAttribute("aria-label", "Previous Page");
+//     button.textContent = index + 1;
+//     button.addEventListener("click", async () => {
+//       imageGallery.innerHTML = "";
 
-      // scroll to section
-    });
-    pagination.append(button);
-  });
-}
+//       // scroll to section
+//     });
+//     pagination.append(button);
+//   });
+// }
 
 // NEW SLIDER CODE FROM YOUTUBE
 // can not display carousel items when slider code is moved to another file. Find out!
@@ -150,11 +154,11 @@ function nextSlide() {
   showSlide(slideIndex);
 }
 
-async function renderHomePage() {
-  // await renderPosts();
-}
+// async function renderHomePage() {
+//   // await renderPosts();
+// }
 
-await renderHomePage();
+// await renderHomePage();
 
 // FROM W3SCHOOLS CODE
 
