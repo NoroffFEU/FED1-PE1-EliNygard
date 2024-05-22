@@ -37,6 +37,10 @@ export function generatePostPageHtml(post) {
     date.textContent = formatDate(formattedDate);
   }
 
+  const category = document.createElement("p");
+  category.textContent = post.tags;
+  console.log(category);
+
   const iconCopyContainer = document.createElement("div");
   iconCopyContainer.classList.add("icon-copy-container");
 
@@ -60,20 +64,20 @@ export function generatePostPageHtml(post) {
   bodyText.classList.add("post-content", "font-primary", "body-text");
   bodyText.textContent = post.body;
 
-  const scrollBtnContainer = document.createElement("div")
-  scrollBtnContainer.classList.add("flex", "flex-center")
+  const scrollBtnContainer = document.createElement("div");
+  scrollBtnContainer.classList.add("flex", "flex-center");
 
-  const scrollButton = document.createElement("button")
-  scrollButton.classList.add("button", "button-small")
-  scrollButton.textContent = "Scroll To Top"
+  const scrollButton = document.createElement("button");
+  scrollButton.classList.add("button", "button-small");
+  scrollButton.textContent = "Scroll To Top";
   scrollButton.addEventListener("click", () => {
-    scrollToTop()
-  })
+    scrollToTop();
+  });
 
   // main.appendChild(postWrapper)
-  postDetails.append(author, date, iconCopyContainer);
+  postDetails.append(author, date, category, iconCopyContainer);
   iconCopyContainer.appendChild(iconCopy);
-  scrollBtnContainer.appendChild(scrollButton)
+  scrollBtnContainer.appendChild(scrollButton);
   postContainer.append(title, postDetails, bodyText, scrollBtnContainer);
   postWrapper.append(img, postContainer);
 
