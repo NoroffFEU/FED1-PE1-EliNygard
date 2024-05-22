@@ -1,4 +1,5 @@
 import { API_BASE, API_ID, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
+import { generateHeaderLoggedInHtml } from "../generateHtml/headerLoggedIn.mjs";
 // import {
 //   extractErrorMessages,
 //   renderErrorMessageHtml,
@@ -87,3 +88,9 @@ form.addEventListener("submit", function (event) {
       alert(error.message); //display error to user
     });
 });
+
+async function main() {
+  generateHeaderLoggedInHtml()
+}
+
+main();

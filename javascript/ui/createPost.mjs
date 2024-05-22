@@ -1,8 +1,11 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
+import { generateHeaderLoggedInHtml } from "../generateHtml/headerLoggedIn.mjs";
 // import {
 //   extractErrorMessages,
 //   renderErrorMessageHtml,
 // } from "../messages/errorMessage.mjs";
+
+
 
 const form = document.querySelector("form");
 
@@ -76,6 +79,12 @@ form.addEventListener("submit", function (event) {
       console.error("Error:", error.message); // Log any errors that occur
     });
 });
+
+async function main() {
+  generateHeaderLoggedInHtml()
+}
+
+main();
 
 // TRYING TO PUT INTO SEVERAL FUNCTIONS, BUT FAILED. NOT WORKING. TRY LATER
 

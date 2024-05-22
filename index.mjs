@@ -22,8 +22,8 @@ async function checkAndRenderPosts() {
       await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
     } else {
       // If user is not logged in, render posts from this account anyway
-      // await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
-      // await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
+      await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard")
+      await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard")
     }
   } catch (error) {
     console.error(error);
