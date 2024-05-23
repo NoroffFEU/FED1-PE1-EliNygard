@@ -11,17 +11,21 @@ const form = document.querySelector("form");
 const parameterString = window.location.search;
 const searchParams = new URLSearchParams(parameterString);
 const title = searchParams.get("title");
+console.log(title);
 const body = searchParams.get("body");
 const imgUrl = searchParams.get("imgUrl");
+console.log(imgUrl);
 const imgAlt = searchParams.get("imgAlt");
 const category = searchParams.get("category");
 
 const titleInput = document.getElementById("title");
 titleInput.value = title;
+console.log(titleInput);
 const bodyInput = document.getElementById("body");
 bodyInput.value = body;
 const imgUrlInput = document.getElementById("img-url");
 imgUrlInput.value = imgUrl;
+console.log(imgUrlInput);
 const imgAltInput = document.getElementById("img-alt");
 imgAltInput.value = imgAlt;
 const categorySelect = document.getElementById("category");
@@ -31,11 +35,11 @@ form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   // Get values from form inputs
-  const title = document.getElementById("title").value;
-  const body = document.getElementById("body").value;
-  const imgUrl = document.getElementById("img-url").value;
-  const imgAlt = document.getElementById("img-alt").value;
-  const category = document.getElementById("category").value;
+  const editedTitle = document.getElementById("title").value;
+  const editedBody = document.getElementById("body").value;
+  const editedImgUrl = document.getElementById("img-url").value;
+  const editedImgAlt = document.getElementById("img-alt").value;
+  const editedCategory = document.getElementById("category").value;
 
   const token = localStorage.getItem("accessToken");
 
@@ -43,13 +47,13 @@ form.addEventListener("submit", function (event) {
   const requestOptions = {
     method: "PUT",
     body: JSON.stringify({
-      title: title,
-      body: body,
+      title: editedTitle,
+      body: editedBody,
       media: {
-        url: imgUrl,
-        alt: imgAlt,
+        url: editedImgUrl,
+        alt: editedImgAlt,
       },
-      tags: [category],
+      tags: [editedCategory],
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",

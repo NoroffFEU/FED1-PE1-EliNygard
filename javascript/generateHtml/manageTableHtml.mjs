@@ -56,6 +56,7 @@ export function generateTableHtml(post) {
       });
   
       const queryParamsString = queryParams.toString();
+      console.log(queryParamsString);
       window.location.href = `./edit.html?${queryParamsString}`;
     });
   
