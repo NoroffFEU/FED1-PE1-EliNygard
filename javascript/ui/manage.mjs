@@ -46,11 +46,9 @@ async function renderTable() {
   }
 }
 
-
-
 async function main() {
   await renderTable();
-  generateHeaderLoggedInHtml()
+  generateHeaderLoggedInHtml();
 }
 
 main();

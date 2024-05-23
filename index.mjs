@@ -21,12 +21,14 @@ async function checkAndRenderPosts() {
     if (userName) {
       // if user is logged in
       await generateHeaderLoggedInHtml();
-      await renderPosts(API_BASE + API_POSTS + API_NAME);
+      await setupPosThumbs(API_BASE + API_POSTS + API_NAME);
+      // await renderPosts(API_BASE + API_POSTS + API_NAME);
       await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
     } else {
       // If user is not logged in, render posts from this account anyway
       await generateHeaderHtml();
-      await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard");
+      await setupPosThumbs(API_BASE + API_POSTS + "/Leli_Nygard");
+      // await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard");
       await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard");
     }
   } catch (error) {
@@ -38,17 +40,16 @@ async function checkAndRenderPosts() {
 
 await checkAndRenderPosts();
 
-async function renderPosts(url) {
-  const responseData = await getPosts(url);
-  const posts = responseData.data;
-  console.log(posts);
+async function renderPosts(posts) {
+  // const responseData = await getPosts(url);
+  // const posts = responseData.data;
 
   // slice the 12 latests posts:
-  const slicedPosts = posts.slice(0, 12);
+  // const slicedPosts = posts.slice(0, 12);
 
   const imageGallery = document.querySelector(".image-gallery");
   imageGallery.innerHTML = "";
-  slicedPosts.forEach((post) => {
+  posts.forEach((post) => {
     const postThumb = generateThumbPostsHtml(post);
     imageGallery.appendChild(postThumb);
   });
@@ -73,37 +74,45 @@ async function renderNewPostsCarousel(url) {
 
 // PAGINATION MOVE TO SEPARATE FILE
 
-// function paginate(items, itemsPerPage) {
-//   const totalPages = Math.ceil(items.length / itemsPerPage);
-//   const pages = [];
+async function setupPosThumbs(url) {
+  const responseData = await getPosts(url);
+  const posts = responseData.data;
+  const paginatedPosts = paginate(posts, 6)
+  renderPosts(paginatedPosts[0])
+  renderPaginationControls(paginatedPosts)
+}
 
-//   for (let i = 0; i < totalPages; i++) {
-//     const start = i * itemsPerPage;
-//     const end = start + itemsPerPage;
-//     pages.push(items.slice(start, end));
-//   }
-//   return pages;
-// }
+function paginate(items, itemsPerPage) {
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  const pages = [];
 
-// function renderPagination(paginatedPosts) {
-//   const pagination = document.querySelector(".pagination");
-//   const imageGallery = document.querySelector(".image-gallery");
-//   pagination.innerHTML = "";
+  for (let i = 0; i < totalPages; i++) {
+    const start = i * itemsPerPage;
+    const end = start + itemsPerPage;
+    pages.push(items.slice(start, end));
+  }
+  return pages;
+}
 
-//   paginatedPosts.forEach((page, index) => {
-//     const button = document.createElement("button");
-//     button.classList.add("pagination-button");
-//     button.title = "Previous Page";
-//     button.setAttribute("aria-label", "Previous Page");
-//     button.textContent = index + 1;
-//     button.addEventListener("click", async () => {
-//       imageGallery.innerHTML = "";
+function renderPaginationControls(paginatedPosts) {
+  const pagination = document.querySelector(".pagination");
+  const imageGallery = document.querySelector(".image-gallery");
+  pagination.innerHTML = "";
 
-//       // scroll to section
-//     });
-//     pagination.append(button);
-//   });
-// }
+  paginatedPosts.forEach((page, index) => {
+    const button = document.createElement("button");
+    button.classList.add("pagination-button");
+    button.setAttribute("title", "Previous Page");
+    button.setAttribute("aria-label", "Previous Page");
+    button.textContent = index + 1;
+    button.addEventListener("click", async () => {
+      imageGallery.innerHTML = "";
+      renderPosts(page)
+      // scroll to section
+    });
+    pagination.append(button);
+  });
+}
 
 // NEW SLIDER CODE FROM YOUTUBE
 // can not display carousel items when slider code is moved to another file. Find out!
