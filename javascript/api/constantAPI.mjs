@@ -20,7 +20,11 @@ export const API_POSTS = "/blog/posts";
 const userName = JSON.parse(localStorage.getItem("userName"))
 export const API_NAME = `/${userName}`;
 
-const postId = JSON.parse(localStorage.getItem("postId"))
+// const postId = JSON.parse(localStorage.getItem("postId"))
+const parameterString = window.location.search
+const searchParameters = new URLSearchParams(parameterString)
+const postId = searchParameters.get("postId")
+console.log(postId);
 export const API_ID = `/${postId}`;
 
 
