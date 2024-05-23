@@ -14,15 +14,30 @@ export async function generateHeaderLoggedInHtml() {
   linkHome.href = "../index.html";
   linkHome.setAttribute("title", "HotView Labs Blog");
   linkHome.textContent = "HotView Labs";
+  linkHome.addEventListener("click", () => {
+    const currentPath = window.location.pathname
+    if(currentPath.includes("/post") || currentPath.includes("/account")) {
+      window.location.href = "../index.html"
+    } else {
+      window.location.href = "index.html"
+    }
+  })
 
   const rightContainer = document.createElement("div");
   rightContainer.classList.add("content-right");
 
   const linkManage = document.createElement("a")
-  linkManage.href = "./post/manage.html"
   linkManage.setAttribute("title", "Manage your posts")
   const userName = JSON.parse(localStorage.getItem("userName"));
   linkManage.textContent = removeUnderscore(userName)
+  linkManage.addEventListener("click", () => {
+    const currentPath = window.location.pathname
+    if(!currentPath.includes("/post") || currentPath.includes("/account")) {
+      window.location.href = "../post/manage.html"
+    } else {
+      window.location.href = "manage.html"
+    }
+  })
 
   const logOutBtn = document.createElement("button");
   logOutBtn.classList.add("button", "button-small");
@@ -30,11 +45,10 @@ export async function generateHeaderLoggedInHtml() {
   logOutBtn.addEventListener("click", () => {
     logOut()
     const currentPath = window.location.pathname
-    if(currentPath.includes("/post") || ("/account")) {
+    if(currentPath.includes("/post") || currentPath.includes("/account")) {
       window.location.href = "../index.html"
     } else {
       window.location.href = "index.html"
-
     }
   })
 
