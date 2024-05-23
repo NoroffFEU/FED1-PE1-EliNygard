@@ -18,8 +18,7 @@ export function generateCarouselItem(post) {
   const body = document.createElement("p");
   body.classList.add("font-primary", "body-text", "text-overflow");
   const postBody = post.body;
-  console.log(postBody);
-  body.textContent = textTruncate(postBody, 200);
+  body.textContent = textTruncate(postBody, 270);
 
   const button = document.createElement("button");
   button.classList.add("button-carousel", "font-secondary", "uppercase");

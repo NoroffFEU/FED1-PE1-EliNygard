@@ -81,7 +81,7 @@
         font-size: 1.2rem;
     }
 
-    .new-article {
+    /* .new-article {
         max-width: 70rem;
         max-height: 27.4375rem;
         flex-direction: row;
@@ -89,8 +89,8 @@
         gap: 1.25rem;
         padding: 2.5rem 1.5rem 3.75rem 1.5rem;
         margin: 2.5rem 2.5rem 1rem 2.5rem;
-    }
-
+    } */
+/* 
     .new-article div {
         gap: 1rem;
         width: 100%;
@@ -105,7 +105,7 @@
     .new-article p {
         max-width: 32.6rem;
         max-height: 11.25rem;
-    }
+    } */
 
     .new-article button {
         display: flex;
@@ -240,6 +240,32 @@
 
     .carousel-wrapper h2 {
         font-size: 2rem;
+    }
+
+    .new-article {
+        max-width: 70rem;
+        max-height: 27.4375rem;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1.25rem;
+        padding: 2.5rem 1.5rem 3.75rem 1.5rem;
+        margin: 2.5rem 2.5rem 1rem 2.5rem;
+    }
+    
+    .new-article div {
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .new-article img {
+        max-width: 32rem;
+        max-height: 21rem;
+        width: 60%;
+    }
+
+    .new-article p {
+        max-width: 32.6rem;
+        max-height: 11.25rem;
     }
 
 
