@@ -125,9 +125,9 @@
 
     /* thumnails home page*/
 
-    .image-gallery {
+    /* .image-gallery {
         gap: 1rem;
-    }
+    } */
 
     .image-gallery > li {
         flex-basis: 330px;
@@ -251,7 +251,7 @@
         padding: 2.5rem 1.5rem 3.75rem 1.5rem;
         margin: 2.5rem 2.5rem 1rem 2.5rem;
     }
-    
+
     .new-article div {
         gap: 1rem;
         width: 100%;
@@ -275,13 +275,15 @@
         margin: 7rem auto 4.5rem auto;
     }
 
-    /* .image-gallery {
-        justify-content: space-between;
-    } */
-
+    .image-gallery {
+        /* justify-content: space-between; */
+        gap: 2rem;
+    }
+    
     .image-gallery > li {
         flex-basis: 544px;
         margin: 0;
+        padding-bottom: 3rem;
     }
         
     /* .posts-wrapper {
