@@ -24,11 +24,9 @@ export function generateCarouselItem(post) {
   button.textContent = "Read More";
   button.addEventListener("click", (event) => {
     event.preventDefault();
-    localStorage.setItem("post", JSON.stringify(post));
-    localStorage.setItem("postId", JSON.stringify(post.id))
     const postId = post.id;
-    const newUrl = `./post/index.html?post=${postId}`;
-    window.location.href = newUrl;
+    const newUrl = `./post/index.html?postId=${postId}`;
+    window.location.assign(newUrl)
   });
 
   contentContainer.append(title, body, button);
