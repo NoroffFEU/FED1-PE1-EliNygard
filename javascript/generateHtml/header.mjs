@@ -11,8 +11,9 @@ export async function generateHeaderHtml() {
   console.log(currentPath);
 
   let redirectPath;
-  
+
   if (currentPath.includes("post/")) {
+    console.log(post);
     redirectPath = "../index.html";
     console.log(redirectPath);
   }

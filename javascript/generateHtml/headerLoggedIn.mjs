@@ -29,6 +29,13 @@ export async function generateHeaderLoggedInHtml() {
   logOutBtn.textContent = "Log out";
   logOutBtn.addEventListener("click", () => {
     logOut()
+    const currentPath = window.location.pathname
+    if(currentPath.includes("/post") || ("/account")) {
+      window.location.href = "../index.html"
+    } else {
+      window.location.href = "index.html"
+
+    }
   })
 
   rightContainer.append(linkManage, logOutBtn);
