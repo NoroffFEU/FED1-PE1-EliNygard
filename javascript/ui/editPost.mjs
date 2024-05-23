@@ -87,9 +87,9 @@ form.addEventListener("submit", function (event) {
       }
     })
     .catch((error) => {
-      console.error(error); // Log errors in console
-      console.error(json.errors);
       alert(error.message); //display error to user
+      console.error(error); // Log errors in console
+      // console.error(json.errors);
     });
 });
 

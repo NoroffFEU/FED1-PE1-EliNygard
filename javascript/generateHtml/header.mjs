@@ -11,8 +11,7 @@ export async function generateHeaderHtml() {
   console.log(currentPath);
 
   let redirectPath;
-  console.log(redirectPath);
-
+  
   if (currentPath.includes("post/")) {
     redirectPath = "../index.html";
     console.log(redirectPath);
@@ -21,7 +20,8 @@ export async function generateHeaderHtml() {
     redirectPath = "../index.html";
     console.log(redirectPath);
   } else {
-    redirectPath = "index.html";
+    redirectPath = "./index.html";
+    console.log(redirectPath);
   }
 
   const linkHome = document.createElement("a");
