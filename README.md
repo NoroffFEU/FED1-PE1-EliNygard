@@ -12,6 +12,4 @@ Provide the most accurate and up to date insights to tech leaders across the wor
 
 
 
-userLogin
-email: leli.nygard@stud.noroff.no
-password: Myfirstblog24
+
