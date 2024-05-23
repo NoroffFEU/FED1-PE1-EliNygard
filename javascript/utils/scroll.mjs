@@ -1,3 +1,3 @@
 export function scrollToTop() {
-  window.scrollTo(0, 200);
+  window.scrollTo(0, 0);
 }
