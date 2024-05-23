@@ -58,6 +58,7 @@ async function renderPosts(posts) {
 async function renderNewPostsCarousel(url) {
   const responseData = await getPosts(url);
   const posts = responseData.data;
+  console.log(posts);
 
   // slice the 3 latest posts:
   const latestPosts = posts.slice(0, 3);
@@ -72,16 +73,17 @@ async function renderNewPostsCarousel(url) {
 
 // await renderNewPostsCarousel()
 
-// PAGINATION MOVE TO SEPARATE FILE
-
 async function setupPosThumbs(url) {
   const responseData = await getPosts(url);
   const posts = responseData.data;
-  const paginatedPosts = paginate(posts, 6)
-  renderPosts(paginatedPosts[0])
-  renderPaginationControls(paginatedPosts)
+  const postsMeta = responseData.meta;
+  console.log(postsMeta);
+  const paginatedPosts = paginate(posts, 4);
+  renderPosts(paginatedPosts[0]);
+  renderPaginationControls(paginatedPosts);
 }
 
+// PAGINATION MOVE TO SEPARATE FILE
 function paginate(items, itemsPerPage) {
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const pages = [];
@@ -92,6 +94,17 @@ function paginate(items, itemsPerPage) {
     pages.push(items.slice(start, end));
   }
   return pages;
+  // return {
+  //   pages,
+  //   currentPage,
+  //   totalPages,
+  //   // check if the next or previous page exists, and if it does, it will return the page number. If the next or previous page doesn’t exist, it will return null:
+  //   // nextPage: currentPage + 1 < totalPages ? currentPage + 1 : null,
+  //   // previousPage: currentPage - 1 >= 0 ? currentPage - 1 : null,
+  //   // Loops back to page 1 or last:
+  //   nextPage: (currentPage + 1) % totalPages,
+  //   previousPage: (currentPage - 1 + totalPages) % totalPages,
+  // };
 }
 
 function renderPaginationControls(paginatedPosts) {
@@ -99,20 +112,76 @@ function renderPaginationControls(paginatedPosts) {
   const imageGallery = document.querySelector(".image-gallery");
   pagination.innerHTML = "";
 
+  // if (currentPage > 0) {
+  //   // if on first page, show previous and first buttons:
+  //   renderFirstButton(paginatedPosts);
+  //   renderPreviousButton(paginatedPosts, currentPage);
+  // }
+
   paginatedPosts.forEach((page, index) => {
     const button = document.createElement("button");
     button.classList.add("pagination-button");
-    button.setAttribute("title", "Previous Page");
-    button.setAttribute("aria-label", "Previous Page");
+    button.setAttribute("title", "Page number");
+    button.setAttribute("aria-label", "Page number");
     button.textContent = index + 1;
     button.addEventListener("click", async () => {
       imageGallery.innerHTML = "";
-      renderPosts(page)
+      renderPosts(page);
       // scroll to section
     });
     pagination.append(button);
+
+    // if (currentPage < paginatedPosts.length - 1) {
+    //   // if not on first page, show next and last buttons:
+    //   renderNextButton(paginatedPosts, currentPage);
+    //   renderLastButton(paginatedPosts);
+    // }
   });
 }
+
+// function renderNextButton(paginatedPosts, currentPage) {
+//   const pagination = document.querySelector(".pagination");
+//   const button = document.createElement("button");
+//   button.textContent = "Next Page";
+//   button.addEventListener("click", () => {
+//     imageGallery.innerHTML = "";
+//     renderPosts(paginatedPosts[currentPage] + 1);
+//   });
+//   pagination.append(button);
+// }
+
+// function renderPreviousButton(paginatedPosts, currentPage) {
+//   const pagination = document.querySelector(".pagination");
+//   const button = document.createElement("button");
+//   button.textContent = "Previous Page";
+//   button.addEventListener("click", () => {
+//     imageGallery.innerHTML = "";
+//     renderPosts(paginatedPosts[currentPage] - 1);
+//   });
+//   pagination.append(button);
+// }
+
+// function renderFirstButton(paginatedPosts) {
+//   const pagination = document.querySelector(".pagination");
+//   const button = document.createElement("button");
+//   button.textContent = "First page";
+//   button.addEventListener("click", () => {
+//     imageGallery.innerHTML = "";
+//     renderPosts(paginatedPosts[0]);
+//   });
+//   pagination.append(button);
+// }
+
+// function renderLastButton(paginatedPosts) {
+//   const pagination = document.querySelector(".pagination");
+//   const button = document.createElement("button");
+//   button.textContent = "Last page";
+//   button.addEventListener("click", () => {
+//     imageGallery.innerHTML = "";
+//     renderPosts(paginatedPosts[paginatedPosts.length - 1]);
+//   });
+//   pagination.append(button);
+// }
 
 // NEW SLIDER CODE FROM YOUTUBE
 // can not display carousel items when slider code is moved to another file. Find out!
