@@ -7,8 +7,25 @@ export async function generateHeaderHtml() {
   const leftContainer = document.createElement("div");
   leftContainer.classList.add("content-left");
 
+  const currentPath = window.location.pathname;
+  console.log(currentPath);
+
+  let redirectPath;
+  console.log(redirectPath);
+
+  if (currentPath.includes("post/")) {
+    redirectPath = "../index.html";
+    console.log(redirectPath);
+  }
+  if (currentPath.includes("account")) {
+    redirectPath = "../index.html";
+    console.log(redirectPath);
+  } else {
+    redirectPath = "index.html";
+  }
+
   const linkHome = document.createElement("a");
-  linkHome.href = "../index.html";
+  linkHome.href = redirectPath;
   linkHome.setAttribute("title", "HotView Labs Blog");
   linkHome.textContent = "HotView Labs";
 
