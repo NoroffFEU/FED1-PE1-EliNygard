@@ -7,41 +7,44 @@ export async function generateHeaderHtml() {
   const leftContainer = document.createElement("div");
   leftContainer.classList.add("content-left");
 
-  const currentPath = window.location.pathname;
-  console.log(currentPath);
-
-  let redirectPath;
-
-  if (currentPath.includes("post/")) {
-    console.log(post);
-    redirectPath = "../index.html";
-    console.log(redirectPath);
-  }
-  if (currentPath.includes("account")) {
-    redirectPath = "../index.html";
-    console.log(redirectPath);
-  } else {
-    redirectPath = "./index.html";
-    console.log(redirectPath);
-  }
-
   const linkHome = document.createElement("a");
-  linkHome.href = redirectPath;
   linkHome.setAttribute("title", "HotView Labs Blog");
   linkHome.textContent = "HotView Labs";
+  linkHome.addEventListener("click", () => {
+    const currentPath = window.location.pathname
+    if(currentPath.includes("/post") || currentPath.includes("/account")) {
+      window.location.href = "../index.html"
+    } else {
+      window.location.href = "index.html"
+    }
+  })
 
   const rightContainer = document.createElement("div");
   rightContainer.classList.add("content-right");
 
   const linkLogin = document.createElement("a");
-  linkLogin.href = "./account/login.html";
   linkLogin.setAttribute("title", "Log in");
   linkLogin.textContent = "Log in";
+  linkLogin.addEventListener("click", () => {
+    const currentPath = window.location.pathname
+    if(currentPath.includes("/post") || !currentPath.includes("/account")) {
+      window.location.href = "../account/login.html"
+    } else {
+      window.location.href = "login.html"
+    }
+  })
 
   const linkRegister = document.createElement("a");
-  linkRegister.href = "./account/register.html";
   linkRegister.setAttribute("title", "Register");
   linkRegister.textContent = "Register";
+  linkRegister.addEventListener("click", () => {
+    const currentPath = window.location.pathname
+    if(currentPath.includes("/post") || !currentPath.includes("/account")) {
+      window.location.href = "../account/register.html"
+    } else {
+      window.location.href = "register.html"
+    }
+  })
 
   rightContainer.append(linkLogin, linkRegister);
   leftContainer.appendChild(linkHome);

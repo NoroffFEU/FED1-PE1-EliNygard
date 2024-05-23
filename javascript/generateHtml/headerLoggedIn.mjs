@@ -11,7 +11,6 @@ export async function generateHeaderLoggedInHtml() {
   leftContainer.classList.add("content-left");
 
   const linkHome = document.createElement("a");
-  linkHome.href = "../index.html";
   linkHome.setAttribute("title", "HotView Labs Blog");
   linkHome.textContent = "HotView Labs";
   linkHome.addEventListener("click", () => {
