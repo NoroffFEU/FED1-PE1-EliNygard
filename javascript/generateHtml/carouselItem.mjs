@@ -17,7 +17,9 @@ export function generateCarouselItem(post) {
 
   const body = document.createElement("p");
   body.classList.add("font-primary", "body-text", "text-overflow");
-  body.textContent = post.body;
+  const postBody = post.body;
+  console.log(postBody);
+  body.textContent = textTruncate(postBody, 200);
 
   const button = document.createElement("button");
   button.classList.add("button-carousel", "font-secondary", "uppercase");
@@ -26,7 +28,7 @@ export function generateCarouselItem(post) {
     event.preventDefault();
     const postId = post.id;
     const newUrl = `./post/index.html?postId=${postId}`;
-    window.location.assign(newUrl)
+    window.location.assign(newUrl);
   });
 
   contentContainer.append(title, body, button);
@@ -34,4 +36,12 @@ export function generateCarouselItem(post) {
   slideContainer.appendChild(newArticleContainer);
 
   return slideContainer;
+}
+
+function textTruncate(text, maxChars, ellipsis = " ...") {
+  if (text.length > maxChars) {
+    return text.slice(0, maxChars) + ellipsis;
+  } else {
+    return text;
+  }
 }

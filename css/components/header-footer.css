@@ -40,9 +40,15 @@ footer {
 .content-right {
     display: flex;
     justify-content: end;
+    align-items: center;
     gap: 1rem;
     padding: 0rem;
     font-size: 0.7rem;
+}
+
+.content-right button {
+    font-size: .7rem;
+    padding: .25rem .5rem;
 }
 
 
