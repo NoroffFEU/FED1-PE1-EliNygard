@@ -39,7 +39,6 @@ export function generatePostPageHtml(post) {
 
   const category = document.createElement("p");
   category.textContent = post.tags;
-  console.log(category);
 
   const iconCopyContainer = document.createElement("div");
   iconCopyContainer.classList.add("icon-copy-container");

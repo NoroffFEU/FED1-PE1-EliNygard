@@ -24,7 +24,6 @@ export const API_NAME = `/${userName}`;
 const parameterString = window.location.search
 const searchParameters = new URLSearchParams(parameterString)
 const postId = searchParameters.get("postId")
-console.log(postId);
 export const API_ID = `/${postId}`;
 
 

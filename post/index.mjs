@@ -12,9 +12,7 @@ import { hideLoader, showLoader } from "../javascript/ui/loader.mjs";
 
 async function renderBlogPostPage(url) {
   const responseData = await getPosts(url);
-  console.log(responseData);
   const singlePost = responseData.data;
-  console.log(singlePost);
 
   const main = document.querySelector("main");
   // main.innerHTML = '';
