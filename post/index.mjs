@@ -1,6 +1,5 @@
 import {
   API_BASE,
-  API_ID,
   API_NAME,
   API_POSTS,
 } from "../javascript/api/constantAPI.mjs";
