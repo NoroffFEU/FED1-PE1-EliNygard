@@ -1,3 +1,5 @@
+import { formatDate } from "../ui/formatting.mjs";
+
 export function generateThumbPostsHtml(post) {
   const listItem = document.createElement("li");
 
@@ -33,9 +35,20 @@ export function generateThumbPostsHtml(post) {
   title.classList.add("font-secondary");
   title.textContent = post.title;
 
+  const date = document.createElement("p");
+  date.setAttribute("id", "post-date");
+  date.classList.add("font-secondary");
+  if (post.updated === post.created) {
+    const formattedDate = post.created;
+    date.textContent = formatDate(formattedDate);
+  } else {
+    const formattedDate = post.updated;
+    date.textContent = formatDate(formattedDate);
+  }
+
   textContainer.appendChild(text);
   thumbContainer.append(thumbImg, textContainer);
-  linkWrapper.append(thumbContainer, title);
+  linkWrapper.append(thumbContainer, title, date);
   listItem.appendChild(linkWrapper);
   // imageGallery.appendChild(listItem)
   // thumbWrapper.appendChild(imageGallery)

@@ -21,13 +21,13 @@ async function checkAndRenderPosts() {
     if (userName) {
       // if user is logged in
       await generateHeaderLoggedInHtml();
-      await setupPosThumbs(API_BASE + API_POSTS + API_NAME);
+      await setupPostThumbs(API_BASE + API_POSTS + API_NAME);
       // await renderPosts(API_BASE + API_POSTS + API_NAME);
       await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
     } else {
       // If user is not logged in, render posts from this account anyway
       await generateHeaderHtml();
-      await setupPosThumbs(API_BASE + API_POSTS + "/Leli_Nygard");
+      await setupPostThumbs(API_BASE + API_POSTS + "/Leli_Nygard");
       // await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard");
       await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard");
     }
@@ -39,6 +39,22 @@ async function checkAndRenderPosts() {
 }
 
 await checkAndRenderPosts();
+
+// sort by date function:
+function sortPostsByDate(posts) {
+  const button = document.querySelector(".sort-by-date-descending");
+  button.addEventListener("click", () => {
+      const sortedPosts = posts.sort((b, a) => {
+        const dateA = new Date(a.updated || a.created);
+        const dateB = new Date(b.updated || b.created);
+        return dateA - dateB;
+      });
+
+      const paginatedPosts = paginate(sortedPosts, 10);
+      renderPosts(paginatedPosts[0]);
+      renderPaginationControls(paginatedPosts, sortedPosts);
+    });
+}
 
 async function renderPosts(posts) {
   // const responseData = await getPosts(url);
@@ -71,16 +87,16 @@ async function renderNewPostsCarousel(url) {
   });
 }
 
-// await renderNewPostsCarousel()
-
-async function setupPosThumbs(url) {
+async function setupPostThumbs(url) {
   const responseData = await getPosts(url);
   const posts = responseData.data;
   const postsMeta = responseData.meta;
   console.log(postsMeta);
+  sortPostsByDate(posts);
+
   const paginatedPosts = paginate(posts, 4);
   renderPosts(paginatedPosts[0]);
-  renderPaginationControls(paginatedPosts);
+  renderPaginationControls(paginatedPosts, posts);
 }
 
 // PAGINATION MOVE TO SEPARATE FILE
@@ -107,7 +123,7 @@ function paginate(items, itemsPerPage) {
   // };
 }
 
-function renderPaginationControls(paginatedPosts) {
+function renderPaginationControls(paginatedPosts, allPosts) {
   const pagination = document.querySelector(".pagination");
   const imageGallery = document.querySelector(".image-gallery");
   pagination.innerHTML = "";
