@@ -10,12 +10,6 @@ export function generateThumbPostsHtml(post) {
     const newUrl = `./post/index.html?postId=${postId}`;
     console.log(newUrl);
     window.location.assign(newUrl);
-
-    // new code:
-    // const postId = post.id;
-    // const newUrl = `./post/index.html?post=${postId}`
-    // console.log(newUrl);
-    // window.location.href = newUrl;
   });
 
   const thumbContainer = document.createElement("div");

@@ -29,17 +29,22 @@
     display: inherit;
     flex-direction: row;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
     font-size: 0.9rem;
     color: var(--color-theme-dark-blue);
 }
 
+.category {
+    background-color: var(--color-theme-light-blue);
+    padding: .1rem .4rem;
+}
+
 .share-icon {
     cursor: pointer;
     transition: color 0.3s;
-    margin-left: 1.5rem;
+    /* margin-left: 1.5rem; */
     font-size: 1rem;
 }
 

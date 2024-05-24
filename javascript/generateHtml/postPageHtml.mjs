@@ -37,9 +37,6 @@ export function generatePostPageHtml(post) {
     date.textContent = formatDate(formattedDate);
   }
 
-  const category = document.createElement("p");
-  category.textContent = post.tags;
-
   const iconCopyContainer = document.createElement("div");
   iconCopyContainer.classList.add("icon-copy-container");
 
@@ -58,6 +55,10 @@ export function generatePostPageHtml(post) {
         console.error("failed to copy url"), error;
       });
   });
+
+  const category = document.createElement("p");
+  category.classList.add("category")
+  category.textContent = post.tags;
 
   const bodyText = document.createElement("p");
   bodyText.classList.add("post-content", "font-primary", "body-text");
