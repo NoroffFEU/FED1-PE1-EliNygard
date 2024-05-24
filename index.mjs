@@ -9,6 +9,8 @@ import { generateHeaderHtml } from "./javascript/generateHtml/header.mjs";
 import { generateHeaderLoggedInHtml } from "./javascript/generateHtml/headerLoggedIn.mjs";
 import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
 import { hideLoader, showLoader } from "./javascript/ui/loader.mjs";
+import { paginate, renderPaginationControls } from "./javascript/ui/pagination.mjs";
+import { sortPostsByDate } from "./javascript/ui/sortPosts.mjs";
 
 async function checkAndRenderPosts() {
   const userName = JSON.parse(localStorage.getItem("userName"));
@@ -40,48 +42,8 @@ async function checkAndRenderPosts() {
 
 await checkAndRenderPosts();
 
-// sort by date function:
-function sortPostsByDate(posts) {
-  const buttonDesc = document.querySelector(".sort-by-date-descending");
-  const buttonAsc = document.querySelector(".sort-by-date-ascending");
-  // button.addEventListener("click", () => {
-  const sortDescending = () => {
-    const sortedPosts = posts.sort((a, b) => {
-      const dateA = new Date(a.updated || a.created);
-      const dateB = new Date(b.updated || b.created);
-      return dateB - dateA;
-    });
-    const paginatedPosts = paginate(sortedPosts, 4);
-    renderPosts(paginatedPosts[0]);
-    renderPaginationControls(paginatedPosts, sortedPosts);
-  };
 
-  const sortAscending = () => {
-    const sortedPosts = posts.sort((a, b) => {
-      const dateA = new Date(a.updated || a.created);
-      const dateB = new Date(b.updated || b.created);
-      return dateA - dateB;
-    });
-    const paginatedPosts = paginate(sortedPosts, 4);
-    renderPosts(paginatedPosts[0]);
-    renderPaginationControls(paginatedPosts, sortedPosts);
-  };
-
-  buttonAsc.addEventListener("click", sortAscending);
-  buttonDesc.addEventListener("click", sortDescending);
-  //   const sortedPosts = posts.sort((a, b) => {
-  //     const dateA = new Date(a.updated || a.created);
-  //     const dateB = new Date(b.updated || b.created);
-  //     return dateA - dateB;
-  //   });
-
-  //   const paginatedPosts = paginate(sortedPosts, 10);
-  //   renderPosts(paginatedPosts[0]);
-  //   renderPaginationControls(paginatedPosts, sortedPosts);
-  // });
-}
-
-async function renderPosts(posts) {
+export async function renderPosts(posts) {
   // const responseData = await getPosts(url);
   // const posts = responseData.data;
 
@@ -124,105 +86,7 @@ async function setupPostThumbs(url) {
   renderPaginationControls(paginatedPosts, posts);
 }
 
-// PAGINATION MOVE TO SEPARATE FILE
-function paginate(items, itemsPerPage) {
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  const pages = [];
 
-  for (let i = 0; i < totalPages; i++) {
-    const start = i * itemsPerPage;
-    const end = start + itemsPerPage;
-    pages.push(items.slice(start, end));
-  }
-  return pages;
-  // return {
-  //   pages,
-  //   currentPage,
-  //   totalPages,
-  //   // check if the next or previous page exists, and if it does, it will return the page number. If the next or previous page doesn’t exist, it will return null:
-  //   // nextPage: currentPage + 1 < totalPages ? currentPage + 1 : null,
-  //   // previousPage: currentPage - 1 >= 0 ? currentPage - 1 : null,
-  //   // Loops back to page 1 or last:
-  //   nextPage: (currentPage + 1) % totalPages,
-  //   previousPage: (currentPage - 1 + totalPages) % totalPages,
-  // };
-}
-
-function renderPaginationControls(paginatedPosts, allPosts) {
-  const pagination = document.querySelector(".pagination");
-  const imageGallery = document.querySelector(".image-gallery");
-  pagination.innerHTML = "";
-
-  // if (currentPage > 0) {
-  //   // if on first page, show previous and first buttons:
-  //   renderFirstButton(paginatedPosts);
-  //   renderPreviousButton(paginatedPosts, currentPage);
-  // }
-
-  paginatedPosts.forEach((page, index) => {
-    const button = document.createElement("button");
-    button.classList.add("pagination-button", "button", "button-small");
-    button.setAttribute("title", "Page number");
-    button.setAttribute("aria-label", "Page number");
-    button.textContent = index + 1;
-    button.addEventListener("click", async () => {
-      imageGallery.innerHTML = "";
-      renderPosts(page);
-      // scroll to section
-    });
-    pagination.append(button);
-
-    // if (currentPage < paginatedPosts.length - 1) {
-    //   // if not on first page, show next and last buttons:
-    //   renderNextButton(paginatedPosts, currentPage);
-    //   renderLastButton(paginatedPosts);
-    // }
-  });
-}
-
-// function renderNextButton(paginatedPosts, currentPage) {
-//   const pagination = document.querySelector(".pagination");
-//   const button = document.createElement("button");
-//   button.textContent = "Next Page";
-//   button.addEventListener("click", () => {
-//     imageGallery.innerHTML = "";
-//     renderPosts(paginatedPosts[currentPage] + 1);
-//   });
-//   pagination.append(button);
-// }
-
-// function renderPreviousButton(paginatedPosts, currentPage) {
-//   const pagination = document.querySelector(".pagination");
-//   const button = document.createElement("button");
-//   button.textContent = "Previous Page";
-//   button.addEventListener("click", () => {
-//     imageGallery.innerHTML = "";
-//     renderPosts(paginatedPosts[currentPage] - 1);
-//   });
-//   pagination.append(button);
-// }
-
-// function renderFirstButton(paginatedPosts) {
-//   const pagination = document.querySelector(".pagination");
-//   const button = document.createElement("button");
-//   button.textContent = "First page";
-//   button.addEventListener("click", () => {
-//     imageGallery.innerHTML = "";
-//     renderPosts(paginatedPosts[0]);
-//   });
-//   pagination.append(button);
-// }
-
-// function renderLastButton(paginatedPosts) {
-//   const pagination = document.querySelector(".pagination");
-//   const button = document.createElement("button");
-//   button.textContent = "Last page";
-//   button.addEventListener("click", () => {
-//     imageGallery.innerHTML = "";
-//     renderPosts(paginatedPosts[paginatedPosts.length - 1]);
-//   });
-//   pagination.append(button);
-// }
 
 // NEW SLIDER CODE FROM YOUTUBE
 // can not display carousel items when slider code is moved to another file. Find out!
