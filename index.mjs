@@ -161,7 +161,7 @@ function renderPaginationControls(paginatedPosts, allPosts) {
 
   paginatedPosts.forEach((page, index) => {
     const button = document.createElement("button");
-    button.classList.add("pagination-button");
+    button.classList.add("pagination-button", "button", "button-small");
     button.setAttribute("title", "Page number");
     button.setAttribute("aria-label", "Page number");
     button.textContent = index + 1;

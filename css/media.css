@@ -135,6 +135,13 @@
     }
 
 
+    /* pagination */
+
+    .pagination {
+        gap: 2rem;
+    }
+
+
 
     /* post page */
 
@@ -272,7 +279,7 @@
     /* thumbnails home page*/
 
     .thumb-wrapper {
-        margin: 7rem auto 4.5rem auto;
+        margin: 7rem auto 2rem auto;
     }
 
     .image-gallery {

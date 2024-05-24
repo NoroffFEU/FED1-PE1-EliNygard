@@ -1,0 +1,15 @@
+.ui-container {
+    gap: .5rem;
+    margin: .5rem;
+}
+
+.ui-container .button-small {
+    font-size: .7rem;
+    padding: .2rem .3rem;
+}
+
+.pagination {
+    padding: 1rem;
+    gap: 1rem;
+}
+

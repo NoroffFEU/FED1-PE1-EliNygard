@@ -13,6 +13,7 @@
 @import url("./components/slogan.css");
 @import url("./components/messages.css");
 @import url("./components/loader.css");
+@import url("./components/ui-buttons.css");
 
 /* pages code */
 @import url("./pages/edit-create-form.css");
