@@ -32,9 +32,9 @@
 }
 .thumb-container img{
     max-width: 100%;
-    /* width: 100%; */
-    /* height: auto; */
+    width: 100%;
 }
+
 .thumb-container .read-more{
     background: rgba(18, 25, 80, 0.70);
     position: absolute;
