@@ -1,11 +1,21 @@
 .ui-container {
     gap: .5rem;
     margin: .5rem;
+    align-items: center;
 }
 
 .ui-container .button-small {
     font-size: .7rem;
     padding: .2rem .3rem;
+}
+
+.ui-container div {
+    color: var(--color-theme-dark-blue);
+}
+
+.ui-buttons {
+    gap: .5rem;
+    margin-top: .5rem;
 }
 
 .pagination {
