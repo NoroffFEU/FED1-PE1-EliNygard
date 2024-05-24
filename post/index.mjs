@@ -23,18 +23,20 @@ async function renderBlogPostPage(url) {
 
 async function main() {
   const userName = JSON.parse(localStorage.getItem("userName"));
-  const parameterString = window.location.search
-const searchParameters = new URLSearchParams(parameterString)
-const postId = searchParameters.get("postId")
+  const parameterString = window.location.search;
+  const searchParameters = new URLSearchParams(parameterString);
+  const postId = searchParameters.get("postId");
   showLoader();
   try {
     if (userName) {
-      generateHeaderLoggedInHtml()
+      generateHeaderLoggedInHtml();
       await renderBlogPostPage(API_BASE + API_POSTS + API_NAME + `/${postId}`);
     } else {
       // If user is not logged in:
-      generateHeaderHtml()
-      await renderBlogPostPage(API_BASE + API_POSTS + "/Leli_Nygard" + `/${postId}`);
+      generateHeaderHtml();
+      await renderBlogPostPage(
+        API_BASE + API_POSTS + "/Leli_Nygard" + `/${postId}`
+      );
     }
   } catch {
     console.error(error);
