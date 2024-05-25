@@ -28,16 +28,16 @@ export async function generateHeaderHtml() {
   linkLogin.addEventListener("click", () => {
     const currentPath = window.location.pathname;
     if (currentPath.includes("/post")) {
-      window.location.href = "../account/login.html";
+      window.location.href = "../account/login.html"; // not working
     }
-    else if (!currentPath.includes("/post")) {
-      window.location.href = "./account/login.html";
+    if (!currentPath.includes("/post")) {
+      window.location.href = "./account/login.html"; // works
     } 
-    else if (!currentPath.includes("/account")) {
-      window.location.href = "./account/login.html";
+    if (!currentPath.includes("/account")) {
+      window.location.href = "./account/login.html"; 
     }
-    else if (currentPath.includes("/account")) {
-      window.location.href = "./login.html";
+    if (currentPath.includes("/account")) {
+      window.location.href = "./login.html"; // works
     }
   });
 
