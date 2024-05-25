@@ -39,12 +39,6 @@ export async function generateHeaderLoggedInHtml() {
     }
 
     window.location.href = targetPath;
-    //   const currentPath = window.location.pathname
-    //   if(!currentPath.includes("/post") || currentPath.includes("/account")) {
-    //     window.location.href = "../post/manage.html"
-    //   } else {
-    //     window.location.href = "manage.html"
-    //   }
   });
 
   const logOutBtn = document.createElement("button");
