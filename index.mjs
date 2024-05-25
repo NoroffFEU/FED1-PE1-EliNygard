@@ -9,7 +9,10 @@ import { generateCategoryHtml } from "./javascript/generateHtml/filterPostsCateg
 import { generateHeaderHtml } from "./javascript/generateHtml/header.mjs";
 import { generateHeaderLoggedInHtml } from "./javascript/generateHtml/headerLoggedIn.mjs";
 import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
-import { addEventListenerOnCategory, extractCategories } from "./javascript/ui/filterPosts.mjs";
+import {
+  addEventListenerOnCategory,
+  extractCategories,
+} from "./javascript/ui/filterPosts.mjs";
 import { hideLoader, showLoader } from "./javascript/ui/loader.mjs";
 import {
   paginate,
@@ -23,19 +26,17 @@ async function checkAndRenderPosts() {
   showLoader();
 
   try {
-    // Promise for testing, REMOVE
+    // Promise for testing loader:
     // await new Promise(resolve => setTimeout(resolve, 2000));
     if (userName) {
       // if user is logged in
       await generateHeaderLoggedInHtml();
       await setupPostThumbs(API_BASE + API_POSTS + API_NAME);
-      // await renderPosts(API_BASE + API_POSTS + API_NAME);
       await renderNewPostsCarousel(API_BASE + API_POSTS + API_NAME);
     } else {
-      // If user is not logged in, render posts from this account anyway
+      // If user is not logged in, render header for visitors and render posts from this account anyway:
       await generateHeaderHtml();
       await setupPostThumbs(API_BASE + API_POSTS + "/Leli_Nygard");
-      // await renderPosts(API_BASE + API_POSTS + "/Leli_Nygard");
       await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard");
     }
   } catch (error) {
@@ -95,10 +96,10 @@ async function setupPostThumbs(url) {
   renderPaginationControls(paginatedPosts, posts);
 }
 
-const viewAllPosts = document.getElementById("view-all-posts")
+const viewAllPosts = document.getElementById("view-all-posts");
 viewAllPosts.addEventListener("click", () => {
-  window.location.reload()
-})
+  window.location.reload();
+});
 
 // CAROUSEL CODE FROM YOUTUBE:
 // https://www.youtube.com/watch?v=749ta0nvj8s&t=3s
@@ -113,7 +114,6 @@ const nextButton = document.getElementById("next-button");
 nextButton.addEventListener("click", () => {
   nextSlide();
 });
-
 
 const slides = document.querySelectorAll("#carousel li");
 let slideIndex = 0;
@@ -149,13 +149,7 @@ function nextSlide() {
   showSlide(slideIndex);
 }
 
-// async function renderHomePage() {
-//   // await renderPosts();
-// }
-
-// await renderHomePage();
-
-// FROM W3SCHOOLS CODE
+// FROM W3SCHOOLS CAROUSEL CODE, TRY TO IMPLEMENT DOTS
 
 // carousel buttons
 // const dot1 = document.getElementById("dot-1")
