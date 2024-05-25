@@ -27,7 +27,7 @@ export async function generateHeaderHtml() {
   linkLogin.textContent = "Log in";
   linkLogin.addEventListener("click", () => {
     const currentPath = window.location.pathname
-    if(currentPath.includes("/post") || !currentPath.includes("/account")) {
+    if(currentPath.includes("/post")) {
       window.location.href = "../account/login.html"
     } else {
       window.location.href = "./account/login.html"
