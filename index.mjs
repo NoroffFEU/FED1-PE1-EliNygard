@@ -83,11 +83,11 @@ async function setupPostThumbs(url) {
   console.log(postsMeta);
   sortPostsByDate(posts);
 
-  const categories = extractCategories(posts)
+  const categories = extractCategories(posts);
   console.log(categories);
-  generateCategoryHtml(categories)
+  generateCategoryHtml(categories);
 
-  addEventListenerOnCategory(posts)
+  addEventListenerOnCategory(posts);
 
   const paginatedPosts = paginate(posts, 4);
   renderPosts(paginatedPosts[0]);
@@ -100,40 +100,39 @@ async function setupPostThumbs(url) {
 // add event listener on options
 // when click on option, display all posts with that category tag
 
-function extractCategories(posts){
-  const categories = new Set()
+export function extractCategories(posts) {
+  const categories = new Set();
   posts.forEach((post) => {
     post.tags.forEach((tag) => {
-      categories.add(tag)
-    })
-  })
+      categories.add(tag);
+    });
+  });
   console.log(Array.from(categories));
-  return Array.from(categories)
+  return Array.from(categories);
 }
 
 function generateCategoryHtml(categories) {
-  const select = document.getElementById("category")
+  const select = document.getElementById("category");
   categories.forEach((category) => {
-    const option = document.createElement("option")
-    option.value = category
-    option.textContent = category
-    select.appendChild(option)
-  })
+    const option = document.createElement("option");
+    option.value = category;
+    option.textContent = category;
+    select.appendChild(option);
+  });
 }
 
 function addEventListenerOnCategory(posts) {
-  const select = document.getElementById("category")
+  const select = document.getElementById("category");
   select.addEventListener("change", () => {
-    const selectedCategory = select.value
-    const filteredPosts = filterPostsByCategory(posts, selectedCategory)
-    renderPosts(filteredPosts)
-  })
+    const selectedCategory = select.value;
+    const filteredPosts = filterPostsByCategory(posts, selectedCategory);
+    renderPosts(filteredPosts);
+  });
 }
 
 function filterPostsByCategory(posts, category) {
-  return posts.filter(post => post.tags.includes(category))
+  return posts.filter((post) => post.tags.includes(category));
 }
-
 
 // NEW SLIDER CODE FROM YOUTUBE
 // can not display carousel items when slider code is moved to another file. Find out!
