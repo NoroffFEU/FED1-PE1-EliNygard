@@ -23,7 +23,6 @@ export async function generateHeaderHtml() {
   rightContainer.classList.add("content-right");
 
   const linkLogin = document.createElement("a");
-  // linkLogin.setAttribute("title", "Log in");
   linkLogin.title = "Log in"
   linkLogin.textContent = "Log in";
   linkLogin.addEventListener("click", () => {
@@ -37,33 +36,26 @@ export async function generateHeaderHtml() {
     
     window.location.href = targetPath;
   });
-  // linkLogin.addEventListener("click", () => {
-  //   const currentPath = window.location.pathname;
-  //   if (currentPath.includes("/post")) {
-  //     window.location.href = "../account/login.html"; 
-  //   }
-  //   if (!currentPath.includes("/post")) {
-  //     window.location.href = "./account/login.html"; 
-  //   } 
-  //   if (!currentPath.includes("/account")) {
-  //     window.location.href = "./account/login.html"; 
-  //   }
-  //   if (currentPath.includes("/account")) {
-  //     window.location.href = "./login.html"; 
-  //   }
-  // });
-
+  
   const linkRegister = document.createElement("a");
-  linkRegister.setAttribute("title", "Register");
+  linkRegister.title = "Register account"
   linkRegister.textContent = "Register";
   linkRegister.addEventListener("click", () => {
-    const currentPath = window.location.pathname;
-    if (currentPath.includes("/post") || !currentPath.includes("/account")) {
-      window.location.href = "../account/register.html";
-    } 
-    if (!currentPath.includes("/post")) {
-      window.location.href = "./account/register.html";
+    let targetPath = "./account/register.html"
+
+    if(window.location.pathname.includes("/post")) {
+      targetPath = "../account/register.html"
+    } else if (window.location.pathname.includes("/account")) {
+      targetPath = ".register.html"
     }
+    window.location.href = targetPath;
+  //   const currentPath = window.location.pathname;
+  //   if (currentPath.includes("/post") || !currentPath.includes("/account")) {
+  //     window.location.href = "../account/register.html";
+  //   } 
+  //   if (!currentPath.includes("/post")) {
+  //     window.location.href = "./account/register.html";
+  //   }
   });
 
   rightContainer.append(linkLogin, linkRegister);
