@@ -5,8 +5,6 @@ import { generateHeaderLoggedInHtml } from "../generateHtml/headerLoggedIn.mjs";
 //   renderErrorMessageHtml,
 // } from "../messages/errorMessage.mjs";
 
-
-
 const form = document.querySelector("form");
 
 form.addEventListener("submit", function (event) {
@@ -14,7 +12,7 @@ form.addEventListener("submit", function (event) {
 
   // Get values from form inputs
   const title = document.getElementById("title").value.trim();
-  const body = document.getElementById("body").value.trim();
+  const body = document.getElementById("body").value;
   const imgUrl = document.getElementById("img-url").value.trim();
   const imgAlt = document.getElementById("img-alt").value.trim();
   const category = document.getElementById("category").value.trim();
@@ -26,7 +24,7 @@ form.addEventListener("submit", function (event) {
     method: "POST",
     body: JSON.stringify({
       title: title,
-      body: body,
+      body: formattedBody,
       media: {
         url: imgUrl,
         alt: imgAlt,
@@ -42,46 +40,46 @@ form.addEventListener("submit", function (event) {
   // Send the request
   fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
     .then((response) => response.json())
-    .then(
-      (json) => {
-        console.log(json);
+    .then((json) => {
+      console.log(json);
 
-        // validate form:
-        if (!title) {
-          throw new Error("Please add a title.");
-        }
-        if (body.length > 1999) {
-          throw new Error("The post body text is over 2000 characters. Please try again")
-        }
-        if (!imgUrl) {
-          throw new Error("Please add an image url.");
-        }
-        if (!imgAlt) {
-          throw new Error(
-            "Can not update post. Please add a descriptive image text."
-          );
-        }
+      // validate form:
+      if (!title) {
+        throw new Error("Please add a title.");
+      }
+      if (body.length > 1999) {
+        throw new Error(
+          "The post body text is over 2000 characters. Please try again"
+        );
+      }
+      if (!imgUrl) {
+        throw new Error("Please add an image url.");
+      }
+      if (!imgAlt) {
+        throw new Error(
+          "Can not update post. Please add a descriptive image text."
+        );
+      }
 
-        // if (json.errors) {
-          // console.log(json.errors);
-          // throw new Error (`${json.errors}`)
-          // const errorMessages = extractErrorMessages(json);
-          // renderErrorMessageHtml(errorMessages);
-        // }
-        else {
+      // if (json.errors) {
+      // console.log(json.errors);
+      // throw new Error (`${json.errors}`)
+      // const errorMessages = extractErrorMessages(json);
+      // renderErrorMessageHtml(errorMessages);
+      // }
+      else {
         localStorage.setItem("createSuccess", true);
         window.location.href = "../post/manage.html";
       }
-      }
-    )
+    })
     .catch((error) => {
-      alert(error.message) //display error to user
+      alert(error.message); //display error to user
       console.error("Error:", error.message); // Log any errors that occur
     });
 });
 
 async function main() {
-  generateHeaderLoggedInHtml()
+  generateHeaderLoggedInHtml();
 }
 
 main();
