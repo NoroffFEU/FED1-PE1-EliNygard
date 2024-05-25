@@ -100,7 +100,8 @@ viewAllPosts.addEventListener("click", () => {
   window.location.reload()
 })
 
-// NEW CAROUSEL CODE FROM YOUTUBE
+// CAROUSEL CODE FROM YOUTUBE:
+// https://www.youtube.com/watch?v=749ta0nvj8s&t=3s
 // can not display carousel items when slider code is moved to another file. Find out!
 
 const prevButton = document.getElementById("prev-button");
@@ -113,7 +114,6 @@ nextButton.addEventListener("click", () => {
   nextSlide();
 });
 
-// try to add dots to the slider?
 
 const slides = document.querySelectorAll("#carousel li");
 let slideIndex = 0;
