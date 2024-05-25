@@ -1,7 +1,10 @@
+.ui-wrapper {
+    margin: 1rem .5rem;
+}
+
 .ui-container {
     gap: .5rem;
-    margin: .5rem;
-    align-items: center;
+    margin: .5rem 0;
 }
 
 .ui-container .button-small {
@@ -14,19 +17,22 @@
     color: var(--color-theme-dark-blue);
 }
 
-.ui-buttons {
+.sort-posts-container {
+    /* margin: 1rem .5rem; */
+}
+
+.filter-posts-container {
+    /* margin: 0 .5rem 1.5rem .5rem */
+}
+
+/* .ui-buttons {
     gap: .5rem;
     margin-top: .5rem;
-}
+} */
 
 .pagination {
     padding: 1rem;
     gap: 1rem;
 }
 
-/* .category-select {
-    border: solid var(--color-theme-dark-blue) .5px;
-    border-radius: 0.0625rem;
-    padding: 3.2px 4.8px;
-    text-decoration: none;
-} */
+

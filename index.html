@@ -42,15 +42,6 @@
 </head>
 <body>
     <header id="header-logged-in" class="bg-color-theme-light">
-        <!-- <nav class="h-f-container header-container font-primary">
-            <div class="content-left">
-                <a href="index.html" title="HotView Labs Blog">HotView Labs</a>
-            </div>
-            <div class="content-right">
-                <a href="./account/login.html">Log in</a>
-                <a href="./account/register.html">Register</a>
-            </div>
-        </nav> -->
     </header>
     <main>
         <section  class="banner-slogan">
@@ -139,16 +130,19 @@
         </section>
         <!-- Carousel end -->
 
-        <div class="ui-container flex">
-            <!-- <div>Sort posts</div> -->
-            <!-- <div class="ui-buttons flex"> -->
+        <!-- Sort and filter posts -->
+        <div class="ui-wrapper">
+            <div class="ui-container sort-posts-container flex">
                 <button title="Sort posts by oldest date" class="sort-by-date-ascending button button-small">Oldest &uarr;</button>
                 <button title="Sort posts by newest date" class="sort-by-date-descending button button-small">Newest &darr;</button>
-            <!-- </div> -->
+            </div>
+            <div class="ui-container filter-posts-container flex">
                 <select title="Filter posts by category" name="category" id="category" class="button button-small button-transparent"></select>
                 <button title="All posts" class="button button-small button-transparent" id="view-all-posts">View all posts</button>
-
+            </div>
         </div>
+        <!-- Sort and filter posts end-->
+
         <!-- Articles thumbnails start -->
         <div class="thumb-wrapper">
             <ul class="image-gallery"></ul>

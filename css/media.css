@@ -123,6 +123,23 @@
         padding: 0;
     }
 
+    /* sort, filter */
+
+    .ui-wrapper {
+        margin: 1rem;
+    }
+
+    .ui-container {
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .ui-container .button-small {
+        font-size: 1rem;
+    }
+
+    
+
     /* thumnails home page*/
 
     /* .image-gallery {
