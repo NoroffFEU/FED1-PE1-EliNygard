@@ -30,7 +30,7 @@ export async function generateHeaderHtml() {
     if (currentPath.includes("/post")) {
       window.location.href = "../account/login.html";
     }
-    if (!currentPath.includes("/post") || !currentPath.includes("/account")) {
+    else if (!currentPath.includes("/post") || !currentPath.includes("/account")) {
       window.location.href = "./account/login.html";
     } else {
       window.location.href = "./login.html";

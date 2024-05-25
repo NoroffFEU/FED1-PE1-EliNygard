@@ -102,7 +102,7 @@
 .button-carousel:hover {
     text-decoration: underline;
     color: var(--color-theme-dark-blue);
-    transition: text-decoration 4s ease-in;
+    transition: underline 4s ease-in;
 }
 
 .carousel-buttons-container {
