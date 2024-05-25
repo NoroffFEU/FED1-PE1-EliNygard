@@ -86,7 +86,6 @@ async function setupPostThumbs(url) {
   sortPostsByDate(posts);
 
   const categories = extractCategories(posts);
-  console.log(categories);
   generateCategoryHtml(categories);
 
   addEventListenerOnCategory(posts);
@@ -95,6 +94,11 @@ async function setupPostThumbs(url) {
   renderPosts(paginatedPosts[0]);
   renderPaginationControls(paginatedPosts, posts);
 }
+
+const viewAllPosts = document.getElementById("view-all-posts")
+viewAllPosts.addEventListener("click", () => {
+  window.location.reload()
+})
 
 // NEW SLIDER CODE FROM YOUTUBE
 // can not display carousel items when slider code is moved to another file. Find out!
