@@ -23,23 +23,35 @@ export async function generateHeaderHtml() {
   rightContainer.classList.add("content-right");
 
   const linkLogin = document.createElement("a");
-  linkLogin.setAttribute("title", "Log in");
+  // linkLogin.setAttribute("title", "Log in");
+  linkLogin.title = "Log in"
   linkLogin.textContent = "Log in";
   linkLogin.addEventListener("click", () => {
-    const currentPath = window.location.pathname;
-    if (currentPath.includes("/post")) {
-      window.location.href = "../account/login.html"; // not working
+    let targetPath = "./account/login.html";
+    
+    if (window.location.pathname.includes("/post")) {
+      targetPath = "../account/login.html";
+    } else if (window.location.pathname.includes("/account")) {
+      targetPath = "./login.html";
     }
-    if (!currentPath.includes("/post")) {
-      window.location.href = "./account/login.html"; // works
-    } 
-    if (!currentPath.includes("/account")) {
-      window.location.href = "./account/login.html"; 
-    }
-    if (currentPath.includes("/account")) {
-      window.location.href = "./login.html"; // works
-    }
+    
+    window.location.href = targetPath;
   });
+  // linkLogin.addEventListener("click", () => {
+  //   const currentPath = window.location.pathname;
+  //   if (currentPath.includes("/post")) {
+  //     window.location.href = "../account/login.html"; 
+  //   }
+  //   if (!currentPath.includes("/post")) {
+  //     window.location.href = "./account/login.html"; 
+  //   } 
+  //   if (!currentPath.includes("/account")) {
+  //     window.location.href = "./account/login.html"; 
+  //   }
+  //   if (currentPath.includes("/account")) {
+  //     window.location.href = "./login.html"; 
+  //   }
+  // });
 
   const linkRegister = document.createElement("a");
   linkRegister.setAttribute("title", "Register");
