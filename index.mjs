@@ -5,9 +5,11 @@ import {
 } from "./javascript/api/constantAPI.mjs";
 import { getPosts } from "./javascript/api/getPosts.mjs";
 import { generateCarouselItem } from "./javascript/generateHtml/carouselItem.mjs";
+import { generateCategoryHtml } from "./javascript/generateHtml/filterPostsCategory.mjs";
 import { generateHeaderHtml } from "./javascript/generateHtml/header.mjs";
 import { generateHeaderLoggedInHtml } from "./javascript/generateHtml/headerLoggedIn.mjs";
 import { generateThumbPostsHtml } from "./javascript/generateHtml/thumbPostHtml.mjs";
+import { addEventListenerOnCategory, extractCategories } from "./javascript/ui/filterPosts.mjs";
 import { hideLoader, showLoader } from "./javascript/ui/loader.mjs";
 import {
   paginate,
@@ -92,46 +94,6 @@ async function setupPostThumbs(url) {
   const paginatedPosts = paginate(posts, 4);
   renderPosts(paginatedPosts[0]);
   renderPaginationControls(paginatedPosts, posts);
-}
-
-// FILTER POSTS BY CATEGORY
-// extract category from tags in post api
-// generate html options on select element from categories
-// add event listener on options
-// when click on option, display all posts with that category tag
-
-export function extractCategories(posts) {
-  const categories = new Set();
-  posts.forEach((post) => {
-    post.tags.forEach((tag) => {
-      categories.add(tag);
-    });
-  });
-  console.log(Array.from(categories));
-  return Array.from(categories);
-}
-
-function generateCategoryHtml(categories) {
-  const select = document.getElementById("category");
-  categories.forEach((category) => {
-    const option = document.createElement("option");
-    option.value = category;
-    option.textContent = category;
-    select.appendChild(option);
-  });
-}
-
-function addEventListenerOnCategory(posts) {
-  const select = document.getElementById("category");
-  select.addEventListener("change", () => {
-    const selectedCategory = select.value;
-    const filteredPosts = filterPostsByCategory(posts, selectedCategory);
-    renderPosts(filteredPosts);
-  });
-}
-
-function filterPostsByCategory(posts, category) {
-  return posts.filter((post) => post.tags.includes(category));
 }
 
 // NEW SLIDER CODE FROM YOUTUBE
