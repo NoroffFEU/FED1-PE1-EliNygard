@@ -24,7 +24,7 @@ form.addEventListener("submit", function (event) {
     method: "POST",
     body: JSON.stringify({
       title: title,
-      body: formattedBody,
+      body: body,
       media: {
         url: imgUrl,
         alt: imgAlt,
