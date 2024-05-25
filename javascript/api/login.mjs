@@ -65,8 +65,8 @@ async function loginUser(url, userData) {
   } catch (error) {
     //this should maybe be at lower level?
     // loginMessageError();
-    console.error((error)); // Log errors in console
     alert(error.message); //display error to user
+    console.error(error); // Log errors in console
   } finally {
     hideLoader();
   }

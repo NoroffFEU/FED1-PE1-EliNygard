@@ -100,7 +100,7 @@ viewAllPosts.addEventListener("click", () => {
   window.location.reload()
 })
 
-// NEW SLIDER CODE FROM YOUTUBE
+// NEW CAROUSEL CODE FROM YOUTUBE
 // can not display carousel items when slider code is moved to another file. Find out!
 
 const prevButton = document.getElementById("prev-button");

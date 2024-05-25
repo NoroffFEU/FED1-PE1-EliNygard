@@ -23,13 +23,13 @@ function validateEmail(email) {
     throw new Error("Please enter your email address.");
   }
 
-  const emailInput = document.getElementById("email")
-  if(emailInput.validity.typeMismatch) {
-    throw new Error("Enter a valid email address")
+  const emailInput = document.getElementById("email");
+  if (emailInput.validity.typeMismatch) {
+    throw new Error("Enter a valid email address");
   }
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  if(!emailPattern.test(email)) {
-    throw new Error("Enter a valid email address")
+  if (!emailPattern.test(email)) {
+    throw new Error("Enter a valid email address");
   }
 }
 

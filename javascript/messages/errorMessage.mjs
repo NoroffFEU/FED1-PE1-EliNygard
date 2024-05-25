@@ -37,7 +37,6 @@ export function renderErrorMessageHtml(messages) {
     errorContainer.append(errorMessage, confirmButtonContainer);
     document.body.appendChild(errorContainer);
   } else {
-    console.log("return");
     return;
   }
 }
