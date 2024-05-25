@@ -42,7 +42,7 @@ export function generateThumbPostsHtml(post) {
 
   textContainer.appendChild(text);
   thumbContainer.append(thumbImg, textContainer);
-  linkWrapper.append(thumbContainer, title, date);
+  linkWrapper.append(thumbContainer, title);
   listItem.appendChild(linkWrapper);
   // imageGallery.appendChild(listItem)
   // thumbWrapper.appendChild(imageGallery)
