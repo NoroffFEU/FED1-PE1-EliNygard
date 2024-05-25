@@ -30,7 +30,7 @@ export async function generateHeaderHtml() {
     if(currentPath.includes("/post") || !currentPath.includes("/account")) {
       window.location.href = "../account/login.html"
     } else {
-      window.location.href = "login.html"
+      window.location.href = "./account/login.html"
     }
   })
 
@@ -42,7 +42,7 @@ export async function generateHeaderHtml() {
     if(currentPath.includes("/post") || !currentPath.includes("/account")) {
       window.location.href = "../account/register.html"
     } else {
-      window.location.href = "register.html"
+      window.location.href = "./account/register.html"
     }
   })
 
