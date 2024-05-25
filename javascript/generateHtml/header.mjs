@@ -11,13 +11,13 @@ export async function generateHeaderHtml() {
   linkHome.setAttribute("title", "HotView Labs Blog");
   linkHome.textContent = "HotView Labs";
   linkHome.addEventListener("click", () => {
-    const currentPath = window.location.pathname
-    if(currentPath.includes("/post") || currentPath.includes("/account")) {
-      window.location.href = "../index.html"
+    const currentPath = window.location.pathname;
+    if (currentPath.includes("/post") || currentPath.includes("/account")) {
+      window.location.href = "../index.html";
     } else {
-      window.location.href = "index.html"
+      window.location.href = "index.html";
     }
-  })
+  });
 
   const rightContainer = document.createElement("div");
   rightContainer.classList.add("content-right");
@@ -26,25 +26,28 @@ export async function generateHeaderHtml() {
   linkLogin.setAttribute("title", "Log in");
   linkLogin.textContent = "Log in";
   linkLogin.addEventListener("click", () => {
-    const currentPath = window.location.pathname
-    if(currentPath.includes("/post")) {
-      window.location.href = "../account/login.html"
-    } else {
-      window.location.href = "./account/login.html"
+    const currentPath = window.location.pathname;
+    if (currentPath.includes("/post")) {
+      window.location.href = "../account/login.html";
     }
-  })
+    if (!currentPath.includes("/post") || !currentPath.includes("/account")) {
+      window.location.href = "./account/login.html";
+    } else {
+      window.location.href = "./login.html";
+    }
+  });
 
   const linkRegister = document.createElement("a");
   linkRegister.setAttribute("title", "Register");
   linkRegister.textContent = "Register";
   linkRegister.addEventListener("click", () => {
-    const currentPath = window.location.pathname
-    if(currentPath.includes("/post") || !currentPath.includes("/account")) {
-      window.location.href = "../account/register.html"
+    const currentPath = window.location.pathname;
+    if (currentPath.includes("/post") || !currentPath.includes("/account")) {
+      window.location.href = "../account/register.html";
     } else {
-      window.location.href = "./account/register.html"
+      window.location.href = "./account/register.html";
     }
-  })
+  });
 
   rightContainer.append(linkLogin, linkRegister);
   leftContainer.appendChild(linkHome);
