@@ -22,5 +22,3 @@ export function addEventListenerOnCategory(posts) {
 function filterPostsByCategory(posts, category) {
   return posts.filter((post) => post.tags.includes(category));
 }
-
-
