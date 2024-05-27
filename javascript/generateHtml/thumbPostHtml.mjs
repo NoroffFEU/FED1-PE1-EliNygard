@@ -8,7 +8,6 @@ export function generateThumbPostsHtml(post) {
     event.preventDefault();
     const postId = post.id;
     const newUrl = `./post/index.html?postId=${postId}`;
-    console.log(newUrl);
     window.location.assign(newUrl);
   });
 

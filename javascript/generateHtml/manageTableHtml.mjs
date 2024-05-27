@@ -9,7 +9,17 @@ export function generateTableHtml(post) {
     tableRow.setAttribute("data-post-id", postId);
   
     const title = document.createElement("td");
-    title.innerHTML = post.title;
+    const linkTitle = document.createElement("a")
+    linkTitle.classList.add("table-title")
+    linkTitle.innerHTML = post.title;
+    linkTitle.addEventListener("click", (event) => {
+      event.preventDefault()
+      const postId = post.id
+      const newUrl = `./index.html?postId=${postId}`;
+      window.location.assign(newUrl)
+    })
+
+    
   
     const author = document.createElement("td");
     const authorName = post.author.name;
@@ -74,6 +84,7 @@ export function generateTableHtml(post) {
     deleteBtnCell.appendChild(deleteBtn);
     editBtnCell.appendChild(editBtn);
     // pubBtnCell.appendChild(pubBtn);
+    title.appendChild(linkTitle)
     tableRow.append(title, author, date, editBtnCell, deleteBtnCell);
     tableBody.appendChild(tableRow);
   }
