@@ -1,15 +1,10 @@
-// import {
-//   checkEmailAvailability,
-//   checkUsernameAvailability,
-// } from "./checkUserAvailability.mjs";
-
 export function validateRegistrationData(userData, confirmPassword) {
   validateUsername(userData.name);
   validateEmail(userData.email);
   validatePassword(userData.password);
 
   if (userData.password !== confirmPassword) {
-    throw new Error("passwords do not match. Please try again");
+    throw new Error("Passwords do not match. Please try again");
   }
 }
 
@@ -23,10 +18,15 @@ function validateEmail(email) {
     throw new Error("Please enter your email address.");
   }
 
+  if (!email.includes("stud.noroff.no")) {
+    throw new Error("The email must be a valid stud.noroff email")
+  }
+
   const emailInput = document.getElementById("email");
   if (emailInput.validity.typeMismatch) {
     throw new Error("Enter a valid email address");
   }
+
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailPattern.test(email)) {
     throw new Error("Enter a valid email address");
