@@ -34,7 +34,10 @@ export function deletePost(postId) {
         }
         window.location.reload();
       } else {
-        //add message (if user does not have the token to delete a post)
+        if(!token) {
+          throw new Error("You are not permitted to delete a post.")
+        }
+        //add error if post has already been deleted
       }
     })
     .catch((error) => {
