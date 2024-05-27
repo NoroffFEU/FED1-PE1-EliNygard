@@ -1,5 +1,10 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 import { generateHeaderLoggedInHtml } from "../generateHtml/headerLoggedIn.mjs";
+import { renderCatchErrorMessage } from "../messages/catchDisplayErrorMessage.mjs";
+import {
+  extractErrorMessages,
+  renderErrorMessageHtml,
+} from "../messages/errorMessage.mjs";
 // import {
 //   extractErrorMessages,
 //   renderErrorMessageHtml,
@@ -43,7 +48,7 @@ form.addEventListener("submit", function (event) {
     .then((json) => {
       // validate form:
       if (!title) {
-        throw new Error("Please add a title.");
+        throw new Error("Please add a title to the new post.");
       }
       if (body.length > 1999) {
         throw new Error(
@@ -58,20 +63,16 @@ form.addEventListener("submit", function (event) {
           "Can not update post. Please add a descriptive image text."
         );
       }
-
-      // if (json.errors) {
-      // throw new Error (`${json.errors}`)
-      // const errorMessages = extractErrorMessages(json);
-      // renderErrorMessageHtml(errorMessages);
-      // }
-      else {
+      if (!json.ok) {
+        throw new Error("Something went wrong. Please try again.");
+      } else {
         localStorage.setItem("createSuccess", true);
         window.location.href = "../post/manage.html";
       }
       return json;
     })
     .catch((error) => {
-      alert(error.message); //display error to user
+      renderCatchErrorMessage(error.message); //display error to user
       console.error("Error:", error.message); // Log any errors that occur
     });
 });
