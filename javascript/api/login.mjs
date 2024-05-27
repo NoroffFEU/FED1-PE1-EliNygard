@@ -3,6 +3,7 @@
 //   renderErrorMessageHtml,
 // } from "../messages/errorMessage.mjs";
 // import { loginMessageError } from "../messages/loginMessages.mjs";
+import { renderCatchErrorMessage } from "../messages/catchDisplayErrorMessage.mjs";
 import { registerMessageSuccess } from "../messages/registerMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
@@ -95,8 +96,8 @@ async function onLogIn(event) {
 
     await loginUser(API_BASE + API_AUTH + API_LOGIN, userData);
   } catch (error) {
-    console.error(error); // Log errors in console
-    alert(error); //display error to user
+    console.error(error.message); // Log errors in console
+    renderCatchErrorMessage(error.message); //display error to user
     // (generate a container and append to document to replace alert)
     // use loginMessageError, but create a general one and put in error message
   } finally {
