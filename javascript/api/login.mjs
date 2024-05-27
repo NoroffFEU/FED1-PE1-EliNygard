@@ -4,6 +4,7 @@
 // } from "../messages/errorMessage.mjs";
 // import { loginMessageError } from "../messages/loginMessages.mjs";
 import { renderCatchErrorMessage } from "../messages/catchDisplayErrorMessage.mjs";
+import { extractErrorMessages } from "../messages/errorMessage.mjs";
 import { registerMessageSuccess } from "../messages/registerMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
@@ -26,8 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // deep level
 async function loginUser(url, userData) {
   try {
-    // Promise for testing loader, REMOVE
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
 
     //throw errors and validation:
     validateLoginData(userData);
@@ -44,15 +43,10 @@ async function loginUser(url, userData) {
     const json = await response.json();
 
     if (!response.ok) {
-      throw new Error("Wrong email or password. Please try again.");
+      const errorMessages = "Wrong email or password. Please Try again" || extractErrorMessages(json);
+      throw new Error(errorMessages);
     }
 
-    // if (!response.ok) {
-    //   const errorMessages = extractErrorMessages(json);
-    //   renderErrorMessageHtml(errorMessages);
-    //   return;
-    // }
-    // else {
     const accessToken = json.data.accessToken;
     if (accessToken) {
       localStorage.setItem("accessToken", accessToken);

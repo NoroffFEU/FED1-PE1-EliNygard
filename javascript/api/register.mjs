@@ -9,11 +9,7 @@ import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 import { validateRegistrationData } from "./validateUserData.mjs";
 
 async function registerUser(url, userData, confirmPassword) {
-  // showLoader();
-
   try {
-    // Promise for testing, REMOVE
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
     // throw errors and validation:
     validateRegistrationData(userData, confirmPassword);
 
@@ -35,16 +31,9 @@ async function registerUser(url, userData, confirmPassword) {
     } else {
       localStorage.setItem("registerSuccess", true);
       console.log("Registration success");
-      // window.location.href = "../account/login.html";
+      window.location.href = "../account/login.html";
     }
     return json;
-    // } catch (error) {
-    // console.error(error); // Log errors in console
-    // alert(error.message); //display error to user
-    //create: renderErrorMessageHtml(error.message)
-    // } finally {
-    // hideLoader();
-    // }
   } catch (error) {
     throw error;
   }
@@ -72,7 +61,6 @@ async function onRegister(event) {
   } catch (error) {
     console.error(error.message); // Log errors in console
     renderCatchErrorMessage(error.message); //display error to user
-    // (generate a container and append to document to replace alert)
   } finally {
     hideLoader();
   }
