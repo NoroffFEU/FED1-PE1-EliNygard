@@ -52,5 +52,10 @@
     color: var(--color-theme-dark-orange);
 }
 
+.body-text {
+    padding-bottom: 4rem;
+    white-space: pre-wrap;
+}
+
 
 
