@@ -29,6 +29,10 @@ export function generateThumbPostsHtml(post) {
   title.classList.add("font-secondary");
   title.textContent = post.title;
 
+  const category = document.createElement("p");
+  category.classList.add("category")
+  category.textContent = post.tags;
+
   const date = document.createElement("p");
   date.setAttribute("id", "post-date");
   date.classList.add("font-secondary");
@@ -42,7 +46,7 @@ export function generateThumbPostsHtml(post) {
 
   textContainer.appendChild(text);
   thumbContainer.append(thumbImg, textContainer);
-  linkWrapper.append(thumbContainer, title);
+  linkWrapper.append(thumbContainer, title, category);
   listItem.appendChild(linkWrapper);
   // imageGallery.appendChild(listItem)
   // thumbWrapper.appendChild(imageGallery)
