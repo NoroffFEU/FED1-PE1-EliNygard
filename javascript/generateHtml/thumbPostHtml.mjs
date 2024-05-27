@@ -29,7 +29,7 @@ export function generateThumbPostsHtml(post) {
   title.textContent = post.title;
 
   const category = document.createElement("p");
-  category.classList.add("category")
+  category.classList.add("category");
   category.textContent = post.tags;
 
   const date = document.createElement("p");
@@ -45,7 +45,7 @@ export function generateThumbPostsHtml(post) {
 
   textContainer.appendChild(text);
   thumbContainer.append(thumbImg, textContainer);
-  linkWrapper.append(thumbContainer, title, category);
+  linkWrapper.append(thumbContainer, title);
   listItem.appendChild(linkWrapper);
   // imageGallery.appendChild(listItem)
   // thumbWrapper.appendChild(imageGallery)
