@@ -1,3 +1,4 @@
+import { renderCatchErrorMessage } from "../messages/catchDisplayErrorMessage.mjs";
 import {
   extractErrorMessages,
   renderErrorMessageHtml,
@@ -67,7 +68,7 @@ async function onRegister(event) {
     );
   } catch (error) {
     console.error(error.message); // Log errors in console
-    alert(error.message); //display error to user
+    renderCatchErrorMessage(error.message); //display error to user
     // (generate a container and append to document to replace alert)
   } finally {
     hideLoader()
