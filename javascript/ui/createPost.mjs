@@ -1,14 +1,6 @@
 import { API_BASE, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 import { generateHeaderLoggedInHtml } from "../generateHtml/headerLoggedIn.mjs";
 import { renderCatchErrorMessage } from "../messages/catchDisplayErrorMessage.mjs";
-import {
-  extractErrorMessages,
-  renderErrorMessageHtml,
-} from "../messages/errorMessage.mjs";
-// import {
-//   extractErrorMessages,
-//   renderErrorMessageHtml,
-// } from "../messages/errorMessage.mjs";
 
 const form = document.querySelector("form");
 
@@ -63,7 +55,7 @@ form.addEventListener("submit", function (event) {
           "Can not update post. Please add a descriptive image text."
         );
       }
-      if (!json.ok) {
+      if (json.errors) {
         throw new Error("Something went wrong. Please try again.");
       } else {
         localStorage.setItem("createSuccess", true);

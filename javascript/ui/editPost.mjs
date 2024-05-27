@@ -1,9 +1,5 @@
 import { API_BASE, API_ID, API_NAME, API_POSTS } from "../api/constantAPI.mjs";
 import { generateHeaderLoggedInHtml } from "../generateHtml/headerLoggedIn.mjs";
-// import {
-//   extractErrorMessages,
-//   renderErrorMessageHtml,
-// } from "../messages/errorMessage.mjs";
 
 const form = document.querySelector("form");
 
@@ -61,8 +57,14 @@ form.addEventListener("submit", function (event) {
   fetch(API_BASE + API_POSTS + API_NAME + API_ID, requestOptions)
     .then((response) => response.json())
     .then((json) => {
+      // validate form:
       if (!title) {
         throw new Error("Can not update post. Please add a title.");
+      }
+      if (body.length > 1999) {
+        throw new Error(
+          "The post body text is over 2000 characters. Please try again"
+        );
       }
       if (!imgUrl) {
         throw new Error("Can not update post. Please add an image url.");
@@ -72,11 +74,9 @@ form.addEventListener("submit", function (event) {
           "Can not update post. Please add a descriptive image text."
         );
       }
-      // if (json.errors) {
-      //   const errorMessages = extractErrorMessages(json);
-      //   renderErrorMessageHtml(errorMessages);
-      // }
-      else {
+      if (json.errors) {
+        throw new Error("Something went wrong. Please try again.");
+      } else {
         localStorage.removeItem("postId");
         localStorage.setItem("editSuccess", true);
         window.location.href = "../post/manage.html";
