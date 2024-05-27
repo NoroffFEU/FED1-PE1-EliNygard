@@ -23,8 +23,8 @@ export async function generateHeaderHtml() {
   rightContainer.classList.add("content-right");
 
   const linkLogin = document.createElement("a");
-  linkLogin.title = "Log in"
-  linkLogin.textContent = "Log in to your account";
+  linkLogin.title = "Log into your account"
+  linkLogin.textContent = "Log in";
   linkLogin.addEventListener("click", () => {
     let targetPath = "./account/login.html";
     
