@@ -79,6 +79,7 @@ async function renderNewPostsCarousel(url) {
   });
 }
 
+
 async function setupPostThumbs(url) {
   const responseData = await getPosts(url);
   const posts = responseData.data;
@@ -94,12 +95,11 @@ async function setupPostThumbs(url) {
   const paginatedPosts = paginate(posts, 4);
   renderPosts(paginatedPosts[0]);
   renderPaginationControls(paginatedPosts, posts);
+
+  const paginationControls = document.querySelector(".pagination")
+  paginationControls.style.display = "flex"
 }
 
-const viewAllPosts = document.getElementById("view-all-posts");
-viewAllPosts.addEventListener("click", () => {
-  window.location.reload();
-});
 
 // CAROUSEL CODE FROM YOUTUBE:
 // https://www.youtube.com/watch?v=749ta0nvj8s&t=3s

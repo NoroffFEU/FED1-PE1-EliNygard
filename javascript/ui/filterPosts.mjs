@@ -1,4 +1,5 @@
 import { renderPosts } from "../../index.mjs";
+import { paginate, renderPaginationControls } from "./pagination.mjs";
 
 export function extractCategories(posts) {
   const categories = new Set();
@@ -12,10 +13,25 @@ export function extractCategories(posts) {
 
 export function addEventListenerOnCategory(posts) {
   const select = document.getElementById("category");
+
   select.addEventListener("change", () => {
     const selectedCategory = select.value;
-    const filteredPosts = filterPostsByCategory(posts, selectedCategory);
-    renderPosts(filteredPosts);
+    let filteredPosts;
+
+
+    // display All Posts:
+    if (selectedCategory === "allPosts") {
+      filteredPosts = posts;
+    } 
+    // display posts by category:
+    else {
+      filteredPosts = filterPostsByCategory(posts, selectedCategory);
+    }
+
+    const paginatedPosts = paginate(filteredPosts, 2)
+    renderPosts(paginatedPosts[0]);
+
+    renderPaginationControls(paginatedPosts, filteredPosts)
   });
 }
 
