@@ -5,7 +5,6 @@ export function renderCatchErrorMessage(message) {
     const errorMessage = document.createElement("p");
     errorMessage.classList.add("message-success");
     errorMessage.textContent = message;
-    console.log(errorMessage.textContent);
 
     const confirmButtonContainer = document.createElement("div");
     confirmButtonContainer.classList.add("confirm-button-container");

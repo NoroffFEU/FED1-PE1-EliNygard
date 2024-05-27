@@ -21,14 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
   displayMessage("registerSuccess", registerMessageSuccess);
 });
 
-
 // The loginUser function should throw errors that comes from what we attempt to do in onLogIn. If !email if!password if incorrect password
 
 // deep level
 async function loginUser(url, userData) {
-  // showLoader();
-
-  // try {
+  try {
     // Promise for testing loader, REMOVE
     // await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -46,41 +43,32 @@ async function loginUser(url, userData) {
     const response = await fetch(url, postData);
     const json = await response.json();
 
-    // stops at catch in this block
-    // would like to specify if: check if email and password match
-    // if (!userData.email) {
-    //   throw new Error("No email provided")
-    // }
+    if (!response.ok) {
+      throw new Error("Wrong email or password. Please try again.");
+    }
+
     // if (!response.ok) {
     //   const errorMessages = extractErrorMessages(json);
     //   renderErrorMessageHtml(errorMessages);
     //   return;
-    // } 
+    // }
     // else {
-      const accessToken = json.data.accessToken;
-      if (accessToken) {
-        localStorage.setItem("accessToken", accessToken);
-        localStorage.setItem("loginSuccess", true);
-        localStorage.setItem("userName", JSON.stringify(json.data.name));
+    const accessToken = json.data.accessToken;
+    if (accessToken) {
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("loginSuccess", true);
+      localStorage.setItem("userName", JSON.stringify(json.data.name));
 
-        window.location.href = "../post/manage.html";
-      } else {
-        console.log("Access token not found in response. Try again.");
-      }
-
-      return json;
+      window.location.href = "../post/manage.html";
+    } else {
+      console.log("Access token not found in response. Try again.");
     }
 
-  // } 
-  // catch (error) {
-  //   //this should maybe be at lower level?
-  //   // loginMessageError();
-  //   alert(error.message); //display error to user
-  //   console.error(error); // Log errors in console
-  // } finally {
-  //   hideLoader();
-  // }
-// }
+    return json;
+  } catch (error) {
+    throw error;
+  }
+}
 
 // surface level
 async function onLogIn(event) {
@@ -90,7 +78,7 @@ async function onLogIn(event) {
   const email = emailInput.value;
   const password = passwordInput.value;
 
-  showLoader()
+  showLoader();
   try {
     const userData = { email, password };
 
@@ -98,10 +86,8 @@ async function onLogIn(event) {
   } catch (error) {
     console.error(error.message); // Log errors in console
     renderCatchErrorMessage(error.message); //display error to user
-    // (generate a container and append to document to replace alert)
-    // use loginMessageError, but create a general one and put in error message
   } finally {
-    hideLoader()
+    hideLoader();
   }
 }
 
