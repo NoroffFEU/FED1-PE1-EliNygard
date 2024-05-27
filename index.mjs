@@ -81,8 +81,6 @@ async function renderNewPostsCarousel(url) {
 async function setupPostThumbs(url) {
   const responseData = await getPosts(url);
   const posts = responseData.data;
-  const postsMeta = responseData.meta;
-  console.log(postsMeta);
   sortPostsByDate(posts);
 
   const categories = extractCategories(posts);
