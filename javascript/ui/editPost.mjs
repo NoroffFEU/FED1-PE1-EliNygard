@@ -11,21 +11,17 @@ const form = document.querySelector("form");
 const parameterString = window.location.search;
 const searchParams = new URLSearchParams(parameterString);
 const title = searchParams.get("title");
-console.log(title);
 const body = searchParams.get("body");
 const imgUrl = searchParams.get("imgUrl");
-console.log(imgUrl);
 const imgAlt = searchParams.get("imgAlt");
 const category = searchParams.get("category");
 
 const titleInput = document.getElementById("title");
 titleInput.value = title;
-console.log(titleInput);
 const bodyInput = document.getElementById("body");
 bodyInput.value = body;
 const imgUrlInput = document.getElementById("img-url");
 imgUrlInput.value = imgUrl;
-console.log(imgUrlInput);
 const imgAltInput = document.getElementById("img-alt");
 imgAltInput.value = imgAlt;
 const categorySelect = document.getElementById("category");
@@ -65,26 +61,27 @@ form.addEventListener("submit", function (event) {
   fetch(API_BASE + API_POSTS + API_NAME + API_ID, requestOptions)
     .then((response) => response.json())
     .then((json) => {
-      console.log(json);
       if (!title) {
         throw new Error("Can not update post. Please add a title.");
       }
       if (!imgUrl) {
-        throw new Error("Can not update post. Please add an image url.")
+        throw new Error("Can not update post. Please add an image url.");
       }
-      if(!imgAlt) {
-        throw new Error("Can not update post. Please add a descriptive image text.")
+      if (!imgAlt) {
+        throw new Error(
+          "Can not update post. Please add a descriptive image text."
+        );
       }
       // if (json.errors) {
-      //   console.log(json.errors);
       //   const errorMessages = extractErrorMessages(json);
       //   renderErrorMessageHtml(errorMessages);
-      // } 
+      // }
       else {
         localStorage.removeItem("postId");
         localStorage.setItem("editSuccess", true);
         window.location.href = "../post/manage.html";
       }
+      return json;
     })
     .catch((error) => {
       alert(error.message); //display error to user
@@ -93,7 +90,7 @@ form.addEventListener("submit", function (event) {
 });
 
 async function main() {
-  generateHeaderLoggedInHtml()
+  generateHeaderLoggedInHtml();
 }
 
 main();

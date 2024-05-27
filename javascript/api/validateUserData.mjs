@@ -19,7 +19,7 @@ function validateEmail(email) {
   }
 
   if (!email.includes("stud.noroff.no")) {
-    throw new Error("The email must be a valid stud.noroff email")
+    throw new Error("The email must be a valid stud.noroff email");
   }
 
   const emailInput = document.getElementById("email");
@@ -56,16 +56,13 @@ function validateUsername(username) {
 // export async function validateUserData(userData, confirmPassword) {
 //   const availableUsername = await checkUsernameAvailability(userData.name);
 //   const availableEmail = await checkEmailAvailability(userData.email);
-//   console.log(availableEmail);
 // if (userData.password !== confirmPassword) {
 //     throw new Error("passwords do not match. Please try again");
 // }
 //   if (!availableUsername) {
-//     console.log("name not available");
 //     throw new Error("username is taken");
 //   }
 //   if (!availableEmail) {
-//     console.log("email not available");
 //     throw new Error("Email is already registered on a user. Please try again");
 //   }
 // }

@@ -66,7 +66,6 @@ export async function renderPosts(posts) {
 async function renderNewPostsCarousel(url) {
   const responseData = await getPosts(url);
   const posts = responseData.data;
-  console.log(posts);
 
   // slice the 3 latest posts:
   const latestPosts = posts.slice(0, 3);
@@ -78,7 +77,6 @@ async function renderNewPostsCarousel(url) {
     carousel.appendChild(carouselItem);
   });
 }
-
 
 async function setupPostThumbs(url) {
   const responseData = await getPosts(url);
@@ -96,10 +94,9 @@ async function setupPostThumbs(url) {
   renderPosts(paginatedPosts[0]);
   renderPaginationControls(paginatedPosts, posts);
 
-  const paginationControls = document.querySelector(".pagination")
-  paginationControls.style.display = "flex"
+  const paginationControls = document.querySelector(".pagination");
+  paginationControls.style.display = "flex";
 }
-
 
 // CAROUSEL CODE FROM YOUTUBE:
 // https://www.youtube.com/watch?v=749ta0nvj8s&t=3s

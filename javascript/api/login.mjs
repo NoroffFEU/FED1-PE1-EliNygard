@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // deep level
 async function loginUser(url, userData) {
   try {
-
     //throw errors and validation:
     validateLoginData(userData);
 
@@ -43,7 +42,9 @@ async function loginUser(url, userData) {
     const json = await response.json();
 
     if (!response.ok) {
-      const errorMessages = "Wrong email or password. Please Try again" || extractErrorMessages(json);
+      const errorMessages =
+        "Wrong email or password. Please Try again" ||
+        extractErrorMessages(json);
       throw new Error(errorMessages);
     }
 
@@ -55,7 +56,7 @@ async function loginUser(url, userData) {
 
       window.location.href = "../post/manage.html";
     } else {
-      console.log("Access token not found in response. Try again.");
+      // do?
     }
 
     return json;

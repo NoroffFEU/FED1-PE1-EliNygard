@@ -30,7 +30,6 @@ async function registerUser(url, userData, confirmPassword) {
       return;
     } else {
       localStorage.setItem("registerSuccess", true);
-      console.log("Registration success");
       window.location.href = "../account/login.html";
     }
     return json;

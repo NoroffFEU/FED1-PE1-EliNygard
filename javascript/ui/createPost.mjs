@@ -41,8 +41,6 @@ form.addEventListener("submit", function (event) {
   fetch(API_BASE + API_POSTS + API_NAME, requestOptions)
     .then((response) => response.json())
     .then((json) => {
-      console.log(json);
-
       // validate form:
       if (!title) {
         throw new Error("Please add a title.");
@@ -62,7 +60,6 @@ form.addEventListener("submit", function (event) {
       }
 
       // if (json.errors) {
-      // console.log(json.errors);
       // throw new Error (`${json.errors}`)
       // const errorMessages = extractErrorMessages(json);
       // renderErrorMessageHtml(errorMessages);
@@ -71,6 +68,7 @@ form.addEventListener("submit", function (event) {
         localStorage.setItem("createSuccess", true);
         window.location.href = "../post/manage.html";
       }
+      return json;
     })
     .catch((error) => {
       alert(error.message); //display error to user
@@ -157,9 +155,7 @@ main();
 //     try {
 //       const response = await fetch(url, requestOptions);
 //       const json = await response.json();
-//       console.log(json);
 //       if(!json.okay){
-//           console.log("no json");
 //       }
 //     } catch (error) {
 //       throw error;

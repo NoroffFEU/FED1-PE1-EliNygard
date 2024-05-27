@@ -1,6 +1,5 @@
 export function extractErrorMessages(json) {
   const errors = json.errors;
-  console.log(errors);
   if (errors) {
     return errors.map((error) => error.message).filter(Boolean);
   }
@@ -19,7 +18,6 @@ export function renderErrorMessageHtml(messages) {
     errorMessage.textContent = `Something went wrong. Please check the following: ${messages.join(
       ", "
     )}`;
-    console.log(errorMessage.textContent);
 
     const confirmButtonContainer = document.createElement("div");
     confirmButtonContainer.classList.add("confirm-button-container");

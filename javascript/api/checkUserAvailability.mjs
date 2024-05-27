@@ -11,7 +11,6 @@
 //       },
 //       body: JSON.stringify({ username }),
 //     });
-//     console.log(username);
 //     return response.status === 200;
 //   } catch (error) {
 //     console.error("Error checking if username is available.", error);
@@ -31,7 +30,6 @@
 //       },
 //       body: JSON.stringify({ email }),
 //     });
-//     console.log(email);
 //     return response.status === 200;
 //   } catch (error) {
 //     console.error("Error checking if email is available.", error);

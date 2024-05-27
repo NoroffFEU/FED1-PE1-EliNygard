@@ -31,16 +31,15 @@ async function renderTable() {
     // Promise for testing, REMOVE
     // await new Promise((resolve) => setTimeout(resolve, 500));
     const userName = JSON.parse(localStorage.getItem("userName"));
-    console.log(userName);
     const token = localStorage.getItem("accessToken");
     const responseData = await getPosts(API_BASE + API_POSTS + API_NAME, token);
     const posts = responseData.data;
-    console.log(posts);
     posts.forEach((post) => {
       generateTableHtml(post);
     });
-  } catch {
-    console.log("catch error here");
+  } catch (error) {
+    error.log(error);
+    alert(error);
   } finally {
     hideLoader();
   }
