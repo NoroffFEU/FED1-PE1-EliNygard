@@ -24,7 +24,7 @@ export async function generateHeaderHtml() {
 
   const linkLogin = document.createElement("a");
   linkLogin.title = "Log in"
-  linkLogin.textContent = "Log in";
+  linkLogin.textContent = "Log in to your account";
   linkLogin.addEventListener("click", () => {
     let targetPath = "./account/login.html";
     
@@ -38,7 +38,7 @@ export async function generateHeaderHtml() {
   });
   
   const linkRegister = document.createElement("a");
-  linkRegister.title = "Register account"
+  linkRegister.title = "Register an account"
   linkRegister.textContent = "Register";
   linkRegister.addEventListener("click", () => {
     let targetPath = "./account/register.html"
