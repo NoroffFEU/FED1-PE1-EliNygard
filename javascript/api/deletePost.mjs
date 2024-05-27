@@ -1,3 +1,4 @@
+import { renderCatchErrorMessage } from "../messages/catchDisplayErrorMessage.mjs";
 import { API_BASE, API_NAME, API_POSTS } from "./constantAPI.mjs";
 
 export function deletePost(postId) {
@@ -11,6 +12,12 @@ export function deletePost(postId) {
     },
   })
     .then((response) => {
+      if (!token) {
+        throw new Error("You are not permitted to delete a post.");
+      }
+      if (response.status === 404) {
+        throw new Error("Could not fins the post.");
+      }
       if (response.ok) {
         localStorage.setItem("deleteSuccess", true);
         const postElement = document.querySelector(
@@ -20,14 +27,10 @@ export function deletePost(postId) {
           postElement.remove();
         }
         window.location.reload();
-      } else {
-        if (!token) {
-          throw new Error("You are not permitted to delete a post.");
-        }
-        //add error if post has already been deleted
       }
     })
     .catch((error) => {
+      renderCatchErrorMessage(error.message);
       console.error("Error", error);
     });
 }
