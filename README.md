@@ -1,7 +1,7 @@
 FED1 Project Exam 1
 # HotView Labs
 
-//image
+![image](https://i.ibb.co/xg8Kw2z/Skjermbilde-2024-05-29-081846.png)
 
 ## Description
 This is a blog page for the fictional client HotView Labs. 
