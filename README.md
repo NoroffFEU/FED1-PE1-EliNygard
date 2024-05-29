@@ -3,6 +3,8 @@ FED1 Project Exam 1
 
 ![image](https://i.ibb.co/xg8Kw2z/Skjermbilde-2024-05-29-081846.png)
 
+[Visit HotView Labs](https://norofffeu.github.io/FED1-PE1-EliNygard/index.html)
+
 ## Description
 This is a blog page for the fictional client HotView Labs. 
 
@@ -20,7 +22,7 @@ To do that, I was "hired" to build a front-end user interface for an exisiting A
 I have used Figma to design the web page, and built it with HTML, CSS and JS
 
 
-## Getting Started
+## Getting Started With the Project
 
 ### Installing
 
@@ -38,11 +40,11 @@ npm install
 
 ### Running
 
-Here is where you detail how to run the app. It typically involves the commands you'd need to run to start the project e.g.
-
 To run the app, run the following commands:
 
 ```bash
 npm run start
 ```
 
+## Contact
+Feel free to contact me
