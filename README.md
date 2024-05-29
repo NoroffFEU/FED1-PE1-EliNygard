@@ -52,3 +52,8 @@ Feel free to contact me
 eli.nygard@gmail.com
 
 [My Linkedin Page](https://www.linkedin.com/in/eli-nyg%C3%A5rd/)
+
+## Acknowledgments
+I want to thank Oda, Jesus, Manuel and Lena for testing and reviewing my project.
+
+Besides content on Molly, I found inspiration for the post carousel from this [tutorial on YouTube](https://www.youtube.com/watch?v=749ta0nvj8s&t=3s)
