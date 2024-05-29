@@ -1,4 +1,5 @@
-# FED1 Project Exam 1
+FED1 Project Exam 1
+#HotViews Lab
 
 A blog page for the client HotView Labs. 
 
