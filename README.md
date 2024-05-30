@@ -21,7 +21,7 @@ To do that, I was "hired" to build a front-end user interface for an exisiting A
 
 I aimed to design a clean and "straight to the point" web page to match the description of the client and their sector. The main theme colour, the dark blue, symbolises itegrity, responsibililty and order - three aspects I wanted to connect to the HotView Labs and display to the audience. 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right"><a href="#readme-top">Back to Top</a></p>
 
 ## Built With
 I have used Figma to design the web page, and built it with HTML, CSS and JS.
