@@ -6,7 +6,7 @@
 [Visit HotView Labs](https://norofffeu.github.io/FED1-PE1-EliNygard/index.html)
 
 ## Description
-This is a blog page for the fictional client HotView Labs. 
+This is a blog page for the fictional client HotView Labs. A page where you can find interesting and facinating blog posts about everything that goes on in the tech industry. 
 
 The goal was to put into practice the skills I have learned over the FED1 program, the first year of the Front-end Development studies at Noroff. 
 To do that, I was "hired" to build a front-end user interface for an exisiting API blogging application. The client asked for a responsive application that allow users to view dynamic blog posts. The client required admin pages to register, login and manage their blog posts.
@@ -18,8 +18,10 @@ To do that, I was "hired" to build a front-end user interface for an exisiting A
 - Location: Worldwide
 - Mission: Provide the most accurate and up to date insights to tech leaders across the world.
 
+I aimed to design a clean and "straight to the point" web page to match the description of the client and their sector. The main theme colour, the dark blue, symbolises itegrity, responsibililty and order - three aspects I wanted to connect to the HotView Labs and display to the audience. 
+
 ## Built With
-I have used Figma to design the web page, and built it with HTML, CSS and JS
+I have used Figma to design the web page, and built it with HTML, CSS and JS.
 
 
 ## Getting Started With the Project
