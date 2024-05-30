@@ -58,11 +58,13 @@ npm run start
 ## Contact
 Feel free to contact me
 
-Eli Nygård - eli.nygard@gmail.com
+Eli Nygård 
+
+Email: eli.nygard@gmail.com
 
 [My Linkedin Page](https://www.linkedin.com/in/eli-nyg%C3%A5rd/)
 
-Project Link: 
+Project Link: [https://github.com/NoroffFEU/FED1-PE1-EliNygard](https://github.com/NoroffFEU/FED1-PE1-EliNygard)
 
 <p align="right"><a href="#readme-top">⬆️ Back to Top</a></p>
 
