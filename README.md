@@ -31,6 +31,8 @@ I have used Figma to design the web page, and built it with HTML, CSS and JS.
 
 ## Getting Started With the Project
 
+Make sure you have Git installed. If not, you can download it from [here](https://git-scm.com/downloads)
+
 ### Installing
 
 1. Clone the repo:
