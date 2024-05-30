@@ -6,7 +6,7 @@
 
 [Visit HotView Labs](https://norofffeu.github.io/FED1-PE1-EliNygard/index.html)
 
-## Description
+## About the Project
 This is a blog page for the fictional client HotView Labs. A page where you can find interesting and facinating blog posts about everything that goes on in the tech industry. 
 
 The goal was to put into practice the skills I have learned over the FED1 program, the first year of the Front-end Development studies at Noroff. 
