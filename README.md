@@ -58,9 +58,11 @@ npm run start
 ## Contact
 Feel free to contact me
 
-eli.nygard@gmail.com
+Eli Nygård - eli.nygard@gmail.com
 
 [My Linkedin Page](https://www.linkedin.com/in/eli-nyg%C3%A5rd/)
+
+Project Link: 
 
 <p align="right"><a href="#readme-top">⬆️ Back to Top</a></p>
 
