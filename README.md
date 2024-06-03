@@ -26,9 +26,6 @@ I aimed to design a clean and "straight to the point" web page to match the desc
 ## Built With
 I have used Figma to design the web page, and built it with HTML, CSS and JS.
 
-<p align="right"><a href="#readme-top">⬆️ Back to Top</a></p>
-
-
 ## Getting Started With the Project
 
 Make sure you have Git installed. If not, you can download it from [here](https://git-scm.com/downloads)
@@ -67,8 +64,6 @@ Email: eli.nygard@gmail.com
 [My Linkedin Page](https://www.linkedin.com/in/eli-nyg%C3%A5rd/)
 
 Project Link: [https://github.com/NoroffFEU/FED1-PE1-EliNygard](https://github.com/NoroffFEU/FED1-PE1-EliNygard)
-
-<p align="right"><a href="#readme-top">⬆️ Back to Top</a></p>
 
 ## Acknowledgments
 I want to thank Oda, Jesus, Manuel and Lena for testing and reviewing my project.
