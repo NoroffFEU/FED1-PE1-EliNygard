@@ -6,6 +6,8 @@
 
 [Visit HotView Labs](https://norofffeu.github.io/FED1-PE1-EliNygard/index.html)
 
+<br>
+
 ## About the Project
 This is a blog page for the fictional client HotView Labs. A page where you can find interesting and facinating blog posts about everything that goes on in the tech industry. 
 
@@ -24,7 +26,12 @@ I aimed to design a clean and "straight to the point" web page to match the desc
 <p align="right"><a href="#readme-top">⬆️ Back to Top</a></p>
 
 ## Built With
-I have used Figma to design the web page, and built it with HTML, CSS and JS.
+[<img title="Figma" height="48px" width="48px" alt="Icone VS-Code" src="https://skillicons.dev/icons?i=figma"/>](https://www.figma.com/)
+[<img title="HTML" height="48px" width="48px" alt="Icone VS-Code" src="https://skillicons.dev/icons?i=html"/>](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[<img title="CSS" height="48px" width="48px" alt="Icone VS-Code" src="https://skillicons.dev/icons?i=css"/>](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[<img title="JavaScript" height="48px" width="48px" alt="Icone VS-Code" src="https://skillicons.dev/icons?i=js"/>](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+<br>
 
 ## Getting Started With the Project
 
@@ -64,6 +71,8 @@ Email: eli.nygard@gmail.com
 [My Linkedin Page](https://www.linkedin.com/in/eli-nyg%C3%A5rd/)
 
 Project Link: [https://github.com/NoroffFEU/FED1-PE1-EliNygard](https://github.com/NoroffFEU/FED1-PE1-EliNygard)
+
+<br>
 
 ## Acknowledgments
 I want to thank Oda, Jesus, Manuel and Lena for testing and reviewing my project.
