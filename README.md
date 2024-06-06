@@ -2,7 +2,7 @@
 #### FED1 Project Exam 1
 # HotView Labs
 
-![image](https://i.ibb.co/xg8Kw2z/Skjermbilde-2024-05-29-081846.png)
+![Screenshot from HotView Labs home page](https://i.ibb.co/xg8Kw2z/Skjermbilde-2024-05-29-081846.png)
 
 [Visit HotView Labs](https://norofffeu.github.io/FED1-PE1-EliNygard/index.html)
 
