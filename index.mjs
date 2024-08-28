@@ -36,8 +36,8 @@ async function checkAndRenderPosts() {
     } else {
       // If user is not logged in, render header for visitors and render posts from this account anyway:
       await generateHeaderHtml();
-      await setupPostThumbs(API_BASE + API_POSTS + "/Leli_Nygard");
-      await renderNewPostsCarousel(API_BASE + API_POSTS + "/Leli_Nygard");
+      await setupPostThumbs(API_BASE + API_POSTS + "/Eli");
+      await renderNewPostsCarousel(API_BASE + API_POSTS + "/Eli");
     }
   } catch (error) {
     console.error(error);
