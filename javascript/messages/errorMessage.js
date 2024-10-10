@@ -3,7 +3,7 @@ export function extractErrorMessages(json) {
   if (errors) {
     return errors.map((error) => error.message).filter(Boolean);
   }
-  return []; // returns an empty array if no errors
+  return [];
 }
 
 export function renderErrorMessageHtml(messages) {

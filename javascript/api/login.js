@@ -4,7 +4,7 @@
 // } from "../messages/errorMessage.mjs";
 // import { loginMessageError } from "../messages/loginMessages.mjs";
 import { renderCatchErrorMessage } from "../messages/catchDisplayErrorMessage.mjs";
-import { extractErrorMessages } from "../messages/errorMessage.mjs";
+import { extractErrorMessages } from "../messages/errorMessage.js";
 import { registerMessageSuccess } from "../messages/registerMessages.mjs";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // The loginUser function should throw errors that comes from what we attempt to do in onLogIn. If !email if!password if incorrect password
 
 // deep level
-async function loginUser(url, userData) {
+export async function loginUser(url, userData) {
   try {
     //throw errors and validation:
     validateLoginData(userData);

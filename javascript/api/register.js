@@ -2,13 +2,13 @@ import { renderCatchErrorMessage } from "../messages/catchDisplayErrorMessage.mj
 import {
   extractErrorMessages,
   renderErrorMessageHtml,
-} from "../messages/errorMessage.mjs";
+} from "../messages/errorMessage.js";
 import { removeErrorMessage } from "../messages/removeMessages.mjs";
 import { hideLoader, showLoader } from "../ui/loader.mjs";
 import { API_AUTH, API_BASE, API_REGISTER } from "./constantAPI.mjs";
 import { validateRegistrationData } from "./validateUserData.mjs";
 
-async function registerUser(url, userData, confirmPassword) {
+export async function registerUser(url, userData, confirmPassword) {
   try {
     // throw errors and validation:
     validateRegistrationData(userData, confirmPassword);
